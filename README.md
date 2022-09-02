@@ -1,16 +1,17 @@
-# :checkered_flag: NOME DO PROJETO
+# :checkered_flag: GranCARS
 
-Breve descrição do que o seu projeto faz.
+GransCARS é um sistema de aluguel de carro online para um locadora na cidade de Quixadá.
 
 ## :technologist: Membros da equipe
 
-Matrícula, nome e curso dos participantes.
+521437 - Robson do Amaral Diógenes - Engenharia de Software
+
+xxxxxx - Davi Oliveira             - Sistema de Informações
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
 
-Informe aqui os tipos de usuário que irão interagir com a aplicação. Ex: administrador, locador, locatario, usuário não logado.
+Cliente logado, cliente não logado e o administrador.
 
-> Tenha em mente que obrigatoriamente a aplicação deve possuir funcionalidades acessíveis a todos os tipos de usuário e outra funcionalidades restritas a certos tipos de usuários.
 
 ## :spiral_calendar: Entidades ou tabelas do sistema
 
@@ -18,7 +19,11 @@ Liste as principais entidades do sistema.
 
 ## :triangular_flag_on_post:	 Principais funcionalidades da aplicação
 
-Descreve ou liste brevemente as principais funcionalidades da aplicação que será desenvolvida. Destaque a funcionalidades que serão acessévies a todos os usuários e aquelas restriras a usuários logados.
+O cliente não precisará estar autenticado para visualizar as informações sobre os carros disponíveis, mas precisará criar uma conta para realizar uma reserva. O cliente fará uma reserva e, após a confirmação do pagamento, receberá um comprovante de pagamento para retirada do veículo. O cliente poderá também visualizar suas antigas transações.
+
+O administrador, por sua vez, poderá ver uma lista de cada entidade do sistema(carro, clientes e administrador), bem como deletar, editar e criar novos. Dessa forma, teremos a possibilidade do administrador realizar um cadastro e uma reserva para um cliente de forma presencial, bem como cadastrar novos administradores. 
+
+
 
 
 ----
