@@ -6,7 +6,7 @@ GransCARS é um sistema de aluguel de carro online para um locadora na cidade de
 
 521437 - Robson do Amaral Diógenes - Engenharia de Software
 
-xxxxxx - Davi Oliveira             - Sistema de Informações
+521440 - Davi Oliveira             - Sistema de Informações
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
 
@@ -15,7 +15,7 @@ Cliente logado, cliente não logado e o administrador.
 
 ## :spiral_calendar: Entidades ou tabelas do sistema
 
-Liste as principais entidades do sistema.
+Usuário, Carro e Reserva.
 
 ## :triangular_flag_on_post:	 Principais funcionalidades da aplicação
 
