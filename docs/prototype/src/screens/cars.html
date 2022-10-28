@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <link rel="icon" href="./assets/favicon.ico" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="./style/global.css">
-    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="../style/global.css" >
+    <link rel="stylesheet" href="../style/cars.css" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GranCars</title>
 </head>
 <body>
-    <header>
-        <div id="navigation-menu">
-            <div id="navigation-menu-title">
-                <h4>Gran<span>Cars</span></h4>
-            </div>
+    
 
-            <div id="navigation-menu-item">
-                <ul>
+    <main>
+        <header>
+            <div id="navigation-menu">
+                <div id="navigation-menu-title">
+                    <h4>Gran<span>Cars</span></h4>
+                </div>
+        
+                <ul id="navigation-menu-item">
                     <li class="itens">
                         <a href="">HOME</a>
                     </li>
-
-                    <li class="itens">
+                    <li id="selected-item" class="itens">
                         <a href="">CARROS</a>
                     </li>
                     <li class="itens">
@@ -32,26 +33,24 @@
                         <a href="">SOBRE NÓS</a>
                     </li>
                 </ul>
+        
+                <div id="navigation-menu-button">
+                    <button>SAIR</button>
+                </div>
             </div>
+        </header>
 
-            <div id="navigation-menu-button">
-                <button>SAIR</button>
-            </div>
-        </div>
-    </header>
-
-    <main>
         <div id="search-cars">
             <form action="">
-                <input type="text" id="search-cars-input" name="search-cars-imput" placeholder="Pesquise por um modelo ou uma marca...">         
-              </form>
+                <input type="text" id="search-cars-input" name="search-cars-imput" placeholder="  Pesquise por um modelo ou uma marca...">       
+            </form>
         </div>
 
         <div id="cars">
             <ul class="cars-list">
                 <li class="cars-list-type">
                     <div class="car-information">
-                        <img src="../assets/carA.svg" alt="">
+                        <img src="../assets/carA.svg" alt="" height="300" width="300">
                         <div class="description">
                             <h6>
                                 Model A
@@ -65,7 +64,7 @@
 
                 <li class="cars-list-type">
                     <div class="car-information">
-                        <img src="../assets/carB.svg" alt="">
+                        <img src="../assets/carB.svg" alt="" height="300" width="300">
                         <div class="description">
                             <h6>
                                 Model B
@@ -79,7 +78,7 @@
 
                 <li class="cars-list-type">
                     <div class="car-information">
-                        <img src="../assets/carC.svg" alt="">
+                        <img src="../assets/carC.svg" alt="" height="300" width="300">
                         <div class="description">
                             <h6>
                                 Model C
@@ -95,7 +94,7 @@
             <ul class="cars-list">
                 <li class="cars-list-type">
                     <div class="car-information">
-                        <img src="../assets/carA.svg" alt="">
+                        <img src="../assets/carA.svg" alt="" height="300" width="300">
                         <div class="description">
                             <h6>
                                 Model A
@@ -109,7 +108,7 @@
 
                 <li class="cars-list-type">
                     <div class="car-information">
-                        <img src="../assets/carB.svg" alt="">
+                        <img src="../assets/carB.svg" alt="" height="300" width="300">
                         <div class="description">
                             <h6>
                                 Model B
@@ -123,7 +122,7 @@
 
                 <li class="cars-list-type">
                     <div class="car-information">
-                        <img src="../assets/carC.svg" alt="">
+                        <img src="../assets/carC.svg" alt="" height="300" width="300">
                         <div class="description">
                             <h6>
                                 Model C
@@ -139,7 +138,7 @@
             <ul class="cars-list">
                 <li class="cars-list-type">
                     <div class="car-information">
-                        <img src="../assets/carA.svg" alt="">
+                        <img src="../assets/carA.svg" alt="" height="300" width="300">
                         <div class="description">
                             <h6>
                                 Model A
@@ -153,7 +152,7 @@
 
                 <li class="cars-list-type">
                     <div class="car-information">
-                        <img src="../assets/carB.svg" alt="">
+                        <img src="../assets/carB.svg" alt="" height="300" width="300">
                         <div class="description">
                             <h6>
                                 Model B
@@ -167,7 +166,7 @@
 
                 <li class="cars-list-type">
                     <div class="car-information">
-                        <img src="../assets/carC.svg" alt="">
+                        <img src="../assets/carC.svg" alt="" height="300" width="300">
                         <div class="description">
                             <h6>
                                 Model C
@@ -183,7 +182,7 @@
             <ul class="cars-list">
                 <li class="cars-list-type">
                     <div class="car-information">
-                        <img src="../assets/carA.svg" alt="">
+                        <img src="../assets/carA.svg" alt="" height="300" width="300">
                         <div class="description">
                             <h6>
                                 Model A
@@ -197,7 +196,7 @@
 
                 <li class="cars-list-type">
                     <div class="car-information">
-                        <img src="../assets/carB.svg" alt="">
+                        <img src="../assets/carB.svg" alt="" height="300" width="300">
                         <div class="description">
                             <h6>
                                 Model B
@@ -211,7 +210,7 @@
 
                 <li class="cars-list-type">
                     <div class="car-information">
-                        <img src="../assets/carC.svg" alt="">
+                        <img src="../assets/carC.svg" alt="" height="300" width="300">
                         <div class="description">
                             <h6>
                                 Model C
@@ -224,15 +223,17 @@
                 </li>
             </ul>
         </div>
+
+        <footer>
+            <div id="footer">
+                <h4>Gran<span>Cars</span></h4>
+                <p>VISITE O REPOSITÓRIO</p>
+            </div>
+        </footer>
 
     </main>
 
-    <footer>
-        <div id="footer">
-            <h4>Gran<span>Cars</span></h4>
-            <p>VISITE O REPOSITÓRIO</p>
-        </div>
-    </footer>
+    
 
 </body>
 </html>
