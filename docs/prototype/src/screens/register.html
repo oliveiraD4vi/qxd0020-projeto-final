@@ -10,7 +10,90 @@
   <title>GranCars</title>
 </head>
 <body>
-  Register
+  <header>
+    <div id="navigation-menu-title">
+      <h4>Gran<span>Cars</span></h4>
+    </div>
+
+    <ul id="navigation-menu-item">
+      <li class="itens">
+        <a href="">HOME</a>
+      </li>
+      <li id="selected-item" class="itens">
+        <a href="">CARROS</a>
+      </li>
+      <li class="itens">
+        <a href="">RESERVAS</a>
+      </li>
+      <li class="itens">
+        <a href="">SOBRE NÓS</a>
+      </li>
+    </ul>
+
+    <div id="navigation-menu-button">
+      <button>SAIR</button>
+    </div>
+  </header>
+
+  <main>
+    <form>
+      <div class="input">
+        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Nome">
+        <div id="nameHelp" class="form-text"></div>
+      </div>
+      <div class="input">
+        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email">
+        <div id="emailHelp" class="form-text"></div>
+      </div>
+      <div class="input">
+        <input type="password" class="form-control" id="inputPassword" aria-describedby="passwordHelp" placeholder="Senha">
+        <div id="passwordHelp" class="form-text"></div>
+      </div>
+      <div class="input">
+        <input type="password" class="form-control" id="inputConfirmPassword" aria-describedby="passwordConfirmHelp" placeholder="Digite a senha novamente">
+        <div id="passwordConfirmHelp" class="form-text"></div>
+      </div>
+
+      <div id="born-at">
+        <h6>Data de nascimento</h6>
+
+        <div id="select-container">
+          <div class="select-element">
+            <select id="month-select" class="form-select" aria-label="Default select example">
+              <option selected>Mês</option>
+            </select>
+            <div id="monthHelp" class="form-text"></div>
+          </div>
+
+          <div class="select-element">
+            <select id="day-select" class="form-select" aria-label="Default select example">
+              <option selected>Dia</option>
+            </select>
+            <div id="dayMonth" class="form-text"></div>
+          </div>
+
+          <div class="select-element">
+            <select id="year-select" class="form-select" aria-label="Default select example">
+              <option selected>Ano</option>
+            </select>
+            <div id="yearMonth" class="form-text"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-bottom">
+        <button disabled id="submit-btn" type="submit" class="btn btn-primary">Fazer cadastro</button>
+        <span id="link">
+          Já tem uma conta? <a href="../screens/login.html">Faça login</a>
+        </span>
+      </div>
+    </form>
+  </main>
+    
+  <footer>
+    <h4>Gran<span>Cars</span></h4>
+    <p>VISITE O REPOSITÓRIO</p>
+  </footer>
 
   <script src="../script/register.js"></script>
 </body>
