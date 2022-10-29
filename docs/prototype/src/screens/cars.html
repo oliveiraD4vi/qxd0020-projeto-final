@@ -1,239 +1,185 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="./assets/favicon.ico" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="../style/global.css" >
-    <link rel="stylesheet" href="../style/cars.css" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GranCars</title>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/favicon.ico" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../style/global.css" >
+  <link rel="stylesheet" href="../style/cars.css" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GranCars</title>
 </head>
 <body>
-    
+  <header>
+    <div id="navigation-menu-title">
+      <h4>Gran<span>Cars</span></h4>
+    </div>
 
-    <main>
-        <header>
-            <div id="navigation-menu">
-                <div id="navigation-menu-title">
-                    <h4>Gran<span>Cars</span></h4>
-                </div>
-        
-                <ul id="navigation-menu-item">
-                    <li class="itens">
-                        <a href="">HOME</a>
-                    </li>
-                    <li id="selected-item" class="itens">
-                        <a href="">CARROS</a>
-                    </li>
-                    <li class="itens">
-                        <a href="">RESERVAS</a>
-                    </li>
-                    <li class="itens">
-                        <a href="">SOBRE NÓS</a>
-                    </li>
-                </ul>
-        
-                <div id="navigation-menu-button">
-                    <button>SAIR</button>
-                </div>
+    <ul id="navigation-menu-item">
+      <li class="itens">
+        <a href="">HOME</a>
+      </li>
+      <li id="selected-item" class="itens">
+        <a href="">CARROS</a>
+      </li>
+      <li class="itens">
+        <a href="">RESERVAS</a>
+      </li>
+      <li class="itens">
+        <a href="">SOBRE NÓS</a>
+      </li>
+    </ul>
+
+    <div id="navigation-menu-button">
+      <button>SAIR</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="search-cars">
+      <form action="">
+        <input type="text" id="search-cars-input" name="search-cars-imput" placeholder="  Pesquise por um modelo ou uma marca...">       
+      </form>
+    </div>
+
+    <div id="cars">
+      <ul class="cars-list">
+        <li class="cars-list-type">
+          <div class="car-information">
+            <img src="../assets/carA.svg" alt="" height="300" width="300">
+            <div class="description">
+              <h6>
+                Model A
+              </h6>
+              <p>
+                2020
+              </p>
             </div>
-        </header>
+          </div>
+        </li>
 
-        <div id="search-cars">
-            <form action="">
-                <input type="text" id="search-cars-input" name="search-cars-imput" placeholder="  Pesquise por um modelo ou uma marca...">       
-            </form>
-        </div>
-
-        <div id="cars">
-            <ul class="cars-list">
-                <li class="cars-list-type">
-                    <div class="car-information">
-                        <img src="../assets/carA.svg" alt="" height="300" width="300">
-                        <div class="description">
-                            <h6>
-                                Model A
-                            </h6>
-                            <p>
-                                2020
-                            </p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="cars-list-type">
-                    <div class="car-information">
-                        <img src="../assets/carB.svg" alt="" height="300" width="300">
-                        <div class="description">
-                            <h6>
-                                Model B
-                            </h6>
-                            <p>
-                                2020
-                            </p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="cars-list-type">
-                    <div class="car-information">
-                        <img src="../assets/carC.svg" alt="" height="300" width="300">
-                        <div class="description">
-                            <h6>
-                                Model C
-                            </h6>
-                            <p>
-                                2020
-                            </p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-            <ul class="cars-list">
-                <li class="cars-list-type">
-                    <div class="car-information">
-                        <img src="../assets/carA.svg" alt="" height="300" width="300">
-                        <div class="description">
-                            <h6>
-                                Model A
-                            </h6>
-                            <p>
-                                2020
-                            </p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="cars-list-type">
-                    <div class="car-information">
-                        <img src="../assets/carB.svg" alt="" height="300" width="300">
-                        <div class="description">
-                            <h6>
-                                Model B
-                            </h6>
-                            <p>
-                                2020
-                            </p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="cars-list-type">
-                    <div class="car-information">
-                        <img src="../assets/carC.svg" alt="" height="300" width="300">
-                        <div class="description">
-                            <h6>
-                                Model C
-                            </h6>
-                            <p>
-                                2020
-                            </p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-            <ul class="cars-list">
-                <li class="cars-list-type">
-                    <div class="car-information">
-                        <img src="../assets/carA.svg" alt="" height="300" width="300">
-                        <div class="description">
-                            <h6>
-                                Model A
-                            </h6>
-                            <p>
-                                2020
-                            </p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="cars-list-type">
-                    <div class="car-information">
-                        <img src="../assets/carB.svg" alt="" height="300" width="300">
-                        <div class="description">
-                            <h6>
-                                Model B
-                            </h6>
-                            <p>
-                                2020
-                            </p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="cars-list-type">
-                    <div class="car-information">
-                        <img src="../assets/carC.svg" alt="" height="300" width="300">
-                        <div class="description">
-                            <h6>
-                                Model C
-                            </h6>
-                            <p>
-                                2020
-                            </p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-            <ul class="cars-list">
-                <li class="cars-list-type">
-                    <div class="car-information">
-                        <img src="../assets/carA.svg" alt="" height="300" width="300">
-                        <div class="description">
-                            <h6>
-                                Model A
-                            </h6>
-                            <p>
-                                2020
-                            </p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="cars-list-type">
-                    <div class="car-information">
-                        <img src="../assets/carB.svg" alt="" height="300" width="300">
-                        <div class="description">
-                            <h6>
-                                Model B
-                            </h6>
-                            <p>
-                                2020
-                            </p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="cars-list-type">
-                    <div class="car-information">
-                        <img src="../assets/carC.svg" alt="" height="300" width="300">
-                        <div class="description">
-                            <h6>
-                                Model C
-                            </h6>
-                            <p>
-                                2020
-                            </p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <footer>
-            <div id="footer">
-                <h4>Gran<span>Cars</span></h4>
-                <p>VISITE O REPOSITÓRIO</p>
+        <li class="cars-list-type">
+          <div class="car-information">
+            <img src="../assets/carB.svg" alt="" height="300" width="300">
+            <div class="description">
+              <h6>
+                Model B
+              </h6>
+              <p>
+                2020
+              </p>
             </div>
-        </footer>
+          </div>
+        </li>
 
-    </main>
+        <li class="cars-list-type">
+          <div class="car-information">
+            <img src="../assets/carC.svg" alt="" height="300" width="300">
+            <div class="description">
+              <h6>
+                Model C
+              </h6>
+              <p>
+                2020
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
 
-    
+      <ul class="cars-list">
+        <li class="cars-list-type">
+          <div class="car-information">
+            <img src="../assets/carA.svg" alt="" height="300" width="300">
+            <div class="description">
+              <h6>
+                Model A
+              </h6>
+              <p>
+                2020
+              </p>
+            </div>
+          </div>
+        </li>
 
+        <li class="cars-list-type">
+          <div class="car-information">
+            <img src="../assets/carB.svg" alt="" height="300" width="300">
+            <div class="description">
+              <h6>
+                Model B
+              </h6>
+              <p>
+                2020
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="cars-list-type">
+          <div class="car-information">
+            <img src="../assets/carC.svg" alt="" height="300" width="300">
+            <div class="description">
+              <h6>
+                Model C
+              </h6>
+              <p>
+                2020
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="cars-list">
+        <li class="cars-list-type">
+          <div class="car-information">
+            <img src="../assets/carA.svg" alt="" height="300" width="300">
+            <div class="description">
+              <h6>
+                Model A
+              </h6>
+              <p>
+                2020
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="cars-list-type">
+          <div class="car-information">
+            <img src="../assets/carB.svg" alt="" height="300" width="300">
+            <div class="description">
+              <h6>
+                Model B
+              </h6>
+              <p>
+                2020
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="cars-list-type">
+          <div class="car-information">
+            <img src="../assets/carC.svg" alt="" height="300" width="300">
+            <div class="description">
+              <h6>
+                Model C
+              </h6>
+              <p>
+                2020
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <h4>Gran<span>Cars</span></h4>
+    <p>VISITE O REPOSITÓRIO</p>
+  </footer>
 </body>
 </html>
