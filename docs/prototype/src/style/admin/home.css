@@ -1,0 +1,20 @@
+main {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 200px 200px 200px;
+}
+
+main .menu-icon {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 0;
+  border-radius: 10px;
+  border: 5px solid rgba(255, 214, 10, 1);
+}
+
+main .menu-icon p {
+  margin-top: 10px;
+}
