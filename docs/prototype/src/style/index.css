@@ -1,0 +1,57 @@
+main #home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main #home-container h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+main #home-container #rent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+main #home-container #rent #cars-photos {
+  display: flex;
+}
+
+main #home-container #rent #cars-photos img {
+  margin: 0 10px;
+}
+
+main #home-container #rent button {
+  width: 100px;
+  margin-top: 20px;
+}
+
+main #home-container #how-to {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main #home-container #how-to .how-content {
+  display: flex;
+  margin-top: 30px;
+}
+
+main #home-container #how-to .how-content .how-card {
+  width: 200px;
+  height: 150px;
+  background-color: #dfdfdf;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+main #home-container #how-to .how-content .how-card button {
+  width: 100px;
+  margin-top: 20px;
+}
