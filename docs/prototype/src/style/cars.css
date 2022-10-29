@@ -1,8 +1,5 @@
 main #search-cars {
   display: flex;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
   align-items: center;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 20px;
