@@ -10,7 +10,57 @@
   <title>GranCars</title>
 </head>
 <body>
-  Login
+  <header>
+    <div id="navigation-menu-title">
+      <h4>Gran<span>Cars</span></h4>
+    </div>
+
+    <ul id="navigation-menu-item">
+      <li class="itens">
+        <a href="">HOME</a>
+      </li>
+      <li id="selected-item" class="itens">
+        <a href="">CARROS</a>
+      </li>
+      <li class="itens">
+        <a href="">RESERVAS</a>
+      </li>
+      <li class="itens">
+        <a href="">SOBRE NÓS</a>
+      </li>
+    </ul>
+
+    <div id="navigation-menu-button">
+      <button>SAIR</button>
+    </div>
+  </header>
+
+  <main>
+    <form>
+      <div class="input">
+        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email">
+        <div id="emailHelp" class="form-text"></div>
+      </div>
+
+      <div class="input">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Senha">
+        <div id="passwordHelp" class="form-text"></div>
+      </div>
+      
+      <div class="form-bottom">
+        <a href="">Esqueceu a senha?</a>
+        <button type="submit" id="submit-button" class="btn btn-primary">Entrar</button>
+        <span id="link">
+          Não tem uma conta? <a href="../screens/register.html">Registre-se</a>
+        </span>
+      </div>
+    </form>
+  </main>
+    
+  <footer>
+    <h4>Gran<span>Cars</span></h4>
+    <p>VISITE O REPOSITÓRIO</p>
+  </footer>
   
   <script src="../script/login.js"></script>
 </body>
