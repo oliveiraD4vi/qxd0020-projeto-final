@@ -1,0 +1,83 @@
+header 
+
+main #progress{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
+
+main #reservation-form{
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+}
+
+main #reservation-form form{
+  margin: 10px;
+  padding: 0;
+  width:90%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+main #reservation-form form h4{
+  size: 40px;
+  text-decoration: solid;
+  font-weight: bold;
+}
+
+main #reservation-form form h4 span{
+  color: rgba(255, 195, 0, 1);
+}
+
+main #reservation-form form .config-form{
+  margin: 10px;
+  width: 40%;
+  background: url("../assets/Vector.svg") no-repeat left / 1.3em;
+  background-size: 10px 10px;
+  border: 0ch;
+  border-bottom: 2px solid rgba(202, 196, 196, 0.47);
+}
+
+main #reservation-form form #document #upload-document a{
+  text-decoration: none;
+  margin: 10px;
+  margin-bottom: 0;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  height: 30px;
+  background-color: rgba(249, 249, 249, 1);
+  border-radius: 5px;
+  
+}
+
+main #reservation-form form #cpf #form-cpf,
+main #reservation-form form #road #form-road,
+main #reservation-form form #state #form-state{
+  width: 90%;
+}
+
+main #form-action{
+  width: 40%;
+  margin: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+main #form-action #btn-cancel{
+  width: 15%;
+  background-color: rgba(255, 255, 255, 1);
+  color: rgba(255, 195, 0, 1);
+}
+
+main #form-action #btn-next{
+  width: 15%;
+  background-color: rgba(255, 195, 0, 1);
+  color: rgba(0, 8, 20, 1);
+}
