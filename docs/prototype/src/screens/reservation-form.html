@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/favicon.ico" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../style/global.css" >
+  <link rel="stylesheet" href="../style/reservation-form.css" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GranCars</title>
+</head>
+
+<body>
+  <header>
+    <div id="navigation-menu-title">
+      <h4>Gran<span>Cars</span></h4>
+    </div>
+
+    <ul id="navigation-menu-item">
+      <li class="itens">
+        <a href="../index.html">HOME</a>
+      </li>
+      <li class="itens">
+        <a href="./cars.html">CARROS</a>
+      </li>
+      <li id="selected-item" class="itens">
+        <a href="./reservation.html">RESERVAS</a>
+      </li>
+      <li class="itens">
+        <a href="./about.html">SOBRE NÓS</a>
+      </li>
+    </ul>
+
+    <div id="navigation-menu-button">
+      <button>
+        <a href="./login.html">SAIR</a>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div id="progress">
+      <span><img src="../assets/step.svg" alt="" height="30" width="30"></span>
+      <span><img src="../assets/Line.svg" alt="" height="30" width="80"></span>
+      <span><img src="../assets/step-1.svg" alt="" height="30" width="30"></span>
+      <span><img src="../assets/Line.svg" alt="" height="30" width="80"></span>
+      <span><img src="../assets/step-1.svg" alt="" height="30" width="30"></span>
+    </div>
+
+    <div id="reservation-form">
+      <form action="">
+        <h4>Dados <span>P</span>essoais</h4>
+        <div id="name-contact">
+          <input type="text" class="config-form" id="form-name" name="form-name" placeholder="   nome">  
+          <span>
+            <input type="text" class="config-form" id="form-contact" name="form-contact" placeholder="   celular"> 
+          </span>
+        </div>
+        <div id="cpf">
+          <input type="text" class="config-form" id="form-cpf" name="form-cpf" placeholder="   cpf">
+        </div>  
+        <div id="document">
+          <img src="../assets/Vector.svg" alt="" height="10" width="10">
+          <span>
+            Documento com foto
+          </span>
+          <div id="upload-document">
+            <a href="">
+              <p>adicionar arquivo</p>  
+              <img src="../assets/icon-upload.svg" alt=""  height="15" width="15">
+            </a>
+          </div>
+        </div>
+
+        <div id="road">
+          <input type="text" class="config-form" id="form-road" name="form-road" placeholder="   rua">  
+        </div>
+
+        <div id="number-complement">
+          <input type="text" class="config-form" id="form-number" name="form-number" placeholder="   n°">  
+          <span>
+            <input type="text" class="config-form" id="form-complement" name="form-complement" placeholder="   complemento"> 
+          </span>
+        </div>
+
+        <div id="district-city">
+          <input type="text" class="config-form" id="form-district" name="form-district" placeholder="   bairro">  
+          <span>
+            <input type="text" class="config-form" id="form-city" name="form-city" placeholder="   cidade"> 
+          </span>
+        </div>
+
+        <div id="state">
+          <input type="text" class="config-form" id="form-state" name="form-state" placeholder="   estado">  
+        </div>
+      </form>
+    </div>
+
+    <div id="form-action">
+      <button id="btn-cancel">Cancelar</button>
+      <button id="btn-next">Próximo</button>
+    </div>
+  </main>
+
+  <footer>
+    <h4>Gran<span>Cars</span></h4>
+    <p>VISITE O REPOSITÓRIO</p>
+  </footer>
+</body>
