@@ -1,0 +1,41 @@
+main{
+  width: 60%;
+  min-height: 300px;
+  margin: 45px;
+  padding: 20px 35px;
+  -webkit-box-shadow: 9px 12px 17px -12px rgba(0,0,0,0.38);
+  -moz-box-shadow: 9px 12px 17px -12px rgba(0,0,0,0.38);
+  box-shadow: 9px 12px 17px -12px rgba(0,0,0,0.38);
+}
+
+main #about{
+  display: flex;
+  justify-content: center;
+}
+
+main #about #message{
+  position: relative;
+  top: 80px;
+  width: 40%;
+}
+
+main #about #message h1{
+  font-size: 60px;
+  text-decoration: solid;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+main #about #message h1 span{
+  color: rgba(255, 195, 0, 1);
+}
+
+main #about #message p{
+  font-size: 25px;
+  text-decoration: solid;
+  font-weight: bold;
+}
+
+main #about #message p span{
+  color: rgba(255, 195, 0, 1);
+}
