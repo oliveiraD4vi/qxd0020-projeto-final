@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/favicon.ico" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../style/global.css">
+  <link rel="stylesheet" href="../style/register.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GranCars</title>
+</head>
+<body>
+  <header>
+    <div id="navigation-menu-title">
+      <h4>Gran<span>Cars</span></h4>
+    </div>
+
+    <ul id="navigation-menu-item">
+      <li class="itens">
+        <a href="../index.html">HOME</a>
+      </li>
+      <li class="itens">
+        <a href="./cars.html">CARROS</a>
+      </li>
+      <li class="itens">
+        <a href="./reservation.html">RESERVAS</a>
+      </li>
+      <li class="itens">
+        <a href="./about.html">SOBRE NÓS</a>
+      </li>
+    </ul>
+
+    <div id="navigation-menu-button">
+      <button>
+        <a href="../screens/login.html">ENTRAR</a>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <form>
+      <div class="input">
+        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Nome">
+        <div id="nameHelp" class="form-text"></div>
+      </div>
+      <div class="input">
+        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email">
+        <div id="emailHelp" class="form-text"></div>
+      </div>
+      <div class="input">
+        <input type="password" class="form-control" id="inputPassword" aria-describedby="passwordHelp" placeholder="Senha">
+        <div id="passwordHelp" class="form-text"></div>
+      </div>
+      <div class="input">
+        <input type="password" class="form-control" id="inputConfirmPassword" aria-describedby="passwordConfirmHelp" placeholder="Digite a senha novamente">
+        <div id="passwordConfirmHelp" class="form-text"></div>
+      </div>
+
+      <div id="born-at">
+        <h6>Data de nascimento</h6>
+
+        <div id="select-container">
+          <div class="select-element">
+            <select id="month-select" class="form-select" aria-label="Default select example">
+              <option selected>Mês</option>
+            </select>
+            <div id="monthHelp" class="form-text"></div>
+          </div>
+
+          <div class="select-element">
+            <select id="day-select" class="form-select" aria-label="Default select example">
+              <option selected>Dia</option>
+            </select>
+            <div id="dayMonth" class="form-text"></div>
+          </div>
+
+          <div class="select-element">
+            <select id="year-select" class="form-select" aria-label="Default select example">
+              <option selected>Ano</option>
+            </select>
+            <div id="yearMonth" class="form-text"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-bottom">
+        <button disabled id="submit-btn" type="submit" class="btn btn-primary">
+          <a href="./login.html">CADASTRAR</a>
+        </button>
+        <span id="link">
+          Já tem uma conta? <a href="../screens/login.html">Faça login</a>
+        </span>
+      </div>
+    </form>
+  </main>
+    
+  <footer>
+    <h4>Gran<span>Cars</span></h4>
+    <p>VISITE O REPOSITÓRIO</p>
+  </footer>
+</body>
+</html>

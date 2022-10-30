@@ -1,0 +1,41 @@
+  main{
+    width: 60%;
+    min-height:400px;
+    padding: 20px 35px;
+    -webkit-box-shadow: 9px 12px 17px -12px rgba(0,0,0,0.38);
+    -moz-box-shadow: 9px 12px 17px -12px rgba(0,0,0,0.38);
+    box-shadow: 9px 12px 17px -12px rgba(0,0,0,0.38);
+    margin: 45px;
+  }
+
+  main #message h1{
+    position: relative;
+    top: -60px;
+    font-size: 50px;
+    text-decoration: solid;
+    font-weight: bold;
+  }
+
+  main #message h1 span{
+    color: rgba(255, 214, 10, 1);
+  }
+
+  main #message p{
+    text-decoration: solid;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+
+  main #message p span{
+    color: rgba(255, 214, 10, 1);
+  }
+
+  main button{
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -85%);
+    width: 120px;
+
+  }

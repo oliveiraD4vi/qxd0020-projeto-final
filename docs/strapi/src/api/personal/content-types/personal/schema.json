@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "personal_data",
+  "info": {
+    "singularName": "personal",
+    "pluralName": "personal-data",
+    "displayName": "PersonalData",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "cpf": {
+      "type": "string"
+    },
+    "bornAt": {
+      "type": "date"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "street": {
+      "type": "string"
+    },
+    "number": {
+      "type": "integer"
+    },
+    "nieghborhood": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "admin_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    }
+  }
+}
