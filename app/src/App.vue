@@ -1,7 +1,7 @@
-<script setup>
-  
-</script>
+<script setup></script>
 
 <template>
-  Hello World
+  <header>Header</header>
+  <router-view />
+  <footer>Footer</footer>
 </template>
