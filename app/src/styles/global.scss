@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import 'ant-design-vue/dist/antd.css';
+
+body {
+  font-family: 'Roboto', sans-serif;
+
+  &::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+  }
+  
+  &::-webkit-scrollbar {
+    width: 10px;
+    background: #F4F4F4;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #0E151F;
+  }
+}
+
+html, body {
+  min-height: 100%;
+}
