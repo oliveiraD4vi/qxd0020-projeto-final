@@ -1,20 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import 'ant-design-vue/dist/antd.css';
+@import 'colors.scss';
 
 body {
   font-family: 'Roboto', sans-serif;
 
   &::-webkit-scrollbar-track {
-    background-color: #F4F4F4;
+    background-color: $grey-300;
   }
   
   &::-webkit-scrollbar {
     width: 10px;
-    background: #F4F4F4;
+    background: $grey-300;
   }
   
   &::-webkit-scrollbar-thumb {
-    background: #0E151F;
+    background: $grey-900;
   }
 }
 
@@ -22,18 +23,193 @@ html, body {
   min-height: 100%;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 5px 0 !important;
+}
+
 #app {
   height: 100%;
+
+  .header-container {
+    height: 10%;
+  }
+
+  .main-container {
+    min-height: 80%;
+  }
+
+  .footer-container {
+    height: 10%;
+  }
 }
 
-.header-container {
-  height: 10%;
+.primary-button {
+  border: none;
+  height: 45px;
+  padding: 5px 25px;
+  font-weight: bold;
+  color: $text-color;
+  background-color: $primary-color;
+  transition: all 200ms ease-in-out;
+
+  &:focus,
+  &:hover {
+    border: none;
+    color: $text-color;
+    background-color: $hover-primary;
+  }
 }
 
-.main-container {
-  min-height: 80%;
+
+.secondary-button {
+  border: none !important;
+  padding: 5px 25px;
+  font-weight: bold;
+  color: $primary-color !important;
+  background-color: $white-900 !important;
+  transition: all 200ms ease-in-out;
+  
+  &:focus,
+  &:hover {
+    border: none !important;
+    color: $primary-color !important;
+    background-color: $grey-300 !important;
+  }
 }
 
-.footer-container {
-  height: 10%;
+
+.link-button {
+  border: none;
+  background-color: transparent;
+  color: $text-color;
+  
+  &:focus,
+  &:hover {
+    border: none !important;
+    background-color: transparent !important;
+    color: $hover-primary !important;
+  }
+}
+
+
+.ant-btn-primary:focus,
+.ant-btn-primary {
+  background-color: $primary-color;
+  border: 1px solid $primary-color;
+}
+
+.ant-btn-primary:hover {
+  background-color: $hover-primary;
+  border: 1px solid $hover-primary;
+}
+
+.ant-btn-default:hover {
+  color: $hover-primary;
+  border: 1px solid $hover-primary;
+}
+
+.action-column {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 50% 50%;
+  
+  .delete-button {
+    background-color: transparent;
+    border: 1px solid $cancel-color;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    width: 24px;
+    height: 24px;
+  
+    .anticon {
+      font-size: 12px;
+      color: $cancel-color;
+    }  
+  }
+}
+
+.add-button {
+  background-color: transparent;
+  border: 2px solid $add-color;
+  margin: 0;
+  padding: 0;
+  
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border: 2px solid $add-color;
+  }
+  
+  .anticon {
+    color: $add-color;
+  }
+}
+
+.ant-form {
+  .form-group-2 {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .form-group-3 {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+  }
+
+  .form-group-4 {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+
+  .ant-form-item {
+    margin: 0;
+  }
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border: none;
+  border-bottom: 1px solid $grey-500;
+  border-radius: 0;
+  height: auto;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector:hover {
+  cursor: pointer;
+}
+
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid $grey-500;
+}
+
+.ant-picker {
+  width: 100%;
+}
+
+.ant-input,
+.ant-picker,
+.ant-form-item .ant-input-affix-wrapper {
+  border: none;
+  border-bottom: 1px solid $grey-500;
+  box-shadow: none !important;
+}
+
+.ant-form-item:last-child {
+  border: none;
+}
+
+.ant-picker:hover,
+.ant-picker:focus,
+.ant-form-item .ant-input-affix-wrapper:hover,
+.ant-form-item .ant-input-affix-wrapper:focus,
+.ant-input:hover,
+.ant-input:focus {
+  border-color: $grey-500 !important;
+}
+
+[ant-click-animating-without-extra-node='true']::after,
+.ant-click-animating-node {
+  box-shadow: none !important;
 }
