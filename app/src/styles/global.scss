@@ -5,16 +5,16 @@ body {
   font-family: 'Roboto', sans-serif;
 
   &::-webkit-scrollbar-track {
-    background-color: #F4F4F4;
+    background-color: $grey-300;
   }
   
   &::-webkit-scrollbar {
     width: 10px;
-    background: #F4F4F4;
+    background: $grey-300;
   }
   
   &::-webkit-scrollbar-thumb {
-    background: #0E151F;
+    background: $grey-900;
   }
 }
 
@@ -47,15 +47,15 @@ h1, h2, h3, h4, h5, h6 {
   height: 45px;
   padding: 5px 25px;
   font-weight: bold;
-  color: var(--text-color);
-  background-color: var(--primary-color);
+  color: $text-color;
+  background-color: $primary-color;
   transition: all 200ms ease-in-out;
 
   &:focus,
   &:hover {
     border: none;
-    color: var(--text-color);
-    background-color: var(--hover-primary);
+    color: $text-color;
+    background-color: $hover-primary;
   }
 }
 
@@ -64,15 +64,15 @@ h1, h2, h3, h4, h5, h6 {
   border: none !important;
   padding: 5px 25px;
   font-weight: bold;
-  color: var(--primary-color) !important;
-  background-color: var(--white-900) !important;
+  color: $primary-color !important;
+  background-color: $white-900 !important;
   transition: all 200ms ease-in-out;
   
   &:focus,
   &:hover {
     border: none !important;
-    color: var(--primary-color) !important;
-    background-color: var(--grey-300) !important;
+    color: $primary-color !important;
+    background-color: $grey-300 !important;
   }
 }
 
@@ -80,31 +80,31 @@ h1, h2, h3, h4, h5, h6 {
 .link-button {
   border: none;
   background-color: transparent;
-  color: var(--text-color);
+  color: $text-color;
   
   &:focus,
   &:hover {
     border: none !important;
     background-color: transparent !important;
-    color: var(--hover-primary) !important;
+    color: $hover-primary !important;
   }
 }
 
 
 .ant-btn-primary:focus,
 .ant-btn-primary {
-  background-color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  background-color: $primary-color;
+  border: 1px solid $primary-color;
 }
 
 .ant-btn-primary:hover {
-  background-color: var(--hover-primary);
-  border: 1px solid var(--hover-primary);
+  background-color: $hover-primary;
+  border: 1px solid $hover-primary;
 }
 
 .ant-btn-default:hover {
-  color: var(--hover-primary);
-  border: 1px solid var(--hover-primary);
+  color: $hover-primary;
+  border: 1px solid $hover-primary;
 }
 
 .action-column {
@@ -114,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {
   
   .delete-button {
     background-color: transparent;
-    border: 1px solid var(--cancel-color);
+    border: 1px solid $cancel-color;
     margin: 0;
     padding: 0;
     min-width: 0;
@@ -123,25 +123,25 @@ h1, h2, h3, h4, h5, h6 {
   
     .anticon {
       font-size: 12px;
-      color: var(--cancel-color);
+      color: $cancel-color;
     }  
   }
 }
 
 .add-button {
   background-color: transparent;
-  border: 2px solid var(--add-color);
+  border: 2px solid $add-color;
   margin: 0;
   padding: 0;
   
   &:hover,
   &:focus {
     background-color: transparent;
-    border: 2px solid var(--add-color);
+    border: 2px solid $add-color;
   }
   
   .anticon {
-    color: var(--add-color);
+    color: $add-color;
   }
 }
 
@@ -168,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
   border: none;
-  border-bottom: 1px solid var(--grey-500);
+  border-bottom: 1px solid $grey-500;
   border-radius: 0;
   height: auto;
 }
@@ -180,7 +180,7 @@ h1, h2, h3, h4, h5, h6 {
 .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
   box-shadow: none;
   border: none;
-  border-bottom: 1px solid var(--grey-500);
+  border-bottom: 1px solid $grey-500;
 }
 
 .ant-picker {
@@ -191,7 +191,7 @@ h1, h2, h3, h4, h5, h6 {
 .ant-picker,
 .ant-form-item .ant-input-affix-wrapper {
   border: none;
-  border-bottom: 1px solid var(--grey-500);
+  border-bottom: 1px solid $grey-500;
   box-shadow: none !important;
 }
 
@@ -205,7 +205,7 @@ h1, h2, h3, h4, h5, h6 {
 .ant-form-item .ant-input-affix-wrapper:focus,
 .ant-input:hover,
 .ant-input:focus {
-  border-color: var(--grey-500) !important;
+  border-color: $grey-500 !important;
 }
 
 [ant-click-animating-without-extra-node='true']::after,
