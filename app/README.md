@@ -1,7 +1,19 @@
-# Vue 3 + Vite
+# Branch Pattern
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A good branch name should have 2 parts:
 
-## Recommended IDE Setup
+## 1 - Porpose
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+By "Porpose", we mean the "why" the branch was created. It can be:
+- feat
+- fix
+- docs
+- style
+- refactor
+- perf
+- build
+
+## 2 - Specification
+
+It is the specification about what will be done in this branch. 
+You can put whatever you want here, but it must be under 10 characters.
