@@ -10,15 +10,15 @@
 
     <ul class="navigation-container">
       <li class="navigation-item">
-        <a-button type="text">
-          <router-link to="/home">
+        <a-button class="link-button" type="text">
+          <router-link to="/">
             HOME
           </router-link>
         </a-button>
       </li>
       
       <li class="navigation-item">
-        <a-button type="text">
+        <a-button class="link-button" type="text">
           <router-link to="/vehicles">
             CARROS
           </router-link>
@@ -26,7 +26,7 @@
       </li>
 
       <li class="navigation-item">
-        <a-button type="text">
+        <a-button class="link-button" type="text">
           <router-link to="/reservation">
             RESERVAS
           </router-link>
@@ -34,7 +34,7 @@
       </li>
       
       <li class="navigation-item">
-        <a-button type="text">
+        <a-button class="link-button" type="text">
           <router-link to="/about">
             SOBRE NÓS
           </router-link>
@@ -42,7 +42,7 @@
       </li>
     </ul>
 
-    <a-button type="primary">
+    <a-button class="primary-button" type="primary">
       SAIR
     </a-button>
   </div>
