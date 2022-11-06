@@ -60,7 +60,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-
 .secondary-button {
   border: none !important;
   padding: 5px 25px;
@@ -77,12 +76,12 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-
 .link-button {
   border: none;
   background-color: transparent;
   color: $text-color;
-  
+  transition: all 50ms ease-in-out;
+
   &:focus,
   &:hover {
     border: none !important;
@@ -90,7 +89,6 @@ h1, h2, h3, h4, h5, h6 {
     color: $hover-primary !important;
   }
 }
-
 
 .ant-btn-primary:focus,
 .ant-btn-primary {
