@@ -1,0 +1,20 @@
+@import '../../styles/colors.scss';
+
+.header-container {
+  padding: 2rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: $box-shadow;
+
+  img {
+    height: 100%;
+  }
+
+  .navigation-container {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+  }
+}
