@@ -1,0 +1,14 @@
+.header-container {
+  padding: 2rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10vh;
+
+  .navigation-container {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+  }
+}
