@@ -1,0 +1,40 @@
+@import "../../styles/colors.scss";
+
+.centered-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selector-container {
+  width: 50%;
+  padding: 60px 70px;
+  background-color: $primary-color;
+  box-shadow: $box-shadow;
+
+  h2 {
+    font-size: 32px;
+  }
+
+  h2 > span {
+    color: $white-900;
+  }
+
+  .reservation-date-form {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .secondary-button {
+      margin-left: 25px;
+    }
+  }
+  
+  .reservation-date-form > .form-date {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+  } 
+}

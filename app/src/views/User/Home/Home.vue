@@ -1,5 +1,9 @@
-<script setup></script>
+<script setup>
+  import DateSelector from '../../../components/DateSelector/DateSelector.vue';
+</script>
 
 <template>
-  <h1>Home</h1>
+
+  <DateSelector></DateSelector>
+
 </template>
