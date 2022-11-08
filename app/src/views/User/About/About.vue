@@ -1,5 +1,6 @@
 <template>
-  <div className="page-container about-container">
+
+  <div className="about-container">
     <img src="../../../assets/about-us.svg" alt="man standing" width="400" height="400" />
     <div id="message">
       <h1>Olá!</h1>
@@ -17,6 +18,7 @@
       </p>
     </div>
   </div>
+
 </template>
 
 <style src="./About.scss" lang="scss" scoped></style>
