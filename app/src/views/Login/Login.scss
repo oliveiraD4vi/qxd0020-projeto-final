@@ -1,0 +1,16 @@
+@import "../../styles/colors.scss";
+
+.login-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .login-form {
+    padding: 25px 45px;
+    box-shadow: $box-shadow;
+    width: 30%;
+    min-width: 400px;
+    display: grid;
+    gap: 20px;
+  }
+}
