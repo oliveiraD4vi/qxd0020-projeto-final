@@ -36,7 +36,7 @@
           <a-date-picker
             v-model:value="formState.pickup"
             placeholder="Data de retirada"
-            format="DD/MM/YYYY"/>
+            format="DD/MM/YYYY" />
         </a-form-item>
 
         <a-form-item
