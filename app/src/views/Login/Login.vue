@@ -14,7 +14,7 @@
     const { email, password } = values;
 
     try {
-      const response = await api.post("/user/login", {
+      const response = await api.post('/user/login', {
         email,
         password,
       });
@@ -22,7 +22,7 @@
       const { data } = response;
       auth.login(data.authData);
 
-      router.push(auth.getRole() === "CLIENT" ? "/" : "/admin/home");
+      router.push(auth.getRole() === 'CLIENT' ? '/' : '/admin/home');
     } catch (error) {
       const { data } = error.response;
       Notification("error", data.message);

@@ -1,5 +1,9 @@
 <script setup>
   import { reactive } from 'vue';
+  import { api } from '../../services/api';
+  import { router } from '../../routes';
+
+  import Notification from '../../services/notifications';
 
   const formState = reactive({
     name: '',
@@ -9,13 +13,27 @@
     bornAt: '',
   });
 
-  const onFinish = values => {
-    console.log('Success:', values);
+  const onFinish = async (values) => {
+    const { name, cpf, bornAt, email, password } = values;
+
+    try {
+      const { data } = await api.post('/user/register', {
+        name,
+        email,
+        password,
+        bornAt,
+        cpf,
+      });
+
+      Notification("success", data.message);
+      router.push('/login');
+    } catch (error) {
+      const { data } = error.response;
+      Notification("error", data.message);
+    }
   };
 
-  const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-  };
+  const onFinishFailed = (errorInfo) => Notification("error", errorInfo);
 </script>
 
 <template>
