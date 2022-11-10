@@ -13,6 +13,19 @@
 
   const images = [image1, image2, image3];
 
+  const vehicleList = [
+    {
+      plate: "ABC123",
+      brand: "Toyota",
+      Model: "Corola"
+    },
+    {
+      plate: "XYZ456",
+      brand: "Toyota",
+      Model: "SW4"
+    }
+  ]
+
 </script>
 
 <template>
@@ -20,6 +33,52 @@
       <div class="date-selector-container">
         <DateSelector></DateSelector>
       </div>
+
+      <div class="carrousel-container">
+          <h1 class="title">
+            mais
+            <span> R</span>
+            entáveis
+          </h1>
+
+          <a-carousel autoplay>
+            <div class="vehicle-container">
+              <div>
+                <img
+                  src="../../../assets/car-example-green.png"
+                  alt="vehicle"
+                />
+              </div>
+              <h3>
+                {{vehicleList[0].brand}} {{vehicleList[0].model}}
+              </h3>
+              <span>2020</span>
+              <a-button
+                type="primary"
+              >
+                OFERTA <ArrowRightOutlined />
+              </a-button>
+            </div>
+
+            <div class="vehicle-container">
+              <div>
+                <img
+                  src="../../../assets/car-example-grey.png"
+                  alt="vehicle"
+                />
+              </div>
+              <h3>
+                {{vehicleList[1].brand}} {{vehicleList[1].model}}
+              </h3>
+              <span>2020</span>
+              <a-button
+                type="primary"
+              >
+                OFERTA <ArrowRightOutlined />
+              </a-button>
+            </div>
+          </a-carousel>
+        </div>
         
       <div class="cards-container">
         <h1 class="title">
