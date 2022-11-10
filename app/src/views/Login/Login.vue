@@ -1,18 +1,35 @@
 <script setup>
   import { reactive } from 'vue';
+  import { api, auth } from '../../services/api';
+  import { router } from '../../routes';
+
+  import Notification from '../../services/notifications';
 
   const formState = reactive({
     email: '',
     password: '',
   });
 
-  const onFinish = values => {
-    console.log('Success:', values);
+  const onFinish = async (values) => {
+    const { email, password } = values;
+
+    try {
+      const response = await api.post("/user/login", {
+        email,
+        password,
+      });
+
+      const { data } = response;
+      auth.login(data.authData);
+
+      router.push(auth.getRole() === "CLIENT" ? "/" : "/admin/home");
+    } catch (error) {
+      const { data } = error.response;
+      Notification("error", data.message);
+    }
   };
 
-  const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-  };
+  const onFinishFailed = (errorInfo) => Notification("error", errorInfo);
 </script>
 
 <template>
