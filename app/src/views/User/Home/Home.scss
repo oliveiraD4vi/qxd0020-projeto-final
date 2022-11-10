@@ -37,27 +37,6 @@
       text-align: center;
       margin: 0 !important;
     }
-    
-    .ant-carousel .slick-dots {
-      margin: 0;
-
-      li button:focus,
-      li button {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: $primary-color;
-        opacity: 0.3;
-      }
-
-      li.slick-active {
-        width: 16px;
-      }
-      
-      li.slick-active button {
-        opacity: 1;
-      }
-    }
   }
 
   .cards-container {
