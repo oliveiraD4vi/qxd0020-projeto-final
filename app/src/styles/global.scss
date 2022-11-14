@@ -72,6 +72,12 @@ h1, h2, h3, h4, h5, h6 {
     color: $text-color;
     background-color: $hover-primary;
   }
+
+  &.small {
+    margin-top: 20px;
+    padding: 5px 15px;
+    height: auto;
+  }
 }
 
 .secondary-button {

@@ -13,16 +13,18 @@
         <h1>Olá!</h1>
         <p>
           Este é um projeto para a disciplina de Desenvolvimento de Software
-          para Web. Visite{{" "}}
+          para Web. Visite
           <a
-            href="https://github.com/oliveiraD4vi/vehicle-rental-system-web"
+            href="https://github.com/oliveiraD4vi/qxd0020-projeto-final"
             target="_blank"
             rel="noreferrer"
-          >
-            nosso repositório
-          </a>
-          .
+          >nosso repositório</a>.
         </p>
+        <span>
+          A GranCARS é uma locadora de carros fictícia situada na cidade de
+          Quixadá - CE. Suas operações são concentradas exclusivamente
+          nessa região.
+        </span>
       </div>
     </div>
   </main>

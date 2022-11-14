@@ -52,7 +52,7 @@
                   {{ vehicle.brand }} {{ vehicle.model }}
                 </h3>
                 <span>2020</span>
-                <a-button type="primary" class="primary-button">
+                <a-button type="primary" class="primary-button small">
                   OFERTA <ArrowRightOutlined />
                 </a-button>
               </div>
@@ -80,7 +80,7 @@
 
                 <a-button
                   type="primary"
-                  class="primary-button"
+                  class="primary-button small"
                 >
                   COMEÇAR <ArrowRightOutlined />
                 </a-button>
@@ -102,7 +102,7 @@
 
                 <a-button
                   type="primary"
-                  class="primary-button"
+                  class="primary-button small"
                 >
                   COMEÇAR <ArrowRightOutlined />
                 </a-button>
@@ -125,7 +125,7 @@
 
                 <a-button
                   type="primary"
-                  class="primary-button"
+                  class="primary-button small"
                 >
                   COMEÇAR <ArrowRightOutlined />
                 </a-button>
@@ -147,7 +147,7 @@
 
                 <a-button
                   type="primary"
-                  class="primary-button"
+                  class="primary-button small"
                 >
                   COMEÇAR <ArrowRightOutlined />
                 </a-button>
