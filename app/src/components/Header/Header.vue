@@ -63,7 +63,7 @@
 
     <a-button v-else-if="pathname === '/login'" class="primary-button" type="text">
       <router-link to="/register">
-        Cadastrar
+        CADASTRAR
       </router-link>
     </a-button>
 

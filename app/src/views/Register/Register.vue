@@ -1,4 +1,7 @@
 <script setup>
+  import HeaderVue from '../../components/Header/Header.vue';
+  import FooterVue from '../../components/Footer/Footer.vue';
+
   import { reactive } from 'vue';
   import { api } from '../../services/api';
   import { router } from '../../routes';
@@ -38,6 +41,8 @@
 
 <template>
 
+  <HeaderVue />
+  <main class="main-container">
     <div class="register-container">
       <a-form
         :model="formState"
@@ -108,6 +113,8 @@
         </a-form-Item>
       </a-form>
     </div>
+  </main>
+  <FooterVue />
 
 </template>
 
