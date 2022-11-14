@@ -5,6 +5,7 @@ import About from './views/User/About/About.vue';
 import Vehicles from './views/User/Vehicles/Vehicles.vue';
 import Login from './views/Login/Login.vue';
 import Register from './views/Register/Register.vue';
+import Reservation from './views/User/Reservation/Reservation.vue';
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: '/register',
     name: 'register',
     component: Register
+  },
+  {
+    path: '/reservation',
+    name: 'reservation',
+    component: Reservation
   }
 ];
 

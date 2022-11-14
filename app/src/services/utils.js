@@ -12,7 +12,7 @@ export const rolesPath = [
     role: ["CLIENT"],
   },
   {
-    path: "/reservations",
+    path: "/reservation",
     role: ["CLIENT"],
   },
   {
@@ -20,27 +20,27 @@ export const rolesPath = [
     role: ["ADMIN"],
   },
   {
-    path: "/admin/users",
+    path: "/admin/user",
     role: ["ADMIN"],
   },
   {
-    path: "/admin/users/data",
+    path: "/admin/user/data",
     role: ["ADMIN"],
   },
   {
-    path: "/admin/vehicles",
+    path: "/admin/vehicle",
     role: ["ADMIN"],
   },
   {
-    path: "/admin/vehicles/data",
+    path: "/admin/vehicle/data",
     role: ["ADMIN"],
   },
   {
-    path: "/admin/reservations",
+    path: "/admin/reservation",
     role: ["ADMIN"],
   },
   {
-    path: "/admin/reservations/data",
+    path: "/admin/reservation/data",
     role: ["ADMIN"],
   },
 ];
