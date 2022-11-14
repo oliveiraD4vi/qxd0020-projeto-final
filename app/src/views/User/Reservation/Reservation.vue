@@ -7,10 +7,10 @@
 
   <HeaderVue />
   <main class="main-container">
-    <h1>Vehicles</h1>
+    <h1>Reservation</h1>
   </main>
   <FooterVue />
 
 </template>
 
-<style src="./Vehicles.scss" lang="scss" scoped />
+<style src="./Reservation.scss" lang="scss" scoped />
