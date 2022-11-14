@@ -26,7 +26,6 @@ router.beforeEach(async (to) => {
 
   if (auth.getRole()) {
     let allowedRoutes = getPathUser(auth.getRole());
-    console.log(allowedRoutes);
 
     if (auth.isAuthenticated() && allowedRoutes.includes(path)) {
       try {
