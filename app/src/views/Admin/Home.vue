@@ -6,17 +6,17 @@
   <div class="admin-home-container" >
 
       <a class="menu-item">
-        <router-link>
+        <router-link to="/admin/vehicles">
           <CarOutlined/> Veiculos
         </router-link> 
       </a>
       <a class="menu-item">
-        <router-link>
+        <router-link to="/admin/reservation">
           <FileOutlined/> Reservas
         </router-link>  
       </a>
       <a class="menu-item">
-        <router-link>
+        <router-link to="/admin/user"> 
           <UserOutlined/> Usuários
         </router-link>
       </a>
