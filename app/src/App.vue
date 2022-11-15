@@ -4,11 +4,5 @@
 </script>
 
 <template>
-
-  <Header />
-  <main class="main-container">
     <router-view />
-  </main>
-  <Footer />
-
 </template>
