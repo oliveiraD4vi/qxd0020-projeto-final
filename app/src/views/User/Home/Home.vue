@@ -2,7 +2,7 @@
   import HeaderVue from '../../../components/Header/Header.vue';
   import FooterVue from '../../../components/Footer/Footer.vue';
   import DateSelector from '../../../components/DateSelector/DateSelector.vue';
-  import { notification } from 'ant-design-vue';
+  import Notification from '../../../services/notifications';
   import {
     CalendarOutlined,
     ArrowRightOutlined,
@@ -10,9 +10,9 @@
     FileTextOutlined,
     CheckCircleOutlined,
   } from '@ant-design/icons-vue';
-  import {onMounted} from 'vue';
+  import { onMounted } from 'vue';
   import { api } from '../../../services/api';
-  import {useState} from './useState';
+  import { useState } from './useState';
   import image1 from "../../../assets/car-example-green.png";
   import image2 from "../../../assets/car-example-grey.png";
   import image3 from "../../../assets/car-example-white.png";
@@ -20,20 +20,17 @@
   const images = [image1, image2, image3];
 
   const [vehicleList, setVehicleList] = useState();
-  async function fetchData() {
+  
+    onMounted(async () =>{
       try {
         const response = await api.get("/vehicle/list/random");
         const { data } = response;
         setVehicleList(data.randomList);
       } catch (error) {
         const { data } = error.response;
-
-        notification("error", data.message);
+        Notification("error", data.message);
       }
-    }
-    onMounted(() => {
-      fetchData();
-    })
+    });
 </script>
 
 <template>
