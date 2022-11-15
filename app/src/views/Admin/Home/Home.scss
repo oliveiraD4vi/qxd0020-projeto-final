@@ -1,0 +1,29 @@
+@import "../../../styles/colors.scss";
+
+.admin-home-container {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 33% 33% 33%;
+
+  .menu-item {
+    display: grid;
+    text-align: center;
+    padding: 48px 42px;
+    font-size: 24px;
+    border-radius: 16px;
+    color: $primary-color;
+    border: 3px solid $primary-color;
+    transition: all 200ms ease-in-out;
+    font-weight: bold;
+
+    &:hover {
+      color: $white-900;
+      background-color: $primary-color;
+      cursor: pointer;
+    }
+
+    .anticon {
+      font-size: 48px;
+    }
+  }
+}
