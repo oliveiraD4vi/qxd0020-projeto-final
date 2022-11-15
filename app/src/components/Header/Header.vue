@@ -20,7 +20,11 @@
 
     <ul class="navigation-container" v-if="!pathname.includes('admin')">
       <li class="navigation-item">
-        <a-button class="link-button" type="text">
+        <a-button
+          type="text"
+          class="link-button"
+          v-bind:class="{ checked: pathname === '/' }"
+        >
           <router-link to="/">
             HOME
           </router-link>
@@ -28,7 +32,11 @@
       </li>
       
       <li class="navigation-item">
-        <a-button class="link-button" type="text">
+        <a-button
+          type="text"
+          class="link-button"
+          v-bind:class="{ checked: pathname === '/vehicles' }"
+        >
           <router-link to="/vehicles">
             CARROS
           </router-link>
@@ -36,7 +44,11 @@
       </li>
 
       <li class="navigation-item" v-if="auth.isAuthenticated()">
-        <a-button class="link-button" type="text">
+        <a-button
+          type="text"
+          class="link-button"
+          v-bind:class="{ checked: pathname === '/reservation' }"
+        >
           <router-link to="/reservation">
             RESERVAS
           </router-link>
@@ -44,7 +56,11 @@
       </li>
       
       <li class="navigation-item">
-        <a-button class="link-button" type="text">
+        <a-button
+          type="text"
+          class="link-button"
+          v-bind:class="{ checked: pathname === '/about' }"
+        >
           <router-link to="/about">
             SOBRE NÓS
           </router-link>

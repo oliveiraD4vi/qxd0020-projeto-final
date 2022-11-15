@@ -6,6 +6,8 @@
   import { api } from '../../services/api';
   import { router } from '../../routes';
 
+  import { validateCpf } from '../../services/utils';
+
   import Notification from '../../services/notifications';
 
   const formState = reactive({
@@ -54,7 +56,13 @@
         <a-form-item
           label="Nome"
           name="name"
-          :rules="[{ required: true, message: 'Insira seu nome' }]"
+          :rules="[
+            { required: true, message: 'Insira seu nome' },
+            {
+              pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/,
+              message: 'Seu nome deve conter apenas palavras',
+            },
+          ]"
         >
           <a-input
             v-model:value="formState.name"
@@ -64,7 +72,10 @@
         <a-form-item
           label="Email"
           name="email"
-          :rules="[{ required: true, message: 'Insira seu email' }]"
+          :rules="[
+            { required: true, message: 'Insira seu email!' },
+            { type: 'email', message: 'Esse email não é válido!' }
+          ]"
         >
           <a-input
             v-model:value="formState.email"
@@ -74,7 +85,10 @@
         <a-form-item
           label="Password"
           name="password"
-          :rules="[{ required: true, message: 'Insira sua senha' }]"
+          :rules="[
+            { required: true, message: 'Insira sua senha!' },
+            { min: 8, message: 'A senha deve ter, no mínimo, 8 caracteres' }
+          ]"
         >
           <a-input-password
             v-model:value="formState.password"
@@ -84,11 +98,18 @@
         <a-form-item
           label="CPF"
           name="cpf"
-          :rules="[{ required: true, message: 'Insira seu CPF' }]"
+          :rules="[
+            { required: true, message: 'Insira seu CPF' },
+            {
+              pattern: '^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}',
+              message: 'Por favor, seu CPF deve seguir o padrão',
+            },
+            { validator: validateCpf }
+          ]"
         >
           <a-input
             v-model:value="formState.cpf"
-            placeholder="CPF" />
+            placeholder="000.000.000-00" />
         </a-form-item>
 
         <a-form-item

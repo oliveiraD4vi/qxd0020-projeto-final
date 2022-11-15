@@ -50,7 +50,10 @@
         <a-form-item
           label="Email"
           name="email"
-          :rules="[{ required: true, message: 'Insira seu email!' }]"
+          :rules="[
+            { required: true, message: 'Insira seu email!' },
+            { type: 'email', message: 'Esse email não é válido!' }
+          ]"
         >
           <a-input
             v-model:value="formState.email"
@@ -60,7 +63,10 @@
         <a-form-item
           label="Password"
           name="password"
-          :rules="[{ required: true, message: 'Insira sua senha!' }]"
+          :rules="[
+            { required: true, message: 'Insira sua senha!' },
+            { min: 8, message: 'A senha deve ter, no mínimo, 8 caracteres' }
+          ]"
         >
           <a-input-password
             v-model:value="formState.password"
