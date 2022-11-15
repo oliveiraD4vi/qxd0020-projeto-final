@@ -3,6 +3,7 @@
   import FooterVue from '../../../components/Footer/Footer.vue';
   import DateSelector from '../../../components/DateSelector/DateSelector.vue';
   import Notification from '../../../services/notifications';
+  
   import {
     CalendarOutlined,
     ArrowRightOutlined,
@@ -12,7 +13,8 @@
   } from '@ant-design/icons-vue';
   import { onMounted } from 'vue';
   import { api } from '../../../services/api';
-  import { useState } from './useState';
+  import { useState } from '../../../services/useState';
+
   import image1 from "../../../assets/car-example-green.png";
   import image2 from "../../../assets/car-example-grey.png";
   import image3 from "../../../assets/car-example-white.png";
@@ -86,7 +88,9 @@
                   type="primary"
                   class="primary-button small"
                 >
-                  COMEÇAR <ArrowRightOutlined />
+                  <router-link to="/vehicles">
+                    COMEÇAR <ArrowRightOutlined />
+                  </router-link>
                 </a-button>
               </a-card>
             </div>
@@ -108,7 +112,9 @@
                   type="primary"
                   class="primary-button small"
                 >
-                  COMEÇAR <ArrowRightOutlined />
+                  <router-link to="/vehicles">
+                    COMEÇAR <ArrowRightOutlined />
+                  </router-link>
                 </a-button>
               </a-card>
             </div>
@@ -131,7 +137,9 @@
                   type="primary"
                   class="primary-button small"
                 >
-                  COMEÇAR <ArrowRightOutlined />
+                  <router-link to="/vehicles">
+                    COMEÇAR <ArrowRightOutlined />
+                  </router-link>
                 </a-button>
               </a-card>
             </div>
@@ -153,7 +161,9 @@
                   type="primary"
                   class="primary-button small"
                 >
-                  COMEÇAR <ArrowRightOutlined />
+                  <router-link to="/vehicles">
+                    COMEÇAR <ArrowRightOutlined />
+                  </router-link>
                 </a-button>
               </a-card>
             </div>
