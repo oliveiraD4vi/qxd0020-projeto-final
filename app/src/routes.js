@@ -6,6 +6,7 @@ import Vehicles from './views/User/Vehicles/Vehicles.vue';
 import Login from './views/Login/Login.vue';
 import Register from './views/Register/Register.vue';
 import Reservation from './views/User/Reservation/Reservation.vue';
+import AdminHome from './views/Admin/Home.vue'
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     path: '/reservation',
     name: 'reservation',
     component: Reservation
+  },
+  {
+    path: '/admin/home',
+    name: 'adminHome',
+    component: AdminHome
   }
 ];
 
