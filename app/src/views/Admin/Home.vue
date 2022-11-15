@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div class="admin-home-container" >
 
+  <div class="admin-home-container" >
       <a class="menu-item">
         <router-link to="/admin/vehicles">
           <CarOutlined/> Veiculos
@@ -21,6 +21,7 @@
         </router-link>
       </a>
   </div>
+  
 </template>
 
 <style src="./Home.scss" lang="scss" scoped></style>
