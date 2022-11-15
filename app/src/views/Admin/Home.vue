@@ -4,14 +4,21 @@
 
 <template>
   <div class="admin-home-container" >
+
       <a class="menu-item">
-        <CarOutlined/> Veiculos
+        <router-link>
+          <CarOutlined/> Veiculos
+        </router-link> 
       </a>
       <a class="menu-item">
-        <FileOutlined/> Reservas
+        <router-link>
+          <FileOutlined/> Reservas
+        </router-link>  
       </a>
       <a class="menu-item">
-        <UserOutlined/> Usuários
+        <router-link>
+          <UserOutlined/> Usuários
+        </router-link>
       </a>
   </div>
 </template>
