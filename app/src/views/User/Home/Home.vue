@@ -21,16 +21,16 @@
 
   const [vehicleList, setVehicleList] = useState();
   
-    onMounted(async () =>{
-      try {
-        const response = await api.get("/vehicle/list/random");
-        const { data } = response;
-        setVehicleList(data.randomList);
-      } catch (error) {
-        const { data } = error.response;
-        Notification("error", data.message);
-      }
-    });
+  onMounted(async () =>{
+    try {
+      const response = await api.get("/vehicle/list/random");
+      const { data } = response;
+      setVehicleList(data.randomList);
+    } catch (error) {
+      const { data } = error.response;
+      Notification("error", data.message);
+    }
+  });
 </script>
 
 <template>
