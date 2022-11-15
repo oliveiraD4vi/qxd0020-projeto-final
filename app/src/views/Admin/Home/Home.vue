@@ -24,7 +24,7 @@
     </div>
   </main>
   <FooterVue />
-  
+
 </template>
 
 <style src="./Home.scss" lang="scss" scoped></style>

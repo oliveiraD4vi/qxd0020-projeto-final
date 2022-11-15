@@ -17,4 +17,9 @@
     list-style-type: none;
     margin: 0;
   }
+
+  .checked {
+    border: none;
+    color: $primary-color;
+  }
 }
