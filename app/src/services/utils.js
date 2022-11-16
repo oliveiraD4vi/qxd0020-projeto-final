@@ -51,23 +51,23 @@ export function validateCpf(rule, value) {
       return Promise.resolve();
     }
     let cpfInput = value;
-    let cpfNumber = cpfInput.replace(/\D/g, '');
-    if (cpfNumber !== '') {
+    let cpfNumber = cpfInput.replace(/\D/g, "");
+    if (cpfNumber !== "") {
       let validate = /^[0-9]{11}$/;
       if (validate.test(cpfNumber)) {
         if (
-          cpfNumber === '00000000000' ||
-          cpfNumber === '11111111111' ||
-          cpfNumber === '22222222222' ||
-          cpfNumber === '33333333333' ||
-          cpfNumber === '44444444444' ||
-          cpfNumber === '55555555555' ||
-          cpfNumber === '66666666666' ||
-          cpfNumber === '77777777777' ||
-          cpfNumber === '88888888888' ||
-          cpfNumber === '99999999999'
+          cpfNumber === "00000000000" ||
+          cpfNumber === "11111111111" ||
+          cpfNumber === "22222222222" ||
+          cpfNumber === "33333333333" ||
+          cpfNumber === "44444444444" ||
+          cpfNumber === "55555555555" ||
+          cpfNumber === "66666666666" ||
+          cpfNumber === "77777777777" ||
+          cpfNumber === "88888888888" ||
+          cpfNumber === "99999999999"
         )
-          return Promise.reject('CPF inválido');
+          return Promise.reject("CPF inválido");
         let sum;
         let rest;
         sum = 0;
@@ -81,7 +81,7 @@ export function validateCpf(rule, value) {
           rest = 0;
         }
         if (rest !== parseInt(cpfNumber.substring(9, 10))) {
-          return Promise.reject('CPF inválido');
+          return Promise.reject("CPF inválido");
         }
 
         sum = 0;
@@ -93,7 +93,7 @@ export function validateCpf(rule, value) {
           rest = 0;
         }
         if (rest !== parseInt(cpfNumber.substring(10, 11))) {
-          return Promise.reject('CPF inválido');
+          return Promise.reject("CPF inválido");
         }
       }
     }
