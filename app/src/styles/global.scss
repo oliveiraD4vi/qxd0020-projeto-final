@@ -1,29 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-@import 'ant-design-vue/dist/antd.css';
-@import 'colors.scss';
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import "ant-design-vue/dist/antd.css";
+@import "colors.scss";
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 
   &::-webkit-scrollbar-track {
     background-color: $grey-300;
   }
-  
+
   &::-webkit-scrollbar {
     width: 10px;
     background: $grey-300;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background: $grey-900;
   }
 }
 
-html, body {
+html,
+body {
   min-height: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0 0 5px 0 !important;
 }
 
@@ -87,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
   color: $primary-color !important;
   background-color: $white-900 !important;
   transition: all 200ms ease-in-out;
-  
+
   &:focus,
   &:hover {
     border: none !important;
@@ -130,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   gap: 5px;
   grid-template-columns: 50% 50%;
-  
+
   .delete-button {
     background-color: transparent;
     border: 1px solid $cancel-color;
@@ -139,11 +145,11 @@ h1, h2, h3, h4, h5, h6 {
     min-width: 0;
     width: 24px;
     height: 24px;
-  
+
     .anticon {
       font-size: 12px;
       color: $cancel-color;
-    }  
+    }
   }
 }
 
@@ -152,13 +158,13 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid $add-color;
   margin: 0;
   padding: 0;
-  
+
   &:hover,
   &:focus {
     background-color: transparent;
     border: 2px solid $add-color;
   }
-  
+
   .anticon {
     color: $add-color;
   }
@@ -196,7 +202,8 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
-.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
+  .ant-select-selector {
   box-shadow: none;
   border: none;
   border-bottom: 1px solid $grey-500;
@@ -227,7 +234,7 @@ h1, h2, h3, h4, h5, h6 {
   border-color: $grey-500 !important;
 }
 
-[ant-click-animating-without-extra-node='true']::after,
+[ant-click-animating-without-extra-node="true"]::after,
 .ant-click-animating-node {
   box-shadow: none !important;
 }
