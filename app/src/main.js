@@ -1,21 +1,20 @@
-import { createApp } from 'vue';
-import { rolesPath } from './services/utils';
-import { api, auth } from './services/api';
+import { createApp } from "vue";
+import { rolesPath } from "./services/utils";
+import { api, auth } from "./services/api";
 
-import Notification from './services/notifications';
-import router from './routes';
-import Antd from 'ant-design-vue';
-import App from './App.vue';
+import Notification from "./services/notifications";
+import router from "./routes";
+import Antd from "ant-design-vue";
+import App from "./App.vue";
 
-import './styles/global.scss';
+import "./styles/global.scss";
 
 const app = createApp(App);
 
 const getPathUser = (role) => {
   const array = [];
   rolesPath.forEach((elem) => {
-    if (elem.role.includes(role))
-      array.push(elem.path);
+    if (elem.role.includes(role)) array.push(elem.path);
   });
 
   return array;
@@ -60,4 +59,4 @@ router.beforeEach(async (to) => {
 app.use(router);
 app.use(Antd);
 
-app.mount('#app');
+app.mount("#app");
