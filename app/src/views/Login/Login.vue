@@ -1,42 +1,39 @@
 <script setup>
-  import HeaderVue from '../../components/Header/Header.vue';
-  import FooterVue from '../../components/Footer/Footer.vue';
+import HeaderVue from "../../components/Header/Header.vue";
+import FooterVue from "../../components/Footer/Footer.vue";
 
-  import { reactive } from 'vue';
-  import { api, auth } from '../../services/api';
-  import { router } from '../../routes';
+import { reactive } from "vue";
+import { api, auth } from "../../services/api";
+import { router } from "../../routes";
 
-  import Notification from '../../services/notifications';
+import Notification from "../../services/notifications";
 
-  const formState = reactive({
-    email: '',
-    password: '',
-  });
+const formState = reactive({
+  email: "",
+  password: "",
+});
 
-  const onFinish = async (values) => {
-    const { email, password } = values;
+const onFinish = async (values) => {
+  const { email, password } = values;
 
-    try {
-      const response = await api.post('/user/login', {
-        email,
-        password,
-      });
+  try {
+    const response = await api.post("/user/login", {
+      email,
+      password,
+    });
 
-      const { data } = response;
-      auth.login(data.authData);
+    const { data } = response;
+    auth.login(data.authData);
 
-      router.push(auth.getRole() === 'CLIENT' ? '/' : '/admin/home');
-    } catch (error) {
-      const { data } = error.response;
-      Notification("error", data.message);
-    }
-  };
-
-  const onFinishFailed = (errorInfo) => Notification("error", errorInfo);
+    router.push(auth.getRole() === "CLIENT" ? "/" : "/admin/home");
+  } catch (error) {
+    const { data } = error.response;
+    Notification("error", data.message);
+  }
+};
 </script>
 
 <template>
-
   <HeaderVue />
   <main class="main-container">
     <div class="login-container">
@@ -45,19 +42,16 @@
         name="login-form"
         class="login-form"
         @finish="onFinish"
-        @finishFailed="onFinishFailed"
       >
         <a-form-item
           label="Email"
           name="email"
           :rules="[
             { required: true, message: 'Insira seu email!' },
-            { type: 'email', message: 'Esse email não é válido!' }
+            { type: 'email', message: 'Esse email não é válido!' },
           ]"
         >
-          <a-input
-            v-model:value="formState.email"
-            placeholder="Email" />
+          <a-input v-model:value="formState.email" placeholder="Email" />
         </a-form-item>
 
         <a-form-item
@@ -65,20 +59,17 @@
           name="password"
           :rules="[
             { required: true, message: 'Insira sua senha!' },
-            { min: 8, message: 'A senha deve ter, no mínimo, 8 caracteres' }
+            { min: 8, message: 'A senha deve ter, no mínimo, 8 caracteres' },
           ]"
         >
           <a-input-password
             v-model:value="formState.password"
-            placeholder="Senha" />
+            placeholder="Senha"
+          />
         </a-form-item>
 
         <a-form-Item class="btn">
-          <a-button
-            type="primary"
-            html-type="submit"
-            class="primary-button"
-          >
+          <a-button type="primary" html-type="submit" class="primary-button">
             ENTRAR
           </a-button>
         </a-form-Item>
@@ -86,7 +77,6 @@
     </div>
   </main>
   <FooterVue />
-
 </template>
 
 <style src="./Login.scss" lang="scss" scoped />

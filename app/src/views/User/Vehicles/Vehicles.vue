@@ -79,7 +79,6 @@
 </script>
 
 <template>
-
   <HeaderVue />
   <main class="main-container">
     <div class="cars-container">
@@ -128,7 +127,6 @@
     </div>
   </main>
   <FooterVue />
-
 </template>
 
 <style src="./Vehicles.scss" lang="scss" scoped />

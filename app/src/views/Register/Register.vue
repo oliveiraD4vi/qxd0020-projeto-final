@@ -1,48 +1,45 @@
 <script setup>
-  import HeaderVue from '../../components/Header/Header.vue';
-  import FooterVue from '../../components/Footer/Footer.vue';
+import HeaderVue from "../../components/Header/Header.vue";
+import FooterVue from "../../components/Footer/Footer.vue";
 
-  import { reactive } from 'vue';
-  import { api } from '../../services/api';
-  import { router } from '../../routes';
+import { reactive } from "vue";
+import { api } from "../../services/api";
+import { router } from "../../routes";
 
-  import { validateCpf } from '../../services/utils';
+import { validateCpf } from "../../services/utils";
 
-  import Notification from '../../services/notifications';
+import Notification from "../../services/notifications";
 
-  const formState = reactive({
-    name: '',
-    email: '',
-    password: '',
-    cpf: '',
-    bornAt: '',
-  });
+const formState = reactive({
+  name: "",
+  email: "",
+  password: "",
+  cpf: "",
+  bornAt: "",
+});
 
-  const onFinish = async (values) => {
-    const { name, cpf, bornAt, email, password } = values;
+const onFinish = async (values) => {
+  const { name, cpf, bornAt, email, password } = values;
 
-    try {
-      const { data } = await api.post('/user/register', {
-        name,
-        email,
-        password,
-        bornAt,
-        cpf,
-      });
+  try {
+    const { data } = await api.post("/user/register", {
+      name,
+      email,
+      password,
+      bornAt,
+      cpf,
+    });
 
-      Notification("success", data.message);
-      router.push('/login');
-    } catch (error) {
-      const { data } = error.response;
-      Notification("error", data.message);
-    }
-  };
-
-  const onFinishFailed = (errorInfo) => Notification("error", errorInfo);
+    Notification("success", data.message);
+    router.push("/login");
+  } catch (error) {
+    const { data } = error.response;
+    Notification("error", data.message);
+  }
+};
 </script>
 
 <template>
-
   <HeaderVue />
   <main class="main-container">
     <div class="register-container">
@@ -51,7 +48,6 @@
         name="register-form"
         class="register-form"
         @finish="onFinish"
-        @finishFailed="onFinishFailed"
       >
         <a-form-item
           label="Nome"
@@ -64,9 +60,7 @@
             },
           ]"
         >
-          <a-input
-            v-model:value="formState.name"
-            placeholder="Nome" />
+          <a-input v-model:value="formState.name" placeholder="Nome" />
         </a-form-item>
 
         <a-form-item
@@ -74,12 +68,10 @@
           name="email"
           :rules="[
             { required: true, message: 'Insira seu email!' },
-            { type: 'email', message: 'Esse email não é válido!' }
+            { type: 'email', message: 'Esse email não é válido!' },
           ]"
         >
-          <a-input
-            v-model:value="formState.email"
-            placeholder="Email" />
+          <a-input v-model:value="formState.email" placeholder="Email" />
         </a-form-item>
 
         <a-form-item
@@ -87,12 +79,13 @@
           name="password"
           :rules="[
             { required: true, message: 'Insira sua senha!' },
-            { min: 8, message: 'A senha deve ter, no mínimo, 8 caracteres' }
+            { min: 8, message: 'A senha deve ter, no mínimo, 8 caracteres' },
           ]"
         >
           <a-input-password
             v-model:value="formState.password"
-            placeholder="Senha" />
+            placeholder="Senha"
+          />
         </a-form-item>
 
         <a-form-item
@@ -104,31 +97,28 @@
               pattern: '^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}',
               message: 'Por favor, seu CPF deve seguir o padrão',
             },
-            { validator: validateCpf }
+            { validator: validateCpf },
           ]"
         >
-          <a-input
-            v-model:value="formState.cpf"
-            placeholder="000.000.000-00" />
+          <a-input v-model:value="formState.cpf" placeholder="000.000.000-00" />
         </a-form-item>
 
         <a-form-item
           label="Data de Nascimento"
           name="bornAt"
-          :rules="[{ required: true, message: 'Insira sua data de nascimento' }]"
+          :rules="[
+            { required: true, message: 'Insira sua data de nascimento' },
+          ]"
         >
           <a-date-picker
             v-model:value="formState.bornAt"
             placeholder="Data de nascimento"
-            format="DD/MM/YYYY" />
+            format="DD/MM/YYYY"
+          />
         </a-form-item>
 
         <a-form-Item class="btn">
-          <a-button
-            type="primary"
-            html-type="submit"
-            class="primary-button"
-          >
+          <a-button type="primary" html-type="submit" class="primary-button">
             CADASTRAR
           </a-button>
         </a-form-Item>
@@ -136,7 +126,6 @@
     </div>
   </main>
   <FooterVue />
-
 </template>
 
 <style src="./Register.scss" lang="scss" scoped />
