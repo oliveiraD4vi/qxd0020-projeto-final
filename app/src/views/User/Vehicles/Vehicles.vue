@@ -6,18 +6,18 @@
   import { onMounted } from 'vue';
   import { useState } from '../../../services/useState';
   import { api } from "../../../services/api";
-  import Car from "./Car/Car.vue";
+  import image1 from "../../../assets/car-example-green.png";
+  import image2 from "../../../assets/car-example-grey.png";
+  import image3 from "../../../assets/car-example-white.png";
 
-  const [setData] = useState();
-  const [setLoading] = useState();
-  const [setDisabled] = useState();
+  const images = [image1, image2, image3];
+  const [data, setData] = useState();
   const [setSearchValue] = useState(null);
   const [pagination, setPagination] = useState();
   const [setTotalCount] = useState();
 
   onMounted(async () =>{
-    setLoading(true);
-    setDisabled(true);
+    console.log("oi");
 
     setPagination({ page: 1, size: 4, sort: "ASC" });
     getData(1, 4, "ASC");
@@ -33,8 +33,6 @@
       setData(data.cars);
       setTotalCount(data.totalCount);
 
-      setLoading(false);
-      setDisabled(false);
     } catch (error) {
       const { data } = error.response;
 
@@ -51,10 +49,6 @@
     getData(pagination.page, pagination.size, sort);
   };
 
-  const onChangePagination = (page, size) => {
-    setPagination({ ...pagination, page, size });
-    getData(page, size, pagination.sort);
-  };
 </script>
 
 <template>
@@ -75,13 +69,6 @@
 
       <div class="pagination-container">
           <a-pagination
-            show-size-changer
-            current="pagination.page"
-            default-page-size="pagination.size"
-            total="totalCount"
-            page-size-options="4, 12, 20, 28"
-            @on-change="onChangePagination"
-            @disabled="disabled"
           />
 
         <div class="sorter">
@@ -96,7 +83,25 @@
 
       <div class="viewer-container">
         <div class="container-listing">
-          <Car></Car>
+          <div v-for="item in data" v-bind:key="item.plate" class="car-container">
+            <h1>
+              {{item.brand}} {{item.model}}
+            </h1>
+
+            <div class="image-container">
+              <img v-bind:src="images[Math.floor(Math.random() * 3)]" alt="car" />
+            </div>
+
+            <a-button
+              type="primary"
+              class="offer-button"
+            >
+              <span id="value">R$ {{item.value}},00</span>
+              <span id="text">
+                OFERTA <ArrowRightOutlined />
+              </span>
+            </a-button>
+          </div>
         </div>
       </div>
     </div>
