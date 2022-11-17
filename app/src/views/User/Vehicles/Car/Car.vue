@@ -1,13 +1,12 @@
 <script setup>
   import { ArrowRightOutlined } from "@ant-design/icons-vue";
   import { onMounted } from 'vue';
-  import { api, auth } from '../../../../services/api';
+  import { api } from '../../../../services/api';
   import { useState } from '../../../../services/useState';
   import image1 from "../../../../assets/car-example-green.png";
   import image2 from "../../../../assets/car-example-grey.png";
   import image3 from "../../../../assets/car-example-white.png";
   
-  const Car = ({ data, img }) => {
     const [vehicleList, setVehicleList] = useState();
 
     const images = [image1, image2, image3];
@@ -22,24 +21,15 @@
         Notification("error", data.message);
       }
     });
-
-    function onClick() {
-      if (!auth.isAuthenticated()) {
-        setVehicleList(data);
-      }else{
-        setVehicleList(data);
-      }
-    }
-  }
 </script>
 
 <template>
-  <div class="car-container" v-if="vehicleList != null">
+  <div v-if="vehicleList != null" class="car-container">
       <h1>
         {{vehicleList[Math.floor(Math.random() * 3)].brand}} {{vehicleList[Math.floor(Math.random() * 3)].model}}
       </h1>
 
-      <div className="image-container">
+      <div class="image-container">
         <img v-bind:src="images[Math.floor(Math.random() * 3)]" alt="car" />
       </div>
 

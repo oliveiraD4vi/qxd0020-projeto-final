@@ -4,25 +4,16 @@
   import notification from "../../../services/notifications";
   import DateSelector from "../../../components/DateSelector/DateSelector.vue";
   import { onMounted } from 'vue';
-  import image1 from "../../../assets/car-example-green.png";
-  import image2 from "../../../assets/car-example-grey.png";
-  import image3 from "../../../assets/car-example-white.png";
   import { useState } from '../../../services/useState';
-  import { Input, Pagination, Select } from "ant-design-vue";
   import { api } from "../../../services/api";
   import Car from "./Car/Car.vue";
 
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState();
-  const [disabled, setDisabled] = useState();
-  const [searchValue, setSearchValue] = useState(null);
+  const [setData] = useState();
+  const [setLoading] = useState();
+  const [setDisabled] = useState();
+  const [setSearchValue] = useState(null);
   const [pagination, setPagination] = useState();
-  const [totalCount, setTotalCount] = useState();
-
-  const { Search } = Input;
-  const { Option } = Select;
-
-  const images = [image1, image2, image3];
+  const [setTotalCount] = useState();
 
   onMounted(async () =>{
     setLoading(true);
@@ -55,18 +46,6 @@
     setSearchValue(e.target.value);
   };
 
-  const filterSearch = (item) => {
-    if (
-      searchValue === "" ||
-      searchValue === " " ||
-      searchValue === null ||
-      item.brand.toLowerCase().includes(searchValue.toLowerCase()) ||
-      item.model.toLowerCase().includes(searchValue.toLowerCase())
-    ) {
-      return item;
-    }
-  };
-
   const onChangeSelect = (sort) => {
     setPagination({ ...pagination, sort });
     getData(pagination.page, pagination.size, sort);
@@ -84,31 +63,31 @@
     <div class="cars-container">
       <DateSelector data="reservationData" />
 
-      <div className="search-container">
+      <div class="search-container">
         <a-search
           class="search-input"
           placeholder="Pesquisar por marca ou modelo"
-          @onSearch="(value) => handleSearch(value)"
-          @onChange="(value) => handleSearch(value)"
           loading="loading"
+          @on-search="(value) => handleSearch(value)"
+          @on-change="(value) => handleSearch(value)"
         />
       </div>
 
       <div class="pagination-container">
           <a-pagination
-            showSizeChanger
+            show-size-changer
             current="pagination.page"
-            defaultPageSize="pagination.size"
+            default-page-size="pagination.size"
             total="totalCount"
-            @onChange="onChangePagination"
+            page-size-options="4, 12, 20, 28"
+            @on-change="onChangePagination"
             @disabled="disabled"
-            pageSizeOptions="4, 12, 20, 28"
           />
 
         <div class="sorter">
           <span>Ordem:</span>
 
-          <a-select defaultValue="ASC" @onChange="onChangeSelect">
+          <a-select default-value="ASC" @on-change="onChangeSelect">
             <a-option value="ASC">Crescente</a-option>
             <a-option value="DESC">Decrescente</a-option>
           </a-select>
@@ -116,12 +95,8 @@
       </div>
 
       <div class="viewer-container">
-        <div class="container-listing" v-for="item in data">
-          <Car
-            key={{item.plate}}
-            data = {{item}}
-            img= {{images[Math.floor(Math.random() * 3)]}}
-          />
+        <div class="container-listing">
+          <Car></Car>
         </div>
       </div>
     </div>
