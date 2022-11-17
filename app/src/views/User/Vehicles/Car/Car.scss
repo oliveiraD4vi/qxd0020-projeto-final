@@ -1,0 +1,55 @@
+@import "../../../../styles/colors.scss";
+
+.car-container {
+  color: $text-color;
+  background-color: $grey-300;
+  padding: 25px;
+  display: grid;
+  gap: 10px;
+  text-align: center;
+
+  .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-container > img {
+    width: 80%;
+  }
+}
+
+.offer-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: none;
+  font-size: 24px;
+  padding: 25px 30px;
+  color: $text-color;
+  background-color: $primary-color;
+  transition: all 300ms ease-in-out;
+
+  &:hover #value {
+    display: inline;
+  }
+
+  &:hover #text {
+    display: none;
+  }
+
+  #value {
+    display: none;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 12px;
+  }   
+}
+
+.offer-button:focus,
+.offer-button:hover {
+  border: none;
+  color: $text-color;
+  background-color: $hover-primary;
+}
