@@ -6,7 +6,7 @@ import FooterVue from "../../../components/Footer/Footer.vue";
 <template>
   <HeaderVue />
   <main class="main-container">
-    <div className="about-container">
+    <div class="about-container">
       <img
         src="../../../assets/about-us.svg"
         alt="man standing"
