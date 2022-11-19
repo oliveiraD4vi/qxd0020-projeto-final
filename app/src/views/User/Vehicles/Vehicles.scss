@@ -2,32 +2,8 @@
 
 .cars-container {
   display: grid;
-  width: 100%;
+  width: 90%;
   gap: 20px;
-
-  .ant-pagination-item-link:hover,
-  .ant-pagination-item:hover,
-  .ant-pagination-item a:hover,
-  .ant-pagination-item-active,
-  .ant-pagination-item-active a {
-    color: $secondary-color;
-    border-color: $secondary-color;
-  }
-
-  .ant-pagination-item-link:hover,
-  .ant-pagination-item:hover,
-  .ant-pagination-item a:hover,
-  .ant-pagination-item-active,
-  .ant-pagination-item-active a {
-    color: $secondary-color;
-    border-color: $secondary-color;
-  }
-
-  .container-listing .ant-select-selector,
-  .pagination-container .ant-select-selector {
-    border: none;
-    box-shadow: none !important;
-  }
 
   .pagination-container {
     display: flex;
@@ -39,54 +15,6 @@
     }
   }
 
-  .search-container {
-    display: flex;
-    justify-content: center;
-
-    .search-input {
-      width: 40%;
-      min-width: 200px;
-
-      input {
-        height: 45px;
-        border-radius: 5px !important;
-
-        &:focus {
-          box-shadow: none;
-        }
-
-        &::placeholder {
-          color: $grey-900;
-        }
-      }
-
-      span.ant-input-wrapper.ant-input-group {
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-      }
-
-      .search-input .ant-input-group .ant-input {
-        z-index: 0;
-        width: 100%;
-        margin-bottom: 0;
-        padding-left: 40px;
-        background: $grey-300 0% 0% no-repeat padding-box !important;
-        border: none !important;
-      }
-
-      button.ant-btn.ant-btn-icon-only.ant-input-search-button {
-        background: transparent;
-        border: none;
-      }
-
-      span.anticon.anticon-search {
-        color: $grey-900;
-        padding-left: 10px;
-      }
-    }
-  }
-
   .viewer-container {
     width: 100%;
     display: flex;
@@ -95,11 +23,11 @@
   }
 
   .container-listing {
-    width: 85%;
+    width: 100%;
     display: grid;
     justify-content: center;
-    grid-template-columns: 25% 25% 25% 25%;
-    gap: 4rem;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    gap: 2rem;
 
     .car-container {
       color: $text-color;
@@ -108,18 +36,18 @@
       display: grid;
       gap: 10px;
       text-align: center;
-    
+
       .image-container {
         display: flex;
         align-items: center;
         justify-content: center;
       }
-    
+
       .image-container > img {
         width: 80%;
       }
     }
-    
+
     .offer-button {
       display: flex;
       align-items: center;
@@ -131,23 +59,23 @@
       color: $text-color;
       background-color: $primary-color;
       transition: all 300ms ease-in-out;
-    
+
       &:hover #value {
         display: inline;
       }
-    
+
       &:hover #text {
         display: none;
       }
-    
+
       #value {
         display: none;
         font-size: 24px;
         font-weight: bold;
         margin-right: 12px;
-      }   
+      }
     }
-    
+
     .offer-button:focus,
     .offer-button:hover {
       border: none;
@@ -156,32 +84,3 @@
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
