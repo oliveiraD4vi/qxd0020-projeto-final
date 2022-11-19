@@ -234,6 +234,77 @@ h6 {
   border-color: $grey-500 !important;
 }
 
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border: none;
+  box-shadow: none;
+}
+
+.ant-pagination-item-link:hover,
+.ant-pagination-item:hover,
+.ant-pagination-item a:hover,
+.ant-pagination-item-active,
+.ant-pagination-item-active a {
+  color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.ant-pagination-item-link:hover,
+.ant-pagination-item:hover,
+.ant-pagination-item a:hover,
+.ant-pagination-item-active,
+.ant-pagination-item-active a {
+  color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+
+  .search-input {
+    width: 40%;
+    min-width: 200px;
+
+    input {
+      height: 45px;
+      border-radius: 5px !important;
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &::placeholder {
+        color: $grey-900;
+      }
+    }
+
+    span.ant-input-wrapper.ant-input-group {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+
+    .ant-input-group .ant-input {
+      z-index: 0;
+      width: 100%;
+      margin-bottom: 0;
+      padding-left: 40px;
+      background: $grey-300 0% 0% no-repeat padding-box !important;
+      border: none !important;
+    }
+
+    button.ant-btn.ant-btn-icon-only.ant-input-search-button {
+      background: transparent;
+      border: none;
+    }
+
+    span.anticon.anticon-search {
+      color: $grey-900;
+      padding-left: 10px;
+    }
+  }
+}
+
 [ant-click-animating-without-extra-node="true"]::after,
 .ant-click-animating-node {
   box-shadow: none !important;
