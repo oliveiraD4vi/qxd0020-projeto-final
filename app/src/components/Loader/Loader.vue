@@ -1,6 +1,5 @@
 <script setup>
-import { LoadingOutlined } from '@ant-design/icons-vue';
-
+import { LoadingOutlined } from "@ant-design/icons-vue";
 </script>
 
 <template>
