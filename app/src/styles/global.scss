@@ -51,11 +51,16 @@ h6 {
 
   .main-container {
     min-height: 80%;
-    padding: 2em 3em;
+    padding: 3em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    &.top-centered {
+      padding: 3em 20em;
+      justify-content: flex-start;
+    }
   }
 
   .footer-container {
