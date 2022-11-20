@@ -13,7 +13,9 @@ import { api } from "../../services/api";
 
 import router from "../../routes";
 import Notification from "../../services/notifications";
-import VehicleTemplate from "../../views/Admin/Vehicles/TableTemplate.vue";
+import VehicleTemplate from "../../views/Admin/Vehicles/VehicleTemplate.vue";
+import UserTemplate from "../../views/Admin/Users/UserTemplate.vue";
+import ReservationTemplate from "../../views/Admin/Reservations/ReservationTemplate.vue";
 
 const pageSizeOptions = ref(["5", "10", "15", "20", "30"]);
 
@@ -35,6 +37,7 @@ const props = defineProps({
   setPagination: Function,
   totalCount: Number,
   loading: Boolean,
+  tableTemplate: String,
 });
 
 const navigate = () => router.push(props.goPath);
@@ -147,6 +150,23 @@ const onTableChange = () => {
     </div>
     <div class="table-box">
       <VehicleTemplate
+        v-if="tableTemplate === 'vehicle'"
+        :on-table-change="onTableChange"
+        :row-selection="rowSelection"
+        :columns="columns"
+        :data="data"
+        :loading="loading"
+      />
+      <UserTemplate
+        v-else-if="tableTemplate === 'user'"
+        :on-table-change="onTableChange"
+        :row-selection="rowSelection"
+        :columns="columns"
+        :data="data"
+        :loading="loading"
+      />
+      <ReservationTemplate
+        v-else-if="tableTemplate === 'reservation'"
         :on-table-change="onTableChange"
         :row-selection="rowSelection"
         :columns="columns"

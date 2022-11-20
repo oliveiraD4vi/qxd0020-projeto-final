@@ -40,7 +40,7 @@ const getData = async (page, size, sort, search) => {
 
 const columns = ref([
   {
-    name: "Brand",
+    name: "Marca",
     dataIndex: "brand",
     key: "brand",
   },
