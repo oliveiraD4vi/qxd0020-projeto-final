@@ -19,6 +19,7 @@
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-vue": "^9.7.0",
+    "moment": "^2.29.4",
     "pinia": "^2.0.23",
     "prettier": "^2.7.1",
     "vite-plugin-eslint": "^1.8.1",

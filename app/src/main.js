@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import { rolesPath } from "./services/utils";
 import { api, auth } from "./services/api";
 
+import moment from "moment";
 import Notification from "./services/notifications";
 import router from "./routes";
 import Antd from "ant-design-vue";
@@ -10,6 +11,12 @@ import App from "./App.vue";
 import "./styles/global.scss";
 
 const app = createApp(App);
+
+app.config.globalProperties.$filters = {
+  formatDate(value) {
+    return moment(value).format("DD/MM/yyyy");
+  },
+};
 
 const getPathUser = (role) => {
   const array = [];
