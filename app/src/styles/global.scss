@@ -56,9 +56,9 @@ h6 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     &.top-centered {
-      padding: 3em 20em;
+      padding: 3em 15em;
       justify-content: flex-start;
     }
   }
@@ -137,23 +137,52 @@ h6 {
   border: 1px solid $hover-primary;
 }
 
-.action-column {
-  display: grid;
-  gap: 5px;
-  grid-template-columns: 50% 50%;
+.go-button {
+  background-color: transparent;
+  border: 2px solid $primary-color;
+  margin: 0;
+  padding: 0;
+  transition: all ease-in-out 200ms;
 
-  .delete-button {
+  &:hover,
+  &:focus {
     background-color: transparent;
-    border: 1px solid $cancel-color;
-    margin: 0;
-    padding: 0;
-    min-width: 0;
-    width: 24px;
-    height: 24px;
+    border: 2px solid $primary-color;
+  }
 
+  .anticon {
+    color: $primary-color;
+  }
+
+  &:disabled {
+    border: 2px solid $grey-500;
     .anticon {
-      font-size: 12px;
-      color: $cancel-color;
+      color: $grey-500;
+    }
+  }
+}
+
+.delete-button {
+  margin: 0 10px;
+  background-color: transparent;
+  border: 2px solid $cancel-color;
+  padding: 0;
+  transition: all ease-in-out 200ms;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border: 2px solid $cancel-color;
+  }
+
+  .anticon {
+    color: $cancel-color;
+  }
+
+  &:disabled {
+    border: 2px solid $grey-500;
+    .anticon {
+      color: $grey-500;
     }
   }
 }
@@ -308,6 +337,10 @@ h6 {
       padding-left: 10px;
     }
   }
+}
+
+.ant-table-selection {
+  display: none;
 }
 
 [ant-click-animating-without-extra-node="true"]::after,

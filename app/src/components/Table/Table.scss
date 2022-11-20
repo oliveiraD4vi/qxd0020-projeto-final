@@ -1,0 +1,16 @@
+@import "../../styles/colors.scss";
+
+.table-container {
+  width: 100%;
+
+  .table-box {
+    .table {
+      margin: 20px 0;
+    }
+  }
+
+  .search-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}

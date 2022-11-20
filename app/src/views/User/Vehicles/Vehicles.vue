@@ -75,7 +75,7 @@ const onChangePagination = (page, size) => {
         <a-input-search
           class="search-input"
           placeholder="Pesquisar por marca ou modelo"
-          @search="(value) => onChangeSearch(value)"
+          @search="onChangeSearch"
         />
       </div>
 

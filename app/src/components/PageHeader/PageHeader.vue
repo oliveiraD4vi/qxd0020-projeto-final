@@ -33,7 +33,7 @@ const handleGoBackButton = () => {
         class="icon-back"
         type="primary"
         shape="circle"
-        @click="handleGoBackButton()"
+        @click="handleGoBackButton"
       >
         <template #icon>
           <ArrowLeftOutlined />
