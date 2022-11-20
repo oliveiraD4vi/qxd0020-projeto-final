@@ -8,6 +8,7 @@ import Notification from "../../../services/notifications";
 import { onMounted, ref } from "vue";
 import { useState } from "../../../services/useState";
 import { api } from "../../../services/api";
+import Loader from "../../../components/Loader/Loader.vue";
 
 onMounted(() => {
   setPagination({ page: 1, size: 5, sort: "ASC", search: "" });
@@ -78,8 +79,7 @@ const columns = ref([
       table-template="user"
       go-path="/admin/user/data"
     />
+    <Loader v-else />
   </main>
   <FooterVue />
 </template>
-
-<style src="./Users.scss" lang="scss" scoped />
