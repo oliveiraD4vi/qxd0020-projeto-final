@@ -13,9 +13,9 @@ import { api } from "../../services/api";
 
 import router from "../../routes";
 import Notification from "../../services/notifications";
-import VehicleTemplate from "../../views/Admin/Vehicles/VehicleTemplate.vue";
-import UserTemplate from "../../views/Admin/Users/UserTemplate.vue";
-import ReservationTemplate from "../../views/Admin/Reservations/ReservationTemplate.vue";
+import VehicleTemplate from "../../views/Admin/Vehicles/Template/VehicleTemplate.vue";
+import UserTemplate from "../../views/Admin/Users/Template/UserTemplate.vue";
+import ReservationTemplate from "../../views/Admin/Reservations/Template/ReservationTemplate.vue";
 
 const pageSizeOptions = ref(["5", "10", "15", "20", "30"]);
 

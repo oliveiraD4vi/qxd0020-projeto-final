@@ -76,7 +76,7 @@ const columns = ref([
 <template>
   <HeaderVue />
   <main class="main-container top-centered">
-    <PageHeader title="Reservas" />
+    <PageHeader title="Reservas" go-back-home />
     <TableVue
       v-if="data && totalCount"
       :data="data"
