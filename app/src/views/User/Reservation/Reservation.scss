@@ -1,0 +1,39 @@
+@import "../../../styles/colors.scss";
+
+#message {
+  top: 80px;
+  width: 60%;
+  background-color: $white-900;
+  box-shadow: $box-shadow;
+  padding: 25px 50px;
+  border-radius: 10px;
+
+  h1 {
+    font-size: 56px;
+    text-decoration: solid;
+    font-weight: bold;
+
+    span {
+      color: $primary-color;
+    }
+  }
+
+  p {
+    font-size: 24px;
+    text-decoration: solid;
+    font-weight: bold;
+
+    span {
+      color: $primary-color;
+    }
+  }
+}
+
+.card {
+  width: 60%;
+  margin: 10px;
+}
+
+.primary-button {
+  margin-top: 25px;
+}
