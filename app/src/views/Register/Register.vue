@@ -1,11 +1,11 @@
 <script setup>
 import HeaderVue from "../../components/Header/Header.vue";
 import FooterVue from "../../components/Footer/Footer.vue";
+import moment from 'moment';
 
 import { reactive } from "vue";
 import { api } from "../../services/api";
 import { router } from "../../routes";
-
 import { validateCpf } from "../../services/utils";
 
 import Notification from "../../services/notifications";
@@ -17,6 +17,10 @@ const formState = reactive({
   cpf: "",
   bornAt: "",
 });
+
+const disabledDate = (current) => {
+  return current && current >= moment();
+};
 
 const onFinish = async (values) => {
   const { name, cpf, bornAt, email, password } = values;
@@ -112,6 +116,7 @@ const onFinish = async (values) => {
         >
           <a-date-picker
             v-model:value="formState.bornAt"
+            :disabled-date="disabledDate"
             placeholder="Data de nascimento"
             format="DD/MM/YYYY"
           />

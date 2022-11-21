@@ -1,4 +1,6 @@
 <script setup>
+import moment from "moment";
+
 import { reactive } from "vue";
 
 const formState = reactive({
@@ -6,8 +8,14 @@ const formState = reactive({
   devolution: "",
 });
 
-const onFinish = (values) => {
-  console.log("Success:", values);
+const disabledPickupDate = (current) => {
+  return current && current <= moment();
+};
+
+const disabledDevolutionDate = (current) => {
+  if (formState.pickup === "") return true;
+
+  return current && (current <= moment() || current <= formState.pickup);
 };
 </script>
 
@@ -28,6 +36,7 @@ const onFinish = (values) => {
           <a-date-picker
             v-model:value="formState.pickup"
             placeholder="Data de retirada"
+            :disabled-date="disabledPickupDate"
             format="DD/MM/YYYY"
           />
         </a-form-item>
@@ -39,6 +48,7 @@ const onFinish = (values) => {
           <a-date-picker
             v-model:value="formState.devolution"
             placeholder="Data de devolução"
+            :disabled-date="disabledDevolutionDate"
             format="DD/MM/YYYY"
           />
         </a-form-item>
