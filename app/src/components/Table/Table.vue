@@ -114,17 +114,6 @@ const onTableChange = () => {
       <div class="action-container">
         <a-button
           type="primary"
-          class="add-button"
-          shape="circle"
-          @click="navigate"
-        >
-          <template #icon>
-            <PlusOutlined />
-          </template>
-        </a-button>
-
-        <a-button
-          type="primary"
           class="delete-button"
           :disabled="selectedRowKeys.length > 0 ? false : true"
           shape="circle"
@@ -136,14 +125,26 @@ const onTableChange = () => {
         </a-button>
 
         <a-button
+          v-if="selectedRowKeys.length == 1"
           type="primary"
-          :disabled="selectedRowKeys.length == 1 ? false : true"
           class="go-button"
           shape="circle"
           @click="navigate"
         >
           <template #icon>
             <ArrowRightOutlined />
+          </template>
+        </a-button>
+
+        <a-button
+          v-else
+          type="primary"
+          class="add-button"
+          shape="circle"
+          @click="navigate"
+        >
+          <template #icon>
+            <PlusOutlined />
           </template>
         </a-button>
       </div>

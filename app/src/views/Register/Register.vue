@@ -1,14 +1,13 @@
 <script setup>
 import HeaderVue from "../../components/Header/Header.vue";
 import FooterVue from "../../components/Footer/Footer.vue";
-import moment from 'moment';
+import Notification from "../../services/notifications";
+import moment from "moment";
 
 import { reactive } from "vue";
 import { api } from "../../services/api";
 import { router } from "../../routes";
 import { validateCpf } from "../../services/utils";
-
-import Notification from "../../services/notifications";
 
 const formState = reactive({
   name: "",

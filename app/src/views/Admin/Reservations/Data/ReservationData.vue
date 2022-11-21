@@ -1,7 +1,7 @@
 <script setup>
 import HeaderVue from "../../../../components/Header/Header.vue";
 import FooterVue from "../../../../components/Footer/Footer.vue";
-import PageHeader from '../../../../components/PageHeader/PageHeader.vue';
+import PageHeader from "../../../../components/PageHeader/PageHeader.vue";
 </script>
 
 <template>

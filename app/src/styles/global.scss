@@ -163,7 +163,8 @@ h6 {
 }
 
 .delete-button {
-  margin: 0 10px;
+  margin: 0;
+  margin-right: 10px;
   background-color: transparent;
   border: 2px solid $cancel-color;
   padding: 0;
@@ -204,20 +205,51 @@ h6 {
   }
 }
 
+.data-container {
+  width: 100%;
+  border: 1px solid $grey-300;
+  border-radius: 4px;
+  padding: 30px 50px;
+}
+
+.data-form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .data-form {
+    width: 100%;
+    display: grid;
+    gap: 20px;
+  }
+}
+
 .ant-form {
   .form-group-2 {
     display: grid;
     grid-template-columns: 50% 50%;
+
+    .ant-row {
+      margin-right: 10px !important;
+    }
   }
 
   .form-group-3 {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+
+    .ant-row {
+      margin-right: 10px !important;
+    }
   }
 
   .form-group-4 {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
+
+    .ant-row {
+      margin-right: 10px !important;
+    }
   }
 
   .ant-form-item {

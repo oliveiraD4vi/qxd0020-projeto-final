@@ -47,11 +47,13 @@ export const rolesPath = [
 
 export function validateCpf(rule, value) {
   try {
-    if (!value) {
-      return Promise.resolve();
-    }
+    if (!value) return Promise.resolve();
+
     let cpfInput = value;
     let cpfNumber = cpfInput.replace(/\D/g, "");
+
+    if (cpfNumber.length != 11) return Promise.reject("CPF inválido");
+
     if (cpfNumber !== "") {
       let validate = /^[0-9]{11}$/;
       if (validate.test(cpfNumber)) {
