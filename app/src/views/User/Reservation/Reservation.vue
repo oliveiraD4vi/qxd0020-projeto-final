@@ -59,6 +59,14 @@ onMounted(async () => {
         />
       </div>
     </div>
+
+    <a-button
+      v-if="reservationList != null"
+      type="primary"
+      class="primary-button"
+    >
+      INICIAR NOVA RESERVA <ArrowRightOutlined />
+    </a-button>
   </main>
   <FooterVue />
 </template>

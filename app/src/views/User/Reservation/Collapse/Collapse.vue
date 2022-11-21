@@ -2,7 +2,8 @@
 import { ref, onMounted, reactive } from "vue";
 import { api } from "../../../../services/api";
 import { useState } from "../../../../services/useState";
-import { InfoCircleOutlined } from "@ant-design/icons-vue";
+
+import moment from "moment";
 
 const activeKey = ref(["1"]);
 const expandIconPosition = ref("left");
@@ -43,6 +44,7 @@ onMounted(async () => {
     const response = await api.get(`/vehicle?id=${props.id}`);
     const { data } = response;
     setVehicle(data.vehicle);
+    console.log(vehicle);
     state.car = vehicle.value.brand + " " + vehicle.value.model;
   } catch (error) {
     const { data } = error.response;
@@ -58,25 +60,20 @@ onMounted(async () => {
     class="collapse"
   >
     <a-collapse-panel v-model:header="state.car">
-      <template #extra><InfoCircleOutlined /></template>
       <div class="info">
         <span>
-          ID:
-          <p>{{ props.idReservation }}</p>
-        </span>
-        <span>
-          ID Carro:
-          <p>{{ props.id }}</p>
+          Diária:
+          <p>R$ {{ vehicle.value }}</p>
         </span>
       </div>
       <div class="info">
         <span>
           Retirada:
-          <p>{{ props.pickup }}</p>
+          <p>{{ moment(props.pickup).format("DD/MM/yyyy") }}</p>
         </span>
         <span>
-          Devolution:
-          <p>{{ props.devolution }}</p>
+          Devolução:
+          <p>{{ moment(props.devolution).format("DD/MM/yyyy") }}</p>
         </span>
       </div>
       <div class="info">
@@ -89,8 +86,18 @@ onMounted(async () => {
           <p>{{ props.step }}</p>
         </span>
       </div>
+      <div class="info">
+        <span>
+          Cor:
+          <p>{{ vehicle.color }}</p>
+        </span>
+        <span>
+          Placa:
+          <p>{{ vehicle.plate }}</p>
+        </span>
+      </div>
     </a-collapse-panel>
   </a-collapse>
 </template>
 
-<style src="./Car.scss" lang="scss" scoped></style>
+<style src="./Collapse.scss" lang="scss" scoped></style>

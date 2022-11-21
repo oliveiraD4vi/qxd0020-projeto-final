@@ -1,7 +1,6 @@
 @import "../../../../styles/colors.scss";
 
 .collapse {
-  box-shadow: $box-shadow;
   background-color: $white-900;
 
   .info {
@@ -10,9 +9,9 @@
   }
 
   .info > span {
-    margin: 5px 0;
+    margin: 3px 0;
     display: flex;
-    font-size: 18px;
+    font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;
     color: $grey-900;
@@ -23,4 +22,11 @@
     margin-left: 10px;
     color: $text-color;
   }
+}
+
+.ant-collapse-item {
+  box-shadow: $box-shadow;
+  width: 100%;
+  border-radius: 4px;
+  background-color: $white-900;
 }
