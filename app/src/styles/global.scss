@@ -51,11 +51,16 @@ h6 {
 
   .main-container {
     min-height: 80%;
-    padding: 2em 3em;
+    padding: 3em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    &.top-centered {
+      padding: 3em 15em;
+      justify-content: flex-start;
+    }
   }
 
   .footer-container {
@@ -132,23 +137,52 @@ h6 {
   border: 1px solid $hover-primary;
 }
 
-.action-column {
-  display: grid;
-  gap: 5px;
-  grid-template-columns: 50% 50%;
+.go-button {
+  background-color: transparent;
+  border: 2px solid $primary-color;
+  margin: 0;
+  padding: 0;
+  transition: all ease-in-out 200ms;
 
-  .delete-button {
+  &:hover,
+  &:focus {
     background-color: transparent;
-    border: 1px solid $cancel-color;
-    margin: 0;
-    padding: 0;
-    min-width: 0;
-    width: 24px;
-    height: 24px;
+    border: 2px solid $primary-color;
+  }
 
+  .anticon {
+    color: $primary-color;
+  }
+
+  &:disabled {
+    border: 2px solid $grey-500;
     .anticon {
-      font-size: 12px;
-      color: $cancel-color;
+      color: $grey-500;
+    }
+  }
+}
+
+.delete-button {
+  margin: 0 10px;
+  background-color: transparent;
+  border: 2px solid $cancel-color;
+  padding: 0;
+  transition: all ease-in-out 200ms;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border: 2px solid $cancel-color;
+  }
+
+  .anticon {
+    color: $cancel-color;
+  }
+
+  &:disabled {
+    border: 2px solid $grey-500;
+    .anticon {
+      color: $grey-500;
     }
   }
 }
@@ -232,6 +266,81 @@ h6 {
 .ant-input:hover,
 .ant-input:focus {
   border-color: $grey-500 !important;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border: none;
+  box-shadow: none;
+}
+
+.ant-pagination-item-link:hover,
+.ant-pagination-item:hover,
+.ant-pagination-item a:hover,
+.ant-pagination-item-active,
+.ant-pagination-item-active a {
+  color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.ant-pagination-item-link:hover,
+.ant-pagination-item:hover,
+.ant-pagination-item a:hover,
+.ant-pagination-item-active,
+.ant-pagination-item-active a {
+  color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+
+  .search-input {
+    width: 40%;
+    min-width: 200px;
+
+    input {
+      height: 45px;
+      border-radius: 5px !important;
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &::placeholder {
+        color: $grey-900;
+      }
+    }
+
+    span.ant-input-wrapper.ant-input-group {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+
+    .ant-input-group .ant-input {
+      z-index: 0;
+      width: 100%;
+      margin-bottom: 0;
+      padding-left: 40px;
+      background: $grey-300 0% 0% no-repeat padding-box !important;
+      border: none !important;
+    }
+
+    button.ant-btn.ant-btn-icon-only.ant-input-search-button {
+      background: transparent;
+      border: none;
+    }
+
+    span.anticon.anticon-search {
+      color: $grey-900;
+      padding-left: 10px;
+    }
+  }
+}
+
+.ant-table-selection {
+  display: none;
 }
 
 [ant-click-animating-without-extra-node="true"]::after,

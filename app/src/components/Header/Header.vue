@@ -64,7 +64,7 @@ const logout = () => {
       v-if="auth.isAuthenticated()"
       class="primary-button"
       type="primary"
-      @click="logout()"
+      @click="logout"
     >
       SAIR
     </a-button>

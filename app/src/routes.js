@@ -7,6 +7,9 @@ import Login from "./views/Login/Login.vue";
 import Register from "./views/Register/Register.vue";
 import Reservation from "./views/User/Reservation/Reservation.vue";
 import AdminHome from "./views/Admin/Home/Home.vue";
+import AdminVehicle from "./views/Admin/Vehicles/Vehicles.vue";
+import AdminReservation from "./views/Admin/Reservations/Reservations.vue";
+import AdminUser from "./views/Admin/Users/Users.vue";
 
 const routes = [
   {
@@ -43,6 +46,21 @@ const routes = [
     path: "/admin/home",
     name: "adminHome",
     component: AdminHome,
+  },
+  {
+    path: "/admin/vehicle",
+    name: "adminVehicle",
+    component: AdminVehicle,
+  },
+  {
+    path: "/admin/reservation",
+    name: "adminReservation",
+    component: AdminReservation,
+  },
+  {
+    path: "/admin/user",
+    name: "adminUser",
+    component: AdminUser,
   },
 ];
 
