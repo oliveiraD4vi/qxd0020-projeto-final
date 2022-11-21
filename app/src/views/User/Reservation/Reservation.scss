@@ -24,3 +24,12 @@
     margin: 30px;
   }
 }
+
+.card {
+  width: 80%;
+  grid-template-columns: 25% 25% 25% 25%;
+  border-radius: 4px;
+  border: 1px solid $secondary-color;
+  box-shadow: $box-shadow;
+  background-color: $white-900;
+}

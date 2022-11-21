@@ -1,0 +1,26 @@
+@import "../../../../styles/colors.scss";
+
+.collapse {
+  box-shadow: $box-shadow;
+  background-color: $white-900;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info > span {
+    margin: 5px 0;
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $grey-900;
+  }
+
+  .info > span p {
+    margin: 0;
+    margin-left: 10px;
+    color: $text-color;
+  }
+}

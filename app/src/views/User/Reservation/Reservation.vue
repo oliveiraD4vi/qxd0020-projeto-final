@@ -1,6 +1,7 @@
 <script setup>
 import HeaderVue from "../../../components/Header/Header.vue";
 import FooterVue from "../../../components/Footer/Footer.vue";
+import Car from "./Car/Car.vue";
 import { onMounted } from "vue";
 import { api, auth } from "../../../services/api";
 import { useState } from "../../../services/useState";
@@ -12,14 +13,13 @@ onMounted(async () => {
   try {
     const response = await api.get(`/reservation/user?id=${auth.getId()}`);
     const { data } = response;
-    console.log(data);
     setReservation(data.reservations);
+    console.log(reservationList);
   } catch (error) {
     const { data } = error.response;
     Notification("error", data.message);
   }
 });
-
 </script>
 
 <template>
@@ -34,9 +34,16 @@ onMounted(async () => {
       <p>Para isso, veja nossa lista de veículos disponíveis.</p>
     </div>
 
-    <div v-if="reservationList != null">
+    <div v-if="reservationList != null" class="card">
       <div v-for="reservation in reservationList" v-bind:key="reservation">
-        
+        <Car
+          :id="reservation.vehicle_id"
+          :id-reservation="reservation.id"
+          :pickup="reservation.pickup"
+          :devolution="reservation.devolution"
+          :status="reservation.status"
+          :step="reservation.step"
+        ></Car>
       </div>
     </div>
   </main>
