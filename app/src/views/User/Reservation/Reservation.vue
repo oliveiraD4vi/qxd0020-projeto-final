@@ -1,14 +1,12 @@
 <script setup>
 import HeaderVue from "../../../components/Header/Header.vue";
 import FooterVue from "../../../components/Footer/Footer.vue";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { api, auth } from "../../../services/api";
 import { useState } from "../../../services/useState";
 import Notification from "../../../services/notifications";
 
 const [reservationList, setReservation] = useState();
-const activeKey = ref(["1"]);
-const expandIconPosition = ref("left");
 
 onMounted(async () => {
   try {
@@ -38,12 +36,7 @@ onMounted(async () => {
 
     <div v-if="reservationList != null">
       <div v-for="reservation in reservationList" v-bind:key="reservation">
-        <a-collapse
-          v-model:activeKey="activeKey"
-          :expand-icon-position="expandIconPosition"
-        >
-          <a-collapse-panel header="vehicle.brand"> </a-collapse-panel>
-        </a-collapse>
+        
       </div>
     </div>
   </main>
