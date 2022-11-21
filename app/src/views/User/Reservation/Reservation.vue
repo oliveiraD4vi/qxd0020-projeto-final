@@ -1,10 +1,11 @@
 <script setup>
 import HeaderVue from "../../../components/Header/Header.vue";
 import FooterVue from "../../../components/Footer/Footer.vue";
-import Car from "./Car/Car.vue";
+import Colapse from "./Collapse/Collapse.vue";
 import { onMounted } from "vue";
 import { api, auth } from "../../../services/api";
 import { useState } from "../../../services/useState";
+import { ArrowRightOutlined } from "@ant-design/icons-vue";
 import Notification from "../../../services/notifications";
 
 const [reservationList, setReservation] = useState();
@@ -17,7 +18,7 @@ onMounted(async () => {
     console.log(reservationList);
   } catch (error) {
     const { data } = error.response;
-    Notification("error", data.message);
+    Notification("info", data.message);
   }
 });
 </script>
@@ -26,24 +27,36 @@ onMounted(async () => {
   <HeaderVue />
   <main class="main-container">
     <div v-if="reservationList == null" id="message">
-      <h1>Ola Usuario</h1>
+      <h1><span>O</span>lá!</h1>
       <p>
         Vamos começar uma reserva? Primeiro, você precisa escolher o carro que
         você deseja alugar.
       </p>
-      <p>Para isso, veja nossa lista de veículos disponíveis.</p>
+      <p>
+        Para isso, veja nossa lista de
+        <RouterLink to="/vehicles"><span>veículos disponíveis</span></RouterLink
+        >.
+      </p>
     </div>
+
+    <a-button
+      v-if="reservationList == null"
+      type="primary"
+      class="primary-button"
+    >
+      <router-link to="/vehicles"> COMEÇAR <ArrowRightOutlined /> </router-link>
+    </a-button>
 
     <div v-if="reservationList != null" class="card">
       <div v-for="reservation in reservationList" v-bind:key="reservation">
-        <Car
+        <Colapse
           :id="reservation.vehicle_id"
           :id-reservation="reservation.id"
           :pickup="reservation.pickup"
           :devolution="reservation.devolution"
           :status="reservation.status"
           :step="reservation.step"
-        ></Car>
+        />
       </div>
     </div>
   </main>

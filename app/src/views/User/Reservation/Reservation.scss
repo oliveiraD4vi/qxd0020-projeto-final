@@ -5,12 +5,13 @@
   width: 60%;
   background-color: $white-900;
   box-shadow: $box-shadow;
+  padding: 25px 50px;
+  border-radius: 10px;
 
   h1 {
     font-size: 56px;
     text-decoration: solid;
     font-weight: bold;
-    margin: 30px;
 
     span {
       color: $primary-color;
@@ -21,15 +22,18 @@
     font-size: 24px;
     text-decoration: solid;
     font-weight: bold;
-    margin: 30px;
+
+    span {
+      color: $primary-color;
+    }
   }
 }
 
 .card {
-  width: 80%;
-  grid-template-columns: 25% 25% 25% 25%;
-  border-radius: 4px;
-  border: 1px solid $secondary-color;
-  box-shadow: $box-shadow;
-  background-color: $white-900;
+  width: 60%;
+  margin: 10px;
+}
+
+.primary-button {
+  margin-top: 25px;
 }
