@@ -11,6 +11,7 @@ import { ArrowRightOutlined } from "@ant-design/icons-vue";
 import image1 from "../../../assets/car-example-green.png";
 import image2 from "../../../assets/car-example-grey.png";
 import image3 from "../../../assets/car-example-white.png";
+import Loader from "../../../components/Loader/Loader.vue";
 
 const images = [image1, image2, image3];
 
@@ -70,7 +71,7 @@ const onChangePagination = (page, size) => {
 <template>
   <HeaderVue />
   <main class="main-container">
-    <div class="cars-container">
+    <div v-if="data && pagination" class="cars-container">
       <div class="search-container">
         <a-input-search
           class="search-input"
@@ -81,7 +82,6 @@ const onChangePagination = (page, size) => {
 
       <div class="pagination-container">
         <a-pagination
-          v-if="pagination != null"
           v-model:current="pagination.page"
           v-model:defaultPageSize="pagination.size"
           v-model:total="totalCount"
@@ -124,6 +124,7 @@ const onChangePagination = (page, size) => {
         </div>
       </div>
     </div>
+    <Loader v-else />
   </main>
   <FooterVue />
 </template>

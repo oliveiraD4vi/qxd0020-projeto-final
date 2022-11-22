@@ -3,6 +3,7 @@ import Notification from "../../../../services/notifications";
 import router from "../../../../routes";
 import moment from "moment";
 
+import { validateCpf } from "../../../../services/utils";
 import { onMounted, reactive } from "vue";
 import { api } from "../../../../services/api";
 
@@ -49,13 +50,16 @@ const disabledDate = (current) => {
   return current && current >= moment();
 };
 
-const onFinish = async (values) => {
-  console.log(values);
+const onChangeSelect = (value) => {
+  formState.role = value;
+};
+
+const onFinish = async () => {
   try {
     if (props.data) {
-      await api.put("/user", { ...values, id: props.data.id });
+      await api.put("/user", { ...formState, id: props.data.id });
     } else {
-      await api.post("/user/register", values);
+      await api.post("/user/register", formState);
     }
 
     Notification("success", "Operação realizada com sucesso!");
@@ -160,7 +164,11 @@ const onFinish = async (values) => {
             },
           ]"
         >
-          <a-select v-model:value="formState.role" placeholder="Role">
+          <a-select
+            v-model:value="formState.role"
+            placeholder="Role"
+            @change="onChangeSelect"
+          >
             <a-select-option value="CLIENT">Cliente</a-select-option>
             <a-select-option value="ADMIN">Administrador</a-select-option>
           </a-select>
