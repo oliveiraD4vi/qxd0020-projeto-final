@@ -13,9 +13,9 @@ import { api } from "../../services/api";
 
 import router from "../../routes";
 import Notification from "../../services/notifications";
-import VehicleTemplate from "../../views/Admin/Vehicles/VehicleTemplate.vue";
-import UserTemplate from "../../views/Admin/Users/UserTemplate.vue";
-import ReservationTemplate from "../../views/Admin/Reservations/ReservationTemplate.vue";
+import VehicleTemplate from "../../views/Admin/Vehicles/Template/VehicleTemplate.vue";
+import UserTemplate from "../../views/Admin/Users/Template/UserTemplate.vue";
+import ReservationTemplate from "../../views/Admin/Reservations/Template/ReservationTemplate.vue";
 
 const pageSizeOptions = ref(["5", "10", "15", "20", "30"]);
 
@@ -40,7 +40,16 @@ const props = defineProps({
   tableTemplate: String,
 });
 
-const navigate = () => router.push(props.goPath);
+const navigate = (data) => {
+  if (data) {
+    router.push({
+      name: props.goPath,
+      query: { id: selectedRowKeys.value[0] },
+    });
+  } else {
+    router.push({ name: props.goPath });
+  }
+};
 
 const onDelete = () => {
   selectedRowKeys.value.forEach(async (id) => {
@@ -114,17 +123,6 @@ const onTableChange = () => {
       <div class="action-container">
         <a-button
           type="primary"
-          class="add-button"
-          shape="circle"
-          @click="navigate"
-        >
-          <template #icon>
-            <PlusOutlined />
-          </template>
-        </a-button>
-
-        <a-button
-          type="primary"
           class="delete-button"
           :disabled="selectedRowKeys.length > 0 ? false : true"
           shape="circle"
@@ -136,14 +134,26 @@ const onTableChange = () => {
         </a-button>
 
         <a-button
+          v-if="selectedRowKeys.length == 1"
           type="primary"
-          :disabled="selectedRowKeys.length == 1 ? false : true"
           class="go-button"
           shape="circle"
-          @click="navigate"
+          @click="navigate(true)"
         >
           <template #icon>
             <ArrowRightOutlined />
+          </template>
+        </a-button>
+
+        <a-button
+          v-else
+          type="primary"
+          class="add-button"
+          shape="circle"
+          @click="navigate(false)"
+        >
+          <template #icon>
+            <PlusOutlined />
           </template>
         </a-button>
       </div>

@@ -1,12 +1,13 @@
 <script setup>
 import HeaderVue from "../../../components/Header/Header.vue";
 import FooterVue from "../../../components/Footer/Footer.vue";
-import Colapse from "./Collapse/Collapse.vue";
+import Notification from "../../../services/notifications";
+import Collapse from "./Collapse/Collapse.vue";
+
 import { onMounted } from "vue";
 import { api, auth } from "../../../services/api";
 import { useState } from "../../../services/useState";
 import { ArrowRightOutlined } from "@ant-design/icons-vue";
-import Notification from "../../../services/notifications";
 
 const [reservationList, setReservation] = useState();
 
@@ -15,7 +16,6 @@ onMounted(async () => {
     const response = await api.get(`/reservation/user?id=${auth.getId()}`);
     const { data } = response;
     setReservation(data.reservations);
-    console.log(reservationList);
   } catch (error) {
     const { data } = error.response;
     Notification("info", data.message);
@@ -49,7 +49,7 @@ onMounted(async () => {
 
     <div v-if="reservationList != null" class="card">
       <div v-for="reservation in reservationList" v-bind:key="reservation">
-        <Colapse
+        <Collapse
           :id="reservation.vehicle_id"
           :id-reservation="reservation.id"
           :pickup="reservation.pickup"

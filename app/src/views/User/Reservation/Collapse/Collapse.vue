@@ -4,6 +4,7 @@ import { api } from "../../../../services/api";
 import { useState } from "../../../../services/useState";
 
 import moment from "moment";
+import Notification from "../../../../services/notifications";
 
 const activeKey = ref(["1"]);
 const expandIconPosition = ref("left");
@@ -44,7 +45,6 @@ onMounted(async () => {
     const response = await api.get(`/vehicle?id=${props.id}`);
     const { data } = response;
     setVehicle(data.vehicle);
-    console.log(vehicle);
     state.car = vehicle.value.brand + " " + vehicle.value.model;
   } catch (error) {
     const { data } = error.response;

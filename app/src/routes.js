@@ -8,8 +8,11 @@ import Register from "./views/Register/Register.vue";
 import Reservation from "./views/User/Reservation/Reservation.vue";
 import AdminHome from "./views/Admin/Home/Home.vue";
 import AdminVehicle from "./views/Admin/Vehicles/Vehicles.vue";
+import AdminVehicleData from "./views/Admin/Vehicles/Data/VehicleData.vue";
 import AdminReservation from "./views/Admin/Reservations/Reservations.vue";
+import AdminReservationData from "./views/Admin/Reservations/Data/ReservationData.vue";
 import AdminUser from "./views/Admin/Users/Users.vue";
+import AdminUserData from "./views/Admin/Users/Data/UserData.vue";
 
 const routes = [
   {
@@ -53,14 +56,29 @@ const routes = [
     component: AdminVehicle,
   },
   {
+    path: "/admin/vehicle/data",
+    name: "adminVehicleData",
+    component: AdminVehicleData,
+  },
+  {
     path: "/admin/reservation",
     name: "adminReservation",
     component: AdminReservation,
   },
   {
+    path: "/admin/reservation/data",
+    name: "adminReservationData",
+    component: AdminReservationData,
+  },
+  {
     path: "/admin/user",
     name: "adminUser",
     component: AdminUser,
+  },
+  {
+    path: "/admin/user/data",
+    name: "adminUserData",
+    component: AdminUserData,
   },
 ];
 

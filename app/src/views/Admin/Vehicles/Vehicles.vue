@@ -44,16 +44,19 @@ const columns = ref([
     name: "Marca",
     dataIndex: "brand",
     key: "brand",
+    width: "20vw",
   },
   {
     title: "Modelo",
     dataIndex: "model",
     key: "model",
+    width: "15vw",
   },
   {
     title: "Cor",
     dataIndex: "color",
     key: "color",
+    width: "10vw",
   },
   {
     title: "Diária (R$)",
@@ -66,7 +69,7 @@ const columns = ref([
 <template>
   <HeaderVue />
   <main class="main-container top-centered">
-    <PageHeader title="Veículos" />
+    <PageHeader title="Veículos" go-back-home />
     <TableVue
       v-if="data && totalCount"
       :data="data"
@@ -77,7 +80,7 @@ const columns = ref([
       :total-count="totalCount"
       :loading="loading"
       table-template="vehicle"
-      go-path="/admin/vehicle/data"
+      go-path="adminVehicleData"
     />
     <Loader v-else />
   </main>
