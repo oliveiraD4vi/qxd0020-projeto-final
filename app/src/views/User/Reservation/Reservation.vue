@@ -2,7 +2,7 @@
 import HeaderVue from "../../../components/Header/Header.vue";
 import FooterVue from "../../../components/Footer/Footer.vue";
 import Notification from "../../../services/notifications";
-import Colapse from "./Collapse/Collapse.vue";
+import Collapse from "./Collapse/Collapse.vue";
 
 import { onMounted } from "vue";
 import { api, auth } from "../../../services/api";
@@ -49,7 +49,7 @@ onMounted(async () => {
 
     <div v-if="reservationList != null" class="card">
       <div v-for="reservation in reservationList" v-bind:key="reservation">
-        <Colapse
+        <Collapse
           :id="reservation.vehicle_id"
           :id-reservation="reservation.id"
           :pickup="reservation.pickup"

@@ -2,13 +2,17 @@
 import Notification from "../../../../services/notifications";
 import router from "../../../../routes";
 
-import { onMounted, reactive } from "vue";
+import { watch, reactive } from "vue";
 import { api } from "../../../../services/api";
 
 const props = defineProps({
   data: {
     type: Object,
     default: null,
+  },
+  insert: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -20,15 +24,19 @@ const formState = reactive({
   value: "",
 });
 
-onMounted(() => {
-  if (props.data) {
-    formState.brand = props.data.brand;
-    formState.model = props.data.model;
-    formState.color = props.data.color;
-    formState.plate = props.data.plate;
-    formState.value = props.data.value;
-  }
-});
+watch(
+  props,
+  (newVal) => {
+    if (newVal) {
+      formState.brand = props.data.brand;
+      formState.model = props.data.model;
+      formState.color = props.data.color;
+      formState.plate = props.data.plate;
+      formState.value = props.data.value;
+    }
+  },
+  { deep: true }
+);
 
 const onFinish = async (values) => {
   try {
@@ -132,7 +140,8 @@ const onFinish = async (values) => {
 
       <a-form-item class="btn">
         <a-button type="primary" html-type="submit" class="primary-button">
-          CADASTRAR
+          <span v-if="insert">SALVAR</span>
+          <span v-else>CADASTRAR</span>
         </a-button>
       </a-form-item>
     </a-form>

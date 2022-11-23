@@ -3,13 +3,17 @@ import Notification from "../../../../services/notifications";
 import router from "../../../../routes";
 import moment from "moment";
 
-import { onMounted, reactive } from "vue";
+import { reactive, watch } from "vue";
 import { api } from "../../../../services/api";
 
 const props = defineProps({
   data: {
     type: Object,
     default: null,
+  },
+  insert: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -20,12 +24,22 @@ const formState = reactive({
   devolution: "",
 });
 
-onMounted(() => {
-  if (props.data) {
-    formState.pickup = props.data.pickup;
-    formState.devolution = props.data.devolution;
-  }
+const updateFormState = reactive({
+  step: "CREATED",
+  status: "PERSONAL",
 });
+
+watch(
+  props,
+  (newVal) => {
+    if (newVal) {
+      console.log(newVal);
+      updateFormState.step = props.data.setp;
+      updateFormState.status = props.data.status;
+    }
+  },
+  { deep: true }
+);
 
 const disabledPickupDate = (current) => {
   return current && current <= moment();
@@ -40,7 +54,7 @@ const disabledDevolutionDate = (current) => {
 const onFinish = async () => {
   try {
     if (props.data) {
-      await api.put("/reservation", { ...formState, id: props.data.id });
+      await api.put("/reservation", { ...updateFormState, id: props.data.id });
     } else {
       await api.post("/reservation", formState);
     }
@@ -57,6 +71,65 @@ const onFinish = async () => {
 <template>
   <div class="data-form-container">
     <a-form
+      v-if="insert"
+      :model="updateFormState"
+      name="data-form"
+      class="data-form"
+      @finish="onFinish"
+    >
+      <div class="form-group-2">
+        <a-form-item
+          label="Status"
+          name="status"
+          :rules="[
+            {
+              required: true,
+              message: 'Escolha o STATUS da reserva',
+            },
+          ]"
+        >
+          <a-select v-model:value="updateFormState.status" placeholder="Status">
+            <a-select-option value="CREATED">Reserva criada</a-select-option>
+            <a-select-option value="CONFIRMED">
+              Reserva confirmada
+            </a-select-option>
+            <a-select-option value="PICKUP">Veículo retirado</a-select-option>
+            <a-select-option value="FINALIZED">
+              Reserva finalizada
+            </a-select-option>
+          </a-select>
+        </a-form-item>
+
+        <a-form-item
+          label="Passo"
+          name="step"
+          :rules="[
+            {
+              required: true,
+              message: 'Escolha o PASSO da reserva',
+            },
+          ]"
+        >
+          <a-select v-model:value="updateFormState.step" placeholder="Passo">
+            <a-select-option value="PERSONAL">Dados pessoais</a-select-option>
+            <a-select-option value="VEHICLE">
+              Confirmação do veículo
+            </a-select-option>
+            <a-select-option value="PAYMENT">Pagamento</a-select-option>
+            <a-select-option value="CONCLUDED">Concluída</a-select-option>
+          </a-select>
+        </a-form-item>
+      </div>
+
+      <a-form-item class="btn">
+        <a-button type="primary" html-type="submit" class="primary-button">
+          SALVAR
+        </a-button>
+      </a-form-item>
+    </a-form>
+
+    <a-form
+      v-else
       :model="formState"
       name="data-form"
       class="data-form"

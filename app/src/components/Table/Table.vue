@@ -40,7 +40,16 @@ const props = defineProps({
   tableTemplate: String,
 });
 
-const navigate = () => router.push(props.goPath);
+const navigate = (data) => {
+  if (data) {
+    router.push({
+      name: props.goPath,
+      query: { id: selectedRowKeys.value[0] },
+    });
+  } else {
+    router.push({ name: props.goPath });
+  }
+};
 
 const onDelete = () => {
   selectedRowKeys.value.forEach(async (id) => {
@@ -129,7 +138,7 @@ const onTableChange = () => {
           type="primary"
           class="go-button"
           shape="circle"
-          @click="navigate"
+          @click="navigate(true)"
         >
           <template #icon>
             <ArrowRightOutlined />
@@ -141,7 +150,7 @@ const onTableChange = () => {
           type="primary"
           class="add-button"
           shape="circle"
-          @click="navigate"
+          @click="navigate(false)"
         >
           <template #icon>
             <PlusOutlined />

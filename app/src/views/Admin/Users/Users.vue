@@ -44,16 +44,19 @@ const columns = ref([
     name: "Nome",
     dataIndex: "name",
     key: "name",
+    width: "20vw",
   },
   {
     title: "Email",
     dataIndex: "email",
     key: "email",
+    width: "15vw",
   },
   {
     title: "Tipo",
     dataIndex: "role",
     key: "role",
+    width: "10vw",
   },
   {
     title: "Data de Nascimento",
@@ -77,7 +80,7 @@ const columns = ref([
       :total-count="totalCount"
       :loading="loading"
       table-template="user"
-      go-path="/admin/user/data"
+      go-path="adminUserData"
     />
     <Loader v-else />
   </main>

@@ -4,13 +4,17 @@ import router from "../../../../routes";
 import moment from "moment";
 
 import { validateCpf } from "../../../../services/utils";
-import { onMounted, reactive } from "vue";
+import { reactive, watch } from "vue";
 import { api } from "../../../../services/api";
 
 const props = defineProps({
   data: {
     type: Object,
     default: null,
+  },
+  insert: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -29,29 +33,29 @@ const formState = reactive({
   number: "",
 });
 
-onMounted(() => {
-  if (props.data) {
-    formState.name = props.data.name;
-    formState.phone = props.data.phone;
-    formState.cpf = props.data.cpf;
-    formState.email = props.data.email;
-    formState.password = props.data.password;
-    formState.role = props.data.role;
-    formState.bornAt = props.data.bornAt;
-    formState.street = props.data.street;
-    formState.state = props.data.state;
-    formState.country = props.data.country;
-    formState.number = props.data.number;
-    formState.neighborhood = props.data.neighborhood;
-  }
-});
+watch(
+  props,
+  (newVal) => {
+    if (newVal) {
+      formState.name = props.data.name;
+      formState.phone = props.data.phone;
+      formState.cpf = props.data.cpf;
+      formState.email = props.data.email;
+      formState.password = props.data.password;
+      formState.role = props.data.role;
+      formState.bornAt = props.data.bornAt;
+      formState.street = props.data.street;
+      formState.state = props.data.state;
+      formState.country = props.data.country;
+      formState.number = props.data.number;
+      formState.neighborhood = props.data.neighborhood;
+    }
+  },
+  { deep: true }
+);
 
 const disabledDate = (current) => {
   return current && current >= moment();
-};
-
-const onChangeSelect = (value) => {
-  formState.role = value;
 };
 
 const onFinish = async () => {
@@ -157,6 +161,7 @@ const onFinish = async () => {
 
         <a-form-item
           label="Papel"
+          name="role"
           :rules="[
             {
               required: true,
@@ -164,11 +169,7 @@ const onFinish = async () => {
             },
           ]"
         >
-          <a-select
-            v-model:value="formState.role"
-            placeholder="Role"
-            @change="onChangeSelect"
-          >
+          <a-select v-model:value="formState.role" placeholder="Role">
             <a-select-option value="CLIENT">Cliente</a-select-option>
             <a-select-option value="ADMIN">Administrador</a-select-option>
           </a-select>
@@ -259,7 +260,8 @@ const onFinish = async () => {
 
       <a-form-item class="btn">
         <a-button type="primary" html-type="submit" class="primary-button">
-          CADASTRAR
+          <span v-if="insert">SALVAR</span>
+          <span v-else>CADASTRAR</span>
         </a-button>
       </a-form-item>
     </a-form>

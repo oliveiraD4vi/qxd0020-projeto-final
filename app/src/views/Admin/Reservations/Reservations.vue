@@ -87,7 +87,7 @@ const columns = ref([
       :total-count="totalCount"
       :loading="loading"
       table-template="reservation"
-      go-path="/admin/reservation/data"
+      go-path="adminReservationData"
     />
     <Loader v-else />
   </main>

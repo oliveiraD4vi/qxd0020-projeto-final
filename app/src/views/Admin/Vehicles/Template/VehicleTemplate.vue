@@ -41,7 +41,10 @@ defineProps({
 
       <template v-else-if="column.key === 'color'">
         <span>
-          <a-tag :color="record.color === 'White' ? 'Gray' : record.color">
+          <a-tag
+            class="color-tag"
+            :color="record.color === 'White' ? 'Gray' : record.color"
+          >
             {{ record.color.toUpperCase() }}
           </a-tag>
         </span>

@@ -67,7 +67,7 @@ const routes = [
   },
   {
     path: "/admin/reservation/data",
-    name: "adminReservationDara",
+    name: "adminReservationData",
     component: AdminReservationData,
   },
   {
