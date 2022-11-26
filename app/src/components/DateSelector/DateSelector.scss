@@ -1,5 +1,12 @@
 @import "../../styles/colors.scss";
 
+.centered-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .selector-container {
   width: 50%;
   padding: 60px 70px;

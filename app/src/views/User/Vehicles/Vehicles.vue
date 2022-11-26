@@ -2,6 +2,7 @@
 import HeaderVue from "../../../components/Header/Header.vue";
 import FooterVue from "../../../components/Footer/Footer.vue";
 import Notification from "../../../services/notifications";
+import DateSelector from "../../../components/DateSelector/DateSelector.vue";
 
 import { onMounted, ref } from "vue";
 import { useState } from "../../../services/useState";
@@ -12,12 +13,15 @@ import image1 from "../../../assets/car-example-green.png";
 import image2 from "../../../assets/car-example-grey.png";
 import image3 from "../../../assets/car-example-white.png";
 import Loader from "../../../components/Loader/Loader.vue";
+import { ReservationStore } from "../../../store/ReservationStore";
 
 const images = [image1, image2, image3];
 
 const [data, setData] = useState();
 const [pagination, setPagination] = useState();
 const [totalCount, setTotalCount] = useState();
+
+const store = ReservationStore();
 
 const pageSizeOptions = ref(["5", "10", "15", "20", "30"]);
 
@@ -71,7 +75,30 @@ const onChangePagination = (page, size) => {
 <template>
   <HeaderVue />
   <main class="main-container">
-    <div v-if="data && pagination" class="cars-container">
+    <div
+      v-if="store.devolutionData == '' && store.pickupData == ''"
+      class="cars-container"
+    >
+      <div class="date-selector-container">
+        <DateSelector />
+      </div>
+    </div>
+    <div
+      v-if="
+        data &&
+        pagination &&
+        store.devolutionData != '' &&
+        store.pickupData != ''
+      "
+      class="cars-container"
+    >
+      <div class="date-selector-container">
+        <DateSelector
+          :pickup="store.pickupData"
+          :devolution="store.devolutionData"
+        />
+      </div>
+
       <div class="search-container">
         <a-input-search
           class="search-input"
@@ -124,7 +151,7 @@ const onChangePagination = (page, size) => {
         </div>
       </div>
     </div>
-    <Loader v-else />
+    <Loader v-else-if="store.devolutionData != '' && store.pickupData != ''" />
   </main>
   <FooterVue />
 </template>

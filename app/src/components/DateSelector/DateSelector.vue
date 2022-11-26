@@ -2,17 +2,18 @@
 import moment from "moment";
 import { ReservationStore } from "../../store/ReservationStore";
 import { reactive } from "vue";
+import router from "../../routes";
 
 const store = ReservationStore();
 
 const props = defineProps({
   pickup: {
     type: String,
-    default: "0",
+    default: "",
   },
   devolution: {
     type: String,
-    default: "0",
+    default: "",
   },
 });
 
@@ -21,10 +22,10 @@ const formState = reactive({
   devolution: props.devolution,
 });
 
-const setReservationData = () => {
-  console.log(formState.pickup);
+const onFinish = async () => {
   store.setPickupData(formState.pickup);
   store.setDevolutionDataData(formState.devolution);
+  router.push("/vehicles");
 };
 
 const disabledPickupDate = (current) => {
@@ -74,12 +75,7 @@ const disabledDevolutionDate = (current) => {
       </div>
 
       <a-form-item class="btn">
-        <a-button
-          type="primary"
-          html-type="submit"
-          class="secondary-button"
-          @click="setReservationData"
-        >
+        <a-button type="primary" html-type="submit" class="secondary-button">
           CONTINUAR
         </a-button>
       </a-form-item>
