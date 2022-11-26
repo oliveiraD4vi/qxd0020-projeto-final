@@ -2,6 +2,10 @@
 import moment from "moment";
 
 import { reactive } from "vue";
+import { useState } from "../../services/useState";
+
+const [loading, setLoading] = useState(false);
+const [disabled, setDisabled] = useState(false);
 
 const formState = reactive({
   pickup: "",
@@ -16,6 +20,13 @@ const disabledDevolutionDate = (current) => {
   if (formState.pickup === "") return true;
 
   return current && (current <= moment() || current <= formState.pickup);
+};
+
+const onFinish = (values) => {
+  setLoading(true);
+  setDisabled(true);
+
+  console.log(values);
 };
 </script>
 
@@ -37,6 +48,7 @@ const disabledDevolutionDate = (current) => {
             v-model:value="formState.pickup"
             placeholder="Data de retirada"
             :disabled-date="disabledPickupDate"
+            :disabled="disabled"
             format="DD/MM/YYYY"
           />
         </a-form-item>
@@ -49,13 +61,19 @@ const disabledDevolutionDate = (current) => {
             v-model:value="formState.devolution"
             placeholder="Data de devolução"
             :disabled-date="disabledDevolutionDate"
+            :disabled="disabled"
             format="DD/MM/YYYY"
           />
         </a-form-item>
       </div>
 
       <a-form-item class="btn">
-        <a-button type="primary" html-type="submit" class="secondary-button">
+        <a-button
+          :loading="loading"
+          type="primary"
+          html-type="submit"
+          class="secondary-button"
+        >
           CONTINUAR
         </a-button>
       </a-form-item>

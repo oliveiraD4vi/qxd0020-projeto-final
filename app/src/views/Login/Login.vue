@@ -1,12 +1,15 @@
 <script setup>
 import HeaderVue from "../../components/Header/Header.vue";
 import FooterVue from "../../components/Footer/Footer.vue";
+import Notification from "../../services/notifications";
 
 import { reactive } from "vue";
 import { api, auth } from "../../services/api";
 import { router } from "../../routes";
+import { useState } from "../../services/useState";
 
-import Notification from "../../services/notifications";
+const [loading, setLoading] = useState(false);
+const [disabled, setDisabled] = useState(false);
 
 const formState = reactive({
   email: "",
@@ -15,6 +18,9 @@ const formState = reactive({
 
 const onFinish = async (values) => {
   const { email, password } = values;
+
+  setLoading(true);
+  setDisabled(true);
 
   try {
     const response = await api.post("/user/login", {
@@ -51,7 +57,11 @@ const onFinish = async (values) => {
             { type: 'email', message: 'Esse email não é válido!' },
           ]"
         >
-          <a-input v-model:value="formState.email" placeholder="Email" />
+          <a-input
+            v-model:value="formState.email"
+            :disabled="disabled"
+            placeholder="Email"
+          />
         </a-form-item>
 
         <a-form-item
@@ -64,12 +74,18 @@ const onFinish = async (values) => {
         >
           <a-input-password
             v-model:value="formState.password"
+            :disabled="disabled"
             placeholder="Senha"
           />
         </a-form-item>
 
         <a-form-Item class="btn">
-          <a-button type="primary" html-type="submit" class="primary-button">
+          <a-button
+            :loading="loading"
+            type="primary"
+            html-type="submit"
+            class="primary-button"
+          >
             ENTRAR
           </a-button>
         </a-form-Item>

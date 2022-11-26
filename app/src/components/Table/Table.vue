@@ -92,14 +92,19 @@ const onChangeSearch = (search) => {
     props.pagination.page,
     props.pagination.size,
     props.pagination.sort,
-    search
+    search == undefined ? "" : search
   );
 };
 
 const onChangePagination = (page, size) => {
   props.setPagination({ ...props.pagination, page, size });
   setPag({ ...props.pagination, page, size });
-  props.getData(page, size, props.pagination.sort, props.pagination.search);
+  props.getData(
+    page,
+    size,
+    props.pagination.sort,
+    props.pagination.search == undefined ? "" : props.pagination.search
+  );
 };
 
 const rowSelection = (selectedRows) => {
@@ -190,7 +195,7 @@ const onTableChange = () => {
         v-model:defaultPageSize="pag.size"
         v-model:total="total"
         :page-size-options="pageSizeOptions"
-        :disabled="loading"
+        :disabled="loading || data.length == 0"
         show-size-changer
         @change="onChangePagination"
       />

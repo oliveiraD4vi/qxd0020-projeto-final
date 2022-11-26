@@ -7,6 +7,7 @@ import { onMounted, ref } from "vue";
 import { useState } from "../../../services/useState";
 import { api } from "../../../services/api";
 import { ArrowRightOutlined } from "@ant-design/icons-vue";
+import { Empty } from "ant-design-vue";
 
 import image1 from "../../../assets/car-example-green.png";
 import image2 from "../../../assets/car-example-grey.png";
@@ -17,7 +18,7 @@ const images = [image1, image2, image3];
 
 const [data, setData] = useState();
 const [pagination, setPagination] = useState();
-const [totalCount, setTotalCount] = useState();
+const [totalCount, setTotalCount] = useState(0);
 
 const pageSizeOptions = ref(["5", "10", "15", "20", "30"]);
 
@@ -37,6 +38,9 @@ const getData = async (page, size, sort, search) => {
     setTotalCount(data.totalCount);
   } catch (error) {
     const { data } = error.response;
+
+    setData(data.cars);
+    setTotalCount(0);
 
     Notification("error", data.message);
   }
@@ -86,6 +90,7 @@ const onChangePagination = (page, size) => {
           v-model:defaultPageSize="pagination.size"
           v-model:total="totalCount"
           :page-size-options="pageSizeOptions"
+          :disabled="totalCount == 0"
           show-size-changer
           @change="onChangePagination"
         />
@@ -93,12 +98,18 @@ const onChangePagination = (page, size) => {
         <div class="sorter">
           <span>Ordem:</span>
 
-          <a-select default-value="ASC" @change="onChangeSelect">
+          <a-select
+            default-value="ASC"
+            :disabled="totalCount == 0"
+            @change="onChangeSelect"
+          >
             <a-select-option value="ASC">Crescente</a-select-option>
             <a-select-option value="DESC">Decrescente</a-select-option>
           </a-select>
         </div>
       </div>
+
+      <a-empty v-if="totalCount == 0" :image="Empty.PRESENTED_IMAGE_SIMPLE" />
 
       <div class="viewer-container">
         <div class="container-listing">

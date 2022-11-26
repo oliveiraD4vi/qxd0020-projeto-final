@@ -8,6 +8,10 @@ import { reactive } from "vue";
 import { api } from "../../services/api";
 import { router } from "../../routes";
 import { validateCpf } from "../../services/utils";
+import { useState } from "../../services/useState";
+
+const [loading, setLoading] = useState(false);
+const [disabled, setDisabled] = useState(false);
 
 const formState = reactive({
   name: "",
@@ -23,6 +27,9 @@ const disabledDate = (current) => {
 
 const onFinish = async (values) => {
   const { name, cpf, bornAt, email, password } = values;
+
+  setLoading(true);
+  setDisabled(true);
 
   try {
     const { data } = await api.post("/user/register", {
@@ -63,7 +70,11 @@ const onFinish = async (values) => {
             },
           ]"
         >
-          <a-input v-model:value="formState.name" placeholder="Nome" />
+          <a-input
+            v-model:value="formState.name"
+            :disabled="disabled"
+            placeholder="Nome"
+          />
         </a-form-item>
 
         <a-form-item
@@ -74,7 +85,11 @@ const onFinish = async (values) => {
             { type: 'email', message: 'Esse email não é válido!' },
           ]"
         >
-          <a-input v-model:value="formState.email" placeholder="Email" />
+          <a-input
+            v-model:value="formState.email"
+            :disabled="disabled"
+            placeholder="Email"
+          />
         </a-form-item>
 
         <a-form-item
@@ -87,6 +102,7 @@ const onFinish = async (values) => {
         >
           <a-input-password
             v-model:value="formState.password"
+            :disabled="disabled"
             placeholder="Senha"
           />
         </a-form-item>
@@ -103,7 +119,11 @@ const onFinish = async (values) => {
             { validator: validateCpf },
           ]"
         >
-          <a-input v-model:value="formState.cpf" placeholder="000.000.000-00" />
+          <a-input
+            v-model:value="formState.cpf"
+            :disabled="disabled"
+            placeholder="000.000.000-00"
+          />
         </a-form-item>
 
         <a-form-item
@@ -115,6 +135,7 @@ const onFinish = async (values) => {
         >
           <a-date-picker
             v-model:value="formState.bornAt"
+            :disabled="disabled"
             :disabled-date="disabledDate"
             placeholder="Data de nascimento"
             format="DD/MM/YYYY"
@@ -122,7 +143,12 @@ const onFinish = async (values) => {
         </a-form-item>
 
         <a-form-Item class="btn">
-          <a-button type="primary" html-type="submit" class="primary-button">
+          <a-button
+            :loading="loading"
+            type="primary"
+            html-type="submit"
+            class="primary-button"
+          >
             CADASTRAR
           </a-button>
         </a-form-Item>

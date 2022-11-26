@@ -74,7 +74,12 @@ const getVehicle = async (id) => {
       <a-switch v-model:checked="insert" />
     </div>
     <div class="data-container">
-      <ReservationForm v-if="!id || insert" :data="data" :insert="insert" />
+      <ReservationForm
+        v-if="!id || insert"
+        :key="insert"
+        :data="data"
+        :insert="insert"
+      />
       <div v-else-if="data" class="content">
         <div class="card">
           <div className="info">

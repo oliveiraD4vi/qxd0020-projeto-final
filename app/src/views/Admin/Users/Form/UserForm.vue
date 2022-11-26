@@ -4,8 +4,12 @@ import router from "../../../../routes";
 import moment from "moment";
 
 import { validateCpf } from "../../../../services/utils";
-import { reactive, watch } from "vue";
+import { onMounted, reactive } from "vue";
 import { api } from "../../../../services/api";
+import { useState } from "../../../../services/useState";
+
+const [loading, setLoading] = useState(false);
+const [disabled, setDisabled] = useState(false);
 
 const props = defineProps({
   data: {
@@ -33,32 +37,48 @@ const formState = reactive({
   number: "",
 });
 
-watch(
-  props,
-  (newVal) => {
-    if (newVal) {
-      formState.name = props.data.name;
-      formState.phone = props.data.phone;
-      formState.cpf = props.data.cpf;
-      formState.email = props.data.email;
-      formState.password = props.data.password;
-      formState.role = props.data.role;
-      formState.bornAt = props.data.bornAt;
-      formState.street = props.data.street;
-      formState.state = props.data.state;
-      formState.country = props.data.country;
-      formState.number = props.data.number;
-      formState.neighborhood = props.data.neighborhood;
-    }
-  },
-  { deep: true }
-);
+onMounted(() => {
+  if (props.data) {
+    formState.name = props.data.name;
+    formState.phone = props.data.phone;
+    formState.cpf = props.data.cpf;
+    formState.email = props.data.email;
+    formState.password = props.data.password;
+    formState.role = props.data.role;
+    formState.bornAt = props.data.bornAt;
+    formState.street = props.data.street;
+    formState.city = props.data.city;
+    formState.state = props.data.state;
+    formState.country = props.data.country;
+    formState.number = props.data.number;
+    formState.neighborhood = props.data.neighborhood;
+  }
+});
 
 const disabledDate = (current) => {
   return current && current >= moment();
 };
 
+const formCleanUp = () => {
+  formState.name = "";
+  formState.phone = "";
+  formState.cpf = "";
+  formState.email = "";
+  formState.password = "";
+  formState.role = "";
+  formState.bornAt = "";
+  formState.street = "";
+  formState.city = "";
+  formState.state = "";
+  formState.country = "";
+  formState.number = "";
+  formState.neighborhood = "";
+};
+
 const onFinish = async () => {
+  setLoading(true);
+  setDisabled(true);
+
   try {
     if (props.data) {
       await api.put("/user", { ...formState, id: props.data.id });
@@ -70,6 +90,11 @@ const onFinish = async () => {
     router.push("/admin/user");
   } catch (error) {
     const { data } = error.response;
+
+    setLoading(false);
+    setDisabled(false);
+    formCleanUp();
+
     Notification("error", data.message);
   }
 };
@@ -95,7 +120,11 @@ const onFinish = async () => {
           },
         ]"
       >
-        <a-input v-model:value="formState.name" placegolder="Name" />
+        <a-input
+          v-model:value="formState.name"
+          :disabled="disabled"
+          placegolder="Name"
+        />
       </a-form-item>
 
       <div class="form-group-3">
@@ -107,7 +136,11 @@ const onFinish = async () => {
             { type: 'email', message: 'Esse email não é válido!' },
           ]"
         >
-          <a-input v-model:value="formState.email" placeholder="Email" />
+          <a-input
+            v-model:value="formState.email"
+            :disabled="disabled"
+            placeholder="Email"
+          />
         </a-form-item>
 
         <a-form-item
@@ -122,7 +155,11 @@ const onFinish = async () => {
             { validator: validateCpf },
           ]"
         >
-          <a-input v-model:value="formState.cpf" placeholder="000.000.000-00" />
+          <a-input
+            v-model:value="formState.cpf"
+            :disabled="disabled"
+            placeholder="000.000.000-00"
+          />
         </a-form-item>
 
         <a-form-item
@@ -135,6 +172,7 @@ const onFinish = async () => {
           <a-date-picker
             v-model:value="formState.bornAt"
             :disabled-date="disabledDate"
+            :disabled="disabled"
             placeholder="Data de nascimento"
             format="DD/MM/YYYY"
           />
@@ -156,7 +194,11 @@ const onFinish = async () => {
             },
           ]"
         >
-          <a-input v-model:value="formState.phone" placegolder="Telefone" />
+          <a-input
+            v-model:value="formState.phone"
+            :disabled="disabled"
+            placegolder="Telefone"
+          />
         </a-form-item>
 
         <a-form-item
@@ -169,7 +211,11 @@ const onFinish = async () => {
             },
           ]"
         >
-          <a-select v-model:value="formState.role" placeholder="Role">
+          <a-select
+            v-model:value="formState.role"
+            :disabled="disabled"
+            placeholder="Role"
+          >
             <a-select-option value="CLIENT">Cliente</a-select-option>
             <a-select-option value="ADMIN">Administrador</a-select-option>
           </a-select>
@@ -179,7 +225,11 @@ const onFinish = async () => {
       <h4>Endereço:</h4>
       <div class="form-group-3">
         <a-form-item label="Rua" name="street">
-          <a-input v-model:value="formState.street" placegolder="Rua" />
+          <a-input
+            v-model:value="formState.street"
+            :disabled="disabled"
+            placegolder="Rua"
+          />
         </a-form-item>
 
         <a-form-item
@@ -192,12 +242,17 @@ const onFinish = async () => {
             },
           ]"
         >
-          <a-input v-model:value="formState.number" placegolder="Nº" />
+          <a-input
+            v-model:value="formState.number"
+            :disabled="disabled"
+            placegolder="Nº"
+          />
         </a-form-item>
 
         <a-form-item label="Bairro" name="neighborhood">
           <a-input
             v-model:value="formState.neighborhood"
+            :disabled="disabled"
             placegolder="Bairro"
           />
         </a-form-item>
@@ -214,7 +269,11 @@ const onFinish = async () => {
             },
           ]"
         >
-          <a-input v-model:value="formState.city" placegolder="Cidade" />
+          <a-input
+            v-model:value="formState.city"
+            :disabled="disabled"
+            placegolder="Cidade"
+          />
         </a-form-item>
 
         <a-form-item
@@ -227,7 +286,11 @@ const onFinish = async () => {
             },
           ]"
         >
-          <a-input v-model:value="formState.state" placegolder="Estado" />
+          <a-input
+            v-model:value="formState.state"
+            :disabled="disabled"
+            placegolder="Estado"
+          />
         </a-form-item>
 
         <a-form-item
@@ -240,11 +303,16 @@ const onFinish = async () => {
             },
           ]"
         >
-          <a-input v-model:value="formState.country" placegolder="País" />
+          <a-input
+            v-model:value="formState.country"
+            :disabled="disabled"
+            placegolder="País"
+          />
         </a-form-item>
       </div>
 
       <a-form-item
+        v-if="!insert"
         label="Senha"
         name="password"
         :rules="[
@@ -254,12 +322,18 @@ const onFinish = async () => {
       >
         <a-input-password
           v-model:value="formState.password"
+          :disabled="disabled"
           placeholder="Senha"
         />
       </a-form-item>
 
       <a-form-item class="btn">
-        <a-button type="primary" html-type="submit" class="primary-button">
+        <a-button
+          :loading="loading"
+          type="primary"
+          html-type="submit"
+          class="primary-button"
+        >
           <span v-if="insert">SALVAR</span>
           <span v-else>CADASTRAR</span>
         </a-button>

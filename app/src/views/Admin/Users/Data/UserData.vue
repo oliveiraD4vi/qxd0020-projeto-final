@@ -51,7 +51,12 @@ const getData = async () => {
       <a-switch v-model:checked="insert" />
     </div>
     <div class="data-container">
-      <UserForm v-if="!id || insert" :data="data" :insert="insert" />
+      <UserForm
+        v-if="!id || insert"
+        :key="insert"
+        :data="data"
+        :insert="insert"
+      />
       <div v-else-if="data" class="card">
         <div className="info">
           <span>
@@ -70,13 +75,13 @@ const getData = async () => {
             Role:
             <p>{{ data.role }}</p>
           </span>
-        </div>
-
-        <div className="info">
           <span>
             CPF:
             <p>{{ data.cpf }}</p>
           </span>
+        </div>
+
+        <div className="info">
           <span>
             Nascimento:
             <p>{{ moment(data.bornAt).format("DD/MM/YYYY") }}</p>
@@ -85,9 +90,6 @@ const getData = async () => {
             Telefone:
             <p>{{ data.phone }}</p>
           </span>
-        </div>
-
-        <div className="info">
           <span v-if="data.street">
             Rua:
             <p>{{ data.street }}</p>
@@ -96,13 +98,13 @@ const getData = async () => {
             Número:
             <p>{{ data.number }}</p>
           </span>
+        </div>
+
+        <div className="info">
           <span v-if="data.neighborhood">
             Bairro:
             <p>{{ data.neighborhood }}</p>
           </span>
-        </div>
-
-        <div className="info">
           <span v-if="data.city">
             Cidade:
             <p>{{ data.city }}</p>
