@@ -1,12 +1,32 @@
 <script setup>
 import moment from "moment";
-
+import { ReservationStore } from "../../store/ReservationStore";
 import { reactive } from "vue";
+import router from "../../routes";
+
+const store = ReservationStore();
+
+const props = defineProps({
+  pickup: {
+    type: String,
+    default: "",
+  },
+  devolution: {
+    type: String,
+    default: "",
+  },
+});
 
 const formState = reactive({
-  pickup: "",
-  devolution: "",
+  pickup: props.pickup,
+  devolution: props.devolution,
 });
+
+const onFinish = async () => {
+  store.setPickupData(formState.pickup);
+  store.setDevolutionData(formState.devolution);
+  router.push("/vehicles");
+};
 
 const disabledPickupDate = (current) => {
   return current && current <= moment();

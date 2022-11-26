@@ -1,5 +1,13 @@
 @import "../../../styles/colors.scss";
 
+.date-selector-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 15px 0 50px;
+}
+
 .cars-container {
   display: grid;
   width: 90%;
