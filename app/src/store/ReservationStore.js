@@ -12,7 +12,7 @@ export const ReservationStore = defineStore("reservation", {
     setPickupData(newState) {
       this.pickupData = newState;
     },
-    setDevolutionDataData(newState) {
+    setDevolutionData(newState) {
       this.devolutionData = newState;
     },
   },

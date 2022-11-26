@@ -24,7 +24,7 @@ const formState = reactive({
 
 const onFinish = async () => {
   store.setPickupData(formState.pickup);
-  store.setDevolutionDataData(formState.devolution);
+  store.setDevolutionData(formState.devolution);
   router.push("/vehicles");
 };
 
