@@ -1,5 +1,7 @@
-<script setup></script>
+<script setup>
+import PersonalData from "./components/PersonalData/PersonalData.vue";
+</script>
 
 <template>
-  <router-view />
+  <personal-data />
 </template>
