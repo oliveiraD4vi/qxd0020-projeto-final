@@ -1,8 +1,13 @@
 <script setup>
-import moment from "moment";
 import { ReservationStore } from "../../store/ReservationStore";
 import { reactive } from "vue";
+import { useState } from "../../services/useState";
+
+import moment from "moment";
 import router from "../../routes";
+
+const [loading, setLoading] = useState(false);
+const [disabled, setDisabled] = useState(false);
 
 const store = ReservationStore();
 
@@ -23,8 +28,12 @@ const formState = reactive({
 });
 
 const onFinish = async () => {
+  setLoading(true);
+  setDisabled(true);
+
   store.setPickupData(formState.pickup);
   store.setDevolutionData(formState.devolution);
+
   router.push("/vehicles");
 };
 
@@ -57,6 +66,7 @@ const disabledDevolutionDate = (current) => {
             v-model:value="formState.pickup"
             placeholder="Data de retirada"
             :disabled-date="disabledPickupDate"
+            :disabled="disabled"
             format="DD/MM/YYYY"
           />
         </a-form-item>
@@ -69,13 +79,19 @@ const disabledDevolutionDate = (current) => {
             v-model:value="formState.devolution"
             placeholder="Data de devolução"
             :disabled-date="disabledDevolutionDate"
+            :disabled="disabled"
             format="DD/MM/YYYY"
           />
         </a-form-item>
       </div>
 
       <a-form-item class="btn">
-        <a-button type="primary" html-type="submit" class="secondary-button">
+        <a-button
+          :loading="loading"
+          type="primary"
+          html-type="submit"
+          class="secondary-button"
+        >
           CONTINUAR
         </a-button>
       </a-form-item>

@@ -3,8 +3,12 @@ import Notification from "../../../../services/notifications";
 import router from "../../../../routes";
 import moment from "moment";
 
-import { reactive, watch } from "vue";
+import { onMounted, reactive } from "vue";
 import { api } from "../../../../services/api";
+import { useState } from "../../../../services/useState";
+
+const [loading, setLoading] = useState(false);
+const [disabled, setDisabled] = useState(false);
 
 const props = defineProps({
   data: {
@@ -29,17 +33,12 @@ const updateFormState = reactive({
   status: "PERSONAL",
 });
 
-watch(
-  props,
-  (newVal) => {
-    if (newVal) {
-      console.log(newVal);
-      updateFormState.step = props.data.setp;
-      updateFormState.status = props.data.status;
-    }
-  },
-  { deep: true }
-);
+onMounted(() => {
+  if (props.data) {
+    updateFormState.step = props.data.step;
+    updateFormState.status = props.data.status;
+  }
+});
 
 const disabledPickupDate = (current) => {
   return current && current <= moment();
@@ -51,7 +50,20 @@ const disabledDevolutionDate = (current) => {
   return current && (current <= moment() || current <= formState.pickup);
 };
 
+const formCleanUp = () => {
+  formState.user_id = "";
+  formState.vehicle_id = "";
+  formState.pickup = "";
+  formState.devolution = "";
+
+  updateFormState.step = "";
+  updateFormState.status = "";
+};
+
 const onFinish = async () => {
+  setLoading(true);
+  setDisabled(true);
+
   try {
     if (props.data) {
       await api.put("/reservation", { ...updateFormState, id: props.data.id });
@@ -63,6 +75,11 @@ const onFinish = async () => {
     router.push("/admin/reservation");
   } catch (error) {
     const { data } = error.response;
+
+    setLoading(false);
+    setDisabled(false);
+    if (!props.data) formCleanUp();
+
     Notification("error", data.message);
   }
 };
@@ -88,7 +105,11 @@ const onFinish = async () => {
             },
           ]"
         >
-          <a-select v-model:value="updateFormState.status" placeholder="Status">
+          <a-select
+            v-model:value="updateFormState.status"
+            :disabled="disabled"
+            placeholder="Status"
+          >
             <a-select-option value="CREATED">Reserva criada</a-select-option>
             <a-select-option value="CONFIRMED">
               Reserva confirmada
@@ -110,7 +131,11 @@ const onFinish = async () => {
             },
           ]"
         >
-          <a-select v-model:value="updateFormState.step" placeholder="Passo">
+          <a-select
+            v-model:value="updateFormState.step"
+            :disabled="disabled"
+            placeholder="Passo"
+          >
             <a-select-option value="PERSONAL">Dados pessoais</a-select-option>
             <a-select-option value="VEHICLE">
               Confirmação do veículo
@@ -122,7 +147,12 @@ const onFinish = async () => {
       </div>
 
       <a-form-item class="btn">
-        <a-button type="primary" html-type="submit" class="primary-button">
+        <a-button
+          :loading="loading"
+          type="primary"
+          html-type="submit"
+          class="primary-button"
+        >
           SALVAR
         </a-button>
       </a-form-item>
@@ -147,7 +177,11 @@ const onFinish = async () => {
           },
         ]"
       >
-        <a-input v-model:value="formState.user_id" placegolder="Usuário" />
+        <a-input
+          v-model:value="formState.user_id"
+          :disabled="disabled"
+          placegolder="Usuário"
+        />
       </a-form-item>
 
       <h4>Veículo:</h4>
@@ -162,7 +196,11 @@ const onFinish = async () => {
           },
         ]"
       >
-        <a-input v-model:value="formState.vehicle_id" placegolder="Veículo" />
+        <a-input
+          v-model:value="formState.vehicle_id"
+          :disabled="disabled"
+          placegolder="Veículo"
+        />
       </a-form-item>
 
       <h4>Datas de retirada e devolução:</h4>
@@ -176,6 +214,7 @@ const onFinish = async () => {
             v-model:value="formState.pickup"
             placeholder="Data de retirada"
             :disabled-date="disabledPickupDate"
+            :disabled="disabled"
             format="DD/MM/YYYY"
           />
         </a-form-item>
@@ -189,13 +228,19 @@ const onFinish = async () => {
             v-model:value="formState.devolution"
             placeholder="Data de devolução"
             :disabled-date="disabledDevolutionDate"
+            :disabled="disabled"
             format="DD/MM/YYYY"
           />
         </a-form-item>
       </div>
 
       <a-form-item class="btn">
-        <a-button type="primary" html-type="submit" class="primary-button">
+        <a-button
+          :loading="loading"
+          type="primary"
+          html-type="submit"
+          class="primary-button"
+        >
           CADASTRAR
         </a-button>
       </a-form-item>

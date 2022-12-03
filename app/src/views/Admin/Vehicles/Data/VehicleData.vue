@@ -46,7 +46,12 @@ const getData = async () => {
       <a-switch v-model:checked="insert" />
     </div>
     <div class="data-container">
-      <VehicleForm v-if="!id || insert" :data="data" :insert="insert" />
+      <VehicleForm
+        v-if="!id || insert"
+        :key="insert"
+        :data="data"
+        :insert="insert"
+      />
       <div v-else-if="data" class="card">
         <div className="info">
           <span>

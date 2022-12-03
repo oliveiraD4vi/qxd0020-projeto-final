@@ -19,6 +19,7 @@ const [pagination, setPagination] = useState({});
 const [totalCount, setTotalCount] = useState();
 const [data, setData] = useState([]);
 const [loading, setLoading] = useState(false);
+const [empty, setEmpty] = useState(false);
 
 const getData = async (page, size, sort, search) => {
   setLoading(true);
@@ -34,6 +35,11 @@ const getData = async (page, size, sort, search) => {
     setLoading(false);
   } catch (error) {
     const { data } = error.response;
+
+    setData(data.reservations);
+    setTotalCount(0);
+    setLoading(false);
+    setEmpty(true);
 
     Notification("error", data.message);
   }
@@ -78,7 +84,8 @@ const columns = ref([
   <main class="main-container top-centered">
     <PageHeader title="Reservas" go-back-home />
     <TableVue
-      v-if="data && totalCount"
+      v-if="(data && totalCount) || empty"
+      :key="totalCount"
       :data="data"
       :get-data="getData"
       :pagination="pagination"

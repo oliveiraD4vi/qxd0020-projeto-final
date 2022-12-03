@@ -4,29 +4,31 @@
   background-color: $white-900;
 
   .info {
-    display: flex;
-    flex-direction: column;
+    span {
+      margin: 3px 0;
+      font-size: 12px;
+    }
   }
 
-  .info > span {
-    margin: 3px 0;
-    display: flex;
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: $grey-900;
+  .group-3 {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
   }
 
-  .info > span p {
-    margin: 0;
-    margin-left: 10px;
-    color: $text-color;
+  .check-icon {
+    color: $add-color;
+    transform: scale(1.5);
   }
-}
 
-.ant-collapse-item {
-  box-shadow: $box-shadow;
-  width: 100%;
-  border-radius: 4px;
-  background-color: $white-900;
+  .exclamation-icon {
+    color: $primary-color;
+    transform: scale(1.5);
+  }
+
+  .ant-collapse-item {
+    box-shadow: $box-shadow;
+    width: 100%;
+    border-radius: 4px;
+    background-color: $white-900;
+  }
 }

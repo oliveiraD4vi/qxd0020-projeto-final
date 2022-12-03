@@ -45,7 +45,7 @@ const getData = async () => {
 
 const getUser = async (id) => {
   try {
-    const { data } = await api.get(`/user?id=${id}`);
+    const { data } = await api.get(`/user/personal?id=${id}`);
     setUserData(data.user);
     const name = data.user.name.split(" ");
     setShowcaseName(name[0] + " " + name[name.length - 1]);
@@ -74,7 +74,12 @@ const getVehicle = async (id) => {
       <a-switch v-model:checked="insert" />
     </div>
     <div class="data-container">
-      <ReservationForm v-if="!id || insert" :data="data" :insert="insert" />
+      <ReservationForm
+        v-if="!id || insert"
+        :key="insert"
+        :data="data"
+        :insert="insert"
+      />
       <div v-else-if="data" class="content">
         <div class="card">
           <div className="info">
