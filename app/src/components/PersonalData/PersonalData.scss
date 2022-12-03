@@ -1,0 +1,74 @@
+@import "../../styles/colors.scss";
+
+.data-container {
+  width: 70%;
+}
+
+.data-container .cards-container {
+  display: grid;
+  gap: 20px;
+}
+
+.data-container .card.no-border {
+  border: none;
+}
+
+.data-container .card {
+  width: 100%;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 25% 25% 25% 25%;
+  border-radius: 4px;
+  border: 1px solid $secondary-color;
+  padding: 20px 30px;
+}
+
+.data-container .card > img {
+  border: 1px solid $grey-500;
+}
+
+.data-container .card .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.data-container .card .info > span {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-around;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $grey-900;
+}
+
+.data-container .card .info > span p {
+  margin: 0;
+  margin-left: 10px;
+  color: $text-color;
+}
+
+.form-container {
+  padding: 20px 50px;
+  border-radius: 4px;
+  border: 1px solid $secondary-color;
+  box-shadow: $box-shadow;
+  display: grid;
+  gap: 20px;
+}
+
+.editor-switch {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.editor-switch .ant-switch-checked {
+  background-color: $primary-color;
+}
+
+.ant-form-item-label > label {
+  margin: 15px;
+}
