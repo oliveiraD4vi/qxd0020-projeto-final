@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import { rolesPath } from "./services/utils";
 import { api, auth } from "./services/api";
+import { createPinia } from "pinia";
 
 import moment from "moment";
 import Notification from "./services/notifications";
@@ -64,6 +65,7 @@ router.beforeEach(async (to) => {
 });
 
 app.use(router);
+app.use(createPinia());
 app.use(Antd);
 
 app.mount("#app");

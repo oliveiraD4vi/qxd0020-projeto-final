@@ -45,7 +45,7 @@ const getData = async () => {
 
 const getUser = async (id) => {
   try {
-    const { data } = await api.get(`/user?id=${id}`);
+    const { data } = await api.get(`/user/personal?id=${id}`);
     setUserData(data.user);
     const name = data.user.name.split(" ");
     setShowcaseName(name[0] + " " + name[name.length - 1]);

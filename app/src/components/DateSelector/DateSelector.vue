@@ -1,16 +1,41 @@
 <script setup>
-import moment from "moment";
-
+import { ReservationStore } from "../../store/ReservationStore";
 import { reactive } from "vue";
 import { useState } from "../../services/useState";
+
+import moment from "moment";
+import router from "../../routes";
 
 const [loading, setLoading] = useState(false);
 const [disabled, setDisabled] = useState(false);
 
-const formState = reactive({
-  pickup: "",
-  devolution: "",
+const store = ReservationStore();
+
+const props = defineProps({
+  pickup: {
+    type: String,
+    default: "",
+  },
+  devolution: {
+    type: String,
+    default: "",
+  },
 });
+
+const formState = reactive({
+  pickup: props.pickup,
+  devolution: props.devolution,
+});
+
+const onFinish = async () => {
+  setLoading(true);
+  setDisabled(true);
+
+  store.setPickupData(formState.pickup);
+  store.setDevolutionData(formState.devolution);
+
+  router.push("/vehicles");
+};
 
 const disabledPickupDate = (current) => {
   return current && current <= moment();
@@ -20,13 +45,6 @@ const disabledDevolutionDate = (current) => {
   if (formState.pickup === "") return true;
 
   return current && (current <= moment() || current <= formState.pickup);
-};
-
-const onFinish = (values) => {
-  setLoading(true);
-  setDisabled(true);
-
-  console.log(values);
 };
 </script>
 

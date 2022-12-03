@@ -30,13 +30,13 @@ const getData = async (page, size, sort, search) => {
     );
 
     const { data } = response;
-    setData(data.cars);
+    setData(data.vehicles);
     setTotalCount(data.totalCount);
     setLoading(false);
   } catch (error) {
     const { data } = error.response;
 
-    setData(data.cars);
+    setData(data.vehicles);
     setTotalCount(0);
     setLoading(false);
     setEmpty(true);

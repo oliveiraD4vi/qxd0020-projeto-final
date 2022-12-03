@@ -2,6 +2,7 @@
 import HeaderVue from "../../../components/Header/Header.vue";
 import FooterVue from "../../../components/Footer/Footer.vue";
 import Notification from "../../../services/notifications";
+import Loader from "../../../components/Loader/Loader.vue";
 
 import { onMounted, ref } from "vue";
 import { useState } from "../../../services/useState";
@@ -12,7 +13,6 @@ import { Empty } from "ant-design-vue";
 import image1 from "../../../assets/car-example-green.png";
 import image2 from "../../../assets/car-example-grey.png";
 import image3 from "../../../assets/car-example-white.png";
-import Loader from "../../../components/Loader/Loader.vue";
 
 const images = [image1, image2, image3];
 
@@ -34,12 +34,12 @@ const getData = async (page, size, sort, search) => {
     );
 
     const { data } = response;
-    setData(data.cars);
+    setData(data.vehicles);
     setTotalCount(data.totalCount);
   } catch (error) {
     const { data } = error.response;
 
-    setData(data.cars);
+    setData(data.vehicles);
     setTotalCount(0);
 
     Notification("error", data.message);
@@ -75,7 +75,10 @@ const onChangePagination = (page, size) => {
 <template>
   <HeaderVue />
   <main class="main-container">
-    <div v-if="data && pagination" class="cars-container">
+    <div
+      v-if="data && pagination"
+      class="cars-container"
+    >
       <div class="search-container">
         <a-input-search
           class="search-input"

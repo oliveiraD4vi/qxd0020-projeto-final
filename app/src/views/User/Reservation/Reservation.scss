@@ -29,9 +29,11 @@
   }
 }
 
-.card {
-  width: 60%;
+.container {
+  width: 40%;
   margin: 10px;
+  display: grid;
+  gap: 5px;
 }
 
 .primary-button {

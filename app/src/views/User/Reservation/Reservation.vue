@@ -29,8 +29,8 @@ onMounted(async () => {
     <div v-if="reservationList == null" id="message">
       <h1><span>O</span>lá!</h1>
       <p>
-        Vamos começar uma reserva? Primeiro, você precisa escolher o carro que
-        você deseja alugar.
+        Vamos começar uma reserva? Primeiro, você precisa escolher as datas e o
+        carro que você deseja alugar.
       </p>
       <p>
         Para isso, veja nossa lista de
@@ -47,7 +47,7 @@ onMounted(async () => {
       <router-link to="/vehicles"> COMEÇAR <ArrowRightOutlined /> </router-link>
     </a-button>
 
-    <div v-if="reservationList != null" class="card">
+    <div v-if="reservationList != null" class="container">
       <div v-for="reservation in reservationList" v-bind:key="reservation">
         <Collapse
           :id="reservation.vehicle_id"

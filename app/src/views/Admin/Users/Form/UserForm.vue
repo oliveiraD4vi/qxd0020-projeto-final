@@ -3,7 +3,7 @@ import Notification from "../../../../services/notifications";
 import router from "../../../../routes";
 import moment from "moment";
 
-import { validateCpf } from "../../../../services/utils";
+// import { validateCpf } from "../../../../services/utils";
 import { onMounted, reactive } from "vue";
 import { api } from "../../../../services/api";
 import { useState } from "../../../../services/useState";
@@ -93,7 +93,7 @@ const onFinish = async () => {
 
     setLoading(false);
     setDisabled(false);
-    formCleanUp();
+    if (!props.data) formCleanUp();
 
     Notification("error", data.message);
   }
@@ -152,7 +152,7 @@ const onFinish = async () => {
               pattern: '^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}',
               message: 'Por favor, seu CPF deve seguir o padrão',
             },
-            { validator: validateCpf },
+            // { validator: validateCpf },
           ]"
         >
           <a-input
@@ -163,6 +163,7 @@ const onFinish = async () => {
         </a-form-item>
 
         <a-form-item
+          v-if="!data"
           label="Data de Nascimento"
           name="bornAt"
           :rules="[
@@ -177,6 +178,13 @@ const onFinish = async () => {
             format="DD/MM/YYYY"
           />
         </a-form-item>
+
+        <div v-else className="info">
+          <span>
+            Nascimento:
+            <p>{{ moment(data.bornAt).format("DD/MM/YYYY") }}</p>
+          </span>
+        </div>
       </div>
 
       <div class="form-group-2">

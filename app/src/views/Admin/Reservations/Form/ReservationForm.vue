@@ -78,7 +78,7 @@ const onFinish = async () => {
 
     setLoading(false);
     setDisabled(false);
-    formCleanUp();
+    if (!props.data) formCleanUp();
 
     Notification("error", data.message);
   }
