@@ -75,10 +75,7 @@ const onChangePagination = (page, size) => {
 <template>
   <HeaderVue />
   <main class="main-container">
-    <div
-      v-if="data && pagination"
-      class="cars-container"
-    >
+    <div v-if="data && pagination" class="cars-container">
       <div class="search-container">
         <a-input-search
           class="search-input"
