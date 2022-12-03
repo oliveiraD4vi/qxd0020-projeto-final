@@ -9,13 +9,13 @@ import { api, auth } from "../../../services/api";
 import { useState } from "../../../services/useState";
 import { ArrowRightOutlined } from "@ant-design/icons-vue";
 
-const [reservationList, setReservation] = useState();
+const [reservationList, setReservationList] = useState();
 
 onMounted(async () => {
   try {
     const response = await api.get(`/reservation/user?id=${auth.getId()}`);
     const { data } = response;
-    setReservation(data.reservations);
+    setReservationList(data.reservations);
   } catch (error) {
     const { data } = error.response;
     Notification("info", data.message);
