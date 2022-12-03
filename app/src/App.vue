@@ -1,7 +1,5 @@
-<script setup>
-import ConfirmVehicle from "./components/ConfirmVehicle/ConfirmVehicle.vue";
-</script>
+<script setup></script>
 
 <template>
-  <ConfirmVehicle />
+  <router-view />
 </template>
