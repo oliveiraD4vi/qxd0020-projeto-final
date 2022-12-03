@@ -2,7 +2,10 @@
 import { ref, onMounted, reactive } from "vue";
 import { api } from "../../../../services/api";
 import { useState } from "../../../../services/useState";
-import { CheckCircleOutlined, ExclamationCircleOutlined } from "@ant-design/icons-vue";
+import {
+  CheckCircleOutlined,
+  ExclamationCircleOutlined,
+} from "@ant-design/icons-vue";
 
 import moment from "moment";
 import Notification from "../../../../services/notifications";
