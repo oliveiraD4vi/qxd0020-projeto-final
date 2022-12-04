@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/require-default-prop -->
 <script setup>
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive } from "vue";
 
-import PageHeader from '../../PageHeader/PageHeader.vue';
+import PageHeader from "../../PageHeader/PageHeader.vue";
 
 const props = defineProps({
   data: {

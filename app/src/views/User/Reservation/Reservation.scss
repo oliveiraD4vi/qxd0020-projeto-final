@@ -36,6 +36,9 @@
   gap: 5px;
 }
 
-.primary-button {
-  margin-top: 25px;
+.width-100 {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  gap: 25px;
 }

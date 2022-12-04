@@ -43,7 +43,10 @@ const logout = () => {
         <a-button
           type="text"
           class="link-button"
-          v-bind:class="{ checked: pathname === '/reservation' }"
+          v-bind:class="{
+            checked:
+              pathname === '/reservation' || pathname === '/reservation/form',
+          }"
         >
           <router-link to="/reservation"> RESERVAS </router-link>
         </a-button>
