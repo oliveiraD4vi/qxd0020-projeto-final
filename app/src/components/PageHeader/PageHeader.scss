@@ -1,0 +1,32 @@
+@import "../../styles/colors.scss";
+
+.page-header-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  .page-header-title {
+    display: flex;
+    align-items: center;
+
+    #title {
+      margin: 0 !important;
+      margin-left: 15px !important;
+      color: $secondary-color;
+    }
+
+    .icon-back {
+      border: none;
+      box-shadow: none;
+      font-size: 18px;
+      background-color: $white-900;
+      color: $secondary-color;
+
+      &:hover {
+        background-color: $grey-300;
+      }
+    }
+  }
+}
