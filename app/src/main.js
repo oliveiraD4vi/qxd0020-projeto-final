@@ -60,6 +60,9 @@ router.beforeEach(async (to) => {
   } else {
     let privateRoutes = getPathUser("ADMIN");
 
+    privateRoutes.push("/reservation");
+    privateRoutes.push("/reservation/form");
+
     if (privateRoutes.includes(path)) return { path: "/login" };
   }
 });

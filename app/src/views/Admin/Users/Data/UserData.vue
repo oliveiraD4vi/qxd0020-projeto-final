@@ -46,7 +46,7 @@ const getData = async () => {
   <main class="main-container top-centered">
     <PageHeader v-if="!data && !insert" title="Inserir usuário" />
     <PageHeader v-else title="Dados" />
-    <div v-if="data" className="editor-switch">
+    <div v-if="data" class="editor-switch">
       <span>EDIÇÃO: </span>
       <a-switch v-model:checked="insert" />
     </div>
@@ -58,7 +58,7 @@ const getData = async () => {
         :insert="insert"
       />
       <div v-else-if="data" class="card">
-        <div className="info">
+        <div class="info">
           <span>
             ID:
             <p>{{ data.id }}</p>
@@ -81,7 +81,7 @@ const getData = async () => {
           </span>
         </div>
 
-        <div className="info">
+        <div class="info">
           <span>
             Nascimento:
             <p>{{ moment(data.bornAt).format("DD/MM/YYYY") }}</p>
@@ -100,7 +100,7 @@ const getData = async () => {
           </span>
         </div>
 
-        <div className="info">
+        <div class="info">
           <span v-if="data.neighborhood">
             Bairro:
             <p>{{ data.neighborhood }}</p>

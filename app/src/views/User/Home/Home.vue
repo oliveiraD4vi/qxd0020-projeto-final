@@ -43,10 +43,10 @@ onMounted(async () => {
         <DateSelector />
       </div>
 
-      <div class="carrousel-container">
+      <div v-if="vehicleList" class="carrousel-container">
         <h1 class="title">mais<span> R</span>entáveis</h1>
 
-        <a-carousel v-if="vehicleList != null" autoplay>
+        <a-carousel autoplay>
           <div
             v-for="vehicle in vehicleList"
             :key="vehicle.message"
@@ -59,7 +59,6 @@ onMounted(async () => {
               />
             </div>
             <h3>{{ vehicle.brand }} {{ vehicle.model }}</h3>
-            <span>2020</span>
             <a-button type="primary" class="primary-button small">
               OFERTA <ArrowRightOutlined />
             </a-button>

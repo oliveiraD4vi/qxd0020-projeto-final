@@ -1,0 +1,51 @@
+@import "../../../styles/colors.scss";
+
+.form-content {
+  width: 60%;
+  display: grid;
+  place-items: center;
+  gap: 20px;
+
+  .steps-container {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 16% 26% 16% 26% 16%;
+
+    .step {
+      display: grid;
+      place-items: center;
+
+      .step-border {
+        width: 60px;
+        height: 60px;
+        border: 3px solid $primary-color;
+        border-radius: 50%;
+        background-color: $white-900;
+        display: grid;
+        place-items: center;
+
+        .circle {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
+
+      &.current {
+        .step-border > .circle {
+          background-color: $primary-color;
+        }
+      }
+    }
+
+    .step-tail {
+      position: relative;
+      bottom: 50%;
+      border-bottom: 2px solid $grey-300;
+
+      &.current {
+        border-color: $primary-color;
+      }
+    }
+  }
+}

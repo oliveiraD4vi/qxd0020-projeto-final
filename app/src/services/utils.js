@@ -16,6 +16,10 @@ export const rolesPath = [
     role: ["CLIENT"],
   },
   {
+    path: "/reservation/form",
+    role: ["CLIENT"],
+  },
+  {
     path: "/admin/home",
     role: ["ADMIN"],
   },

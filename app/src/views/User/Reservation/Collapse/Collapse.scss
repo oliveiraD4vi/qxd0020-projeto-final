@@ -10,6 +10,10 @@
     }
   }
 
+  .cancel-button {
+    color: $cancel-color;
+  }
+
   .group-3 {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
