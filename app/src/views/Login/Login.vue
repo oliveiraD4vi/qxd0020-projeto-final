@@ -34,6 +34,10 @@ const onFinish = async (values) => {
     router.push(auth.getRole() === "CLIENT" ? "/" : "/admin/home");
   } catch (error) {
     const { data } = error.response;
+
+    setLoading(false);
+    setDisabled(false);
+
     Notification("error", data.message);
   }
 };

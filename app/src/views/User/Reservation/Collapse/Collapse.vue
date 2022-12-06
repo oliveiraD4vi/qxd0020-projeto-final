@@ -1,11 +1,16 @@
 <script setup>
-import { ref, onMounted, reactive } from "vue";
+import { ref, onMounted, reactive, createVNode } from "vue";
 import { api } from "../../../../services/api";
 import { useState } from "../../../../services/useState";
-import { CheckCircleOutlined, ExclamationCircleOutlined } from "@ant-design/icons-vue";
+import { Modal } from "ant-design-vue";
+import {
+  CheckCircleOutlined,
+  ExclamationCircleOutlined,
+} from "@ant-design/icons-vue";
 
 import moment from "moment";
 import Notification from "../../../../services/notifications";
+import router from "../../../../routes";
 
 const activeKey = ref(["1"]);
 const expandIconPosition = ref("left");
@@ -37,6 +42,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  totalValue: {
+    type: Number,
+    default: null,
+  },
 });
 
 const state = reactive({ car: "" });
@@ -52,6 +61,28 @@ onMounted(async () => {
     Notification("error", data.message);
   }
 });
+
+const onDelete = async () => {
+  try {
+    const { data } = await api.delete(`/reservation?id=${props.idReservation}`);
+    Notification("success", data.message);
+    router.go();
+  } catch ({ response }) {
+    Notification("error", response.data.message);
+  }
+};
+
+const onConfirmDelete = () => {
+  Modal.confirm({
+    title: "Tem certeza que deseja deletar essa reserva?",
+    icon: createVNode(ExclamationCircleOutlined),
+    centered: true,
+    onOk() {
+      return onDelete();
+    },
+    onCancel() {},
+  });
+};
 </script>
 
 <template>
@@ -73,6 +104,10 @@ onMounted(async () => {
           <span>
             Diária:
             <p>R$ {{ vehicle.value }}</p>
+          </span>
+          <span>
+            TOTAL:
+            <p>R$ {{ totalValue }}</p>
           </span>
         </div>
         <div class="info">
@@ -106,6 +141,10 @@ onMounted(async () => {
           </span>
         </div>
       </div>
+
+      <a-button type="text" class="cancel-button" @click="onConfirmDelete">
+        CANCELAR RESERVA
+      </a-button>
     </a-collapse-panel>
   </a-collapse>
 </template>

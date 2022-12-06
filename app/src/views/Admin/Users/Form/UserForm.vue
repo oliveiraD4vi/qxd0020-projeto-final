@@ -31,6 +31,7 @@ const formState = reactive({
   role: "CLIENT",
   bornAt: "",
   street: "",
+  city: "",
   state: "",
   country: "",
   neighborhood: "",
@@ -43,7 +44,6 @@ onMounted(() => {
     formState.phone = props.data.phone;
     formState.cpf = props.data.cpf;
     formState.email = props.data.email;
-    formState.password = props.data.password;
     formState.role = props.data.role;
     formState.bornAt = props.data.bornAt;
     formState.street = props.data.street;
@@ -179,7 +179,7 @@ const onFinish = async () => {
           />
         </a-form-item>
 
-        <div v-else className="info">
+        <div v-else class="info">
           <span>
             Nascimento:
             <p>{{ moment(data.bornAt).format("DD/MM/YYYY") }}</p>

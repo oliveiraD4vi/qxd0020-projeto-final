@@ -117,8 +117,8 @@ const onTableChange = () => {
 </script>
 
 <template>
-  <div className="table-container">
-    <div className="filter search-container">
+  <div class="table-container">
+    <div class="filter search-container">
       <a-input-search
         class="search-input"
         placeholder="Pesquisar..."
