@@ -1,19 +1,28 @@
 <!-- eslint-disable vue/require-default-prop -->
 <script setup>
 import { onMounted, reactive } from "vue";
+import { useState } from "../../../services/useState";
+import { api } from "../../../services/api";
 
+import Notification from "../../../services/notifications";
 import PageHeader from "../../PageHeader/PageHeader.vue";
+
+const [loading, setLoading] = useState(false);
+const [disabled, setDisabled] = useState(false);
 
 const props = defineProps({
   data: {
     type: Object,
     default: null,
   },
-  disabled: {
-    type: Boolean,
-    default: true,
+  onDelete: {
+    type: Function,
+    default: null,
   },
-  onFinish: Function,
+  next: {
+    type: Function,
+    default: null,
+  },
 });
 
 const formState = reactive({
@@ -37,6 +46,27 @@ onMounted(() => {
     formState.neighborhood = props.data.neighborhood;
   }
 });
+
+const onFinish = async () => {
+  setLoading(true);
+  setDisabled(true);
+
+  try {
+    const { data } = await api.put("/user", {
+      ...formState,
+      id: props.data.id,
+    });
+    Notification("success", data.message);
+    props.next();
+  } catch (error) {
+    const { data } = error.response;
+
+    setLoading(false);
+    setDisabled(false);
+
+    Notification("error", data.message);
+  }
+};
 </script>
 
 <template>
@@ -48,11 +78,11 @@ onMounted(() => {
       class="data-form"
       @finish="onFinish"
     >
-      <h4>Informações pessoais:</h4>
       <a-form-item
         label="Phone"
         name="phone"
         :rules="[
+          { required: true, message: 'Preencha este campo' },
           {
             min: 10,
             message: 'Esse não é um número válido',
@@ -72,7 +102,11 @@ onMounted(() => {
 
       <h4>Endereço:</h4>
       <div class="form-group-3">
-        <a-form-item label="Rua" name="street">
+        <a-form-item
+          label="Rua"
+          name="street"
+          :rules="[{ required: true, message: 'Preencha este campo' }]"
+        >
           <a-input
             v-model:value="formState.street"
             :disabled="disabled"
@@ -84,6 +118,7 @@ onMounted(() => {
           label="Número"
           name="number"
           :rules="[
+            { required: true, message: 'Preencha este campo' },
             {
               pattern: /^[\d]+$/,
               message: 'Este campo deve ter apenas números',
@@ -97,7 +132,11 @@ onMounted(() => {
           />
         </a-form-item>
 
-        <a-form-item label="Bairro" name="neighborhood">
+        <a-form-item
+          label="Bairro"
+          name="neighborhood"
+          :rules="[{ required: true, message: 'Preencha este campo' }]"
+        >
           <a-input
             v-model:value="formState.neighborhood"
             :disabled="disabled"
@@ -111,6 +150,7 @@ onMounted(() => {
           label="Cidade"
           name="city"
           :rules="[
+            { required: true, message: 'Preencha este campo' },
             {
               pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/,
               message: 'Este campo deve conter apenas palavras',
@@ -128,6 +168,7 @@ onMounted(() => {
           label="Estado"
           name="state"
           :rules="[
+            { required: true, message: 'Preencha este campo' },
             {
               pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/,
               message: 'Este campo deve conter apenas palavras',
@@ -145,6 +186,7 @@ onMounted(() => {
           label="País"
           name="country"
           :rules="[
+            { required: true, message: 'Preencha este campo' },
             {
               pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/,
               message: 'Este campo deve conter apenas palavras',
@@ -158,6 +200,22 @@ onMounted(() => {
           />
         </a-form-item>
       </div>
+
+      <a-form-item class="btn">
+        <div class="form-button-container">
+          <a-button type="text" :loading="loading" @click="onDelete">
+            Cancelar
+          </a-button>
+          <a-button
+            html-type="submit"
+            type="primary"
+            :loading="loading"
+            class="primary-button"
+          >
+            PRÓXIMO
+          </a-button>
+        </div>
+      </a-form-item>
     </a-form>
   </div>
 </template>

@@ -5,6 +5,7 @@ export const ReservationStore = defineStore("reservation", {
     return {
       pickupData: "",
       devolutionData: "",
+      vehicle_id: "",
     };
   },
 
@@ -14,6 +15,9 @@ export const ReservationStore = defineStore("reservation", {
     },
     setDevolutionData(newState) {
       this.devolutionData = newState;
+    },
+    setVehicle(newState) {
+      this.vehicle_id = newState;
     },
   },
 });

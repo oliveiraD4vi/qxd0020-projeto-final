@@ -8,11 +8,13 @@ import { onMounted, ref } from "vue";
 import { useState } from "../../../services/useState";
 import { api } from "../../../services/api";
 import { ArrowRightOutlined } from "@ant-design/icons-vue";
+import { ReservationStore } from "../../../store/ReservationStore.js";
 import { Empty } from "ant-design-vue";
 
 import image1 from "../../../assets/car-example-green.png";
 import image2 from "../../../assets/car-example-grey.png";
 import image3 from "../../../assets/car-example-white.png";
+import router from "../../../routes";
 
 const images = [image1, image2, image3];
 
@@ -22,10 +24,17 @@ const [totalCount, setTotalCount] = useState(0);
 
 const pageSizeOptions = ref(["5", "10", "15", "20", "30"]);
 
+const store = ReservationStore();
+
 onMounted(async () => {
   setPagination({ page: 1, size: 5, sort: "ASC", search: "" });
   getData(1, 5, "ASC", "");
 });
+
+const onPickVehicle = (id) => {
+  store.setVehicle(id);
+  router.push("/reservation");
+};
 
 const getData = async (page, size, sort, search) => {
   try {
@@ -127,7 +136,11 @@ const onChangePagination = (page, size) => {
               />
             </div>
 
-            <a-button type="primary" class="offer-button">
+            <a-button
+              type="primary"
+              class="offer-button"
+              @click="onPickVehicle(item.id)"
+            >
               <span id="value">R$ {{ item.value }},00</span>
               <span id="text"> OFERTA <ArrowRightOutlined /> </span>
             </a-button>

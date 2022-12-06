@@ -1,4 +1,4 @@
-@import "../../styles/colors.scss";
+@import "../../../styles/colors.scss";
 
 .confirmation-info {
   display: flex;
@@ -6,11 +6,28 @@
   justify-content: center;
   align-items: center;
 
+  .data-container {
+    padding: 10px 20px;
+  }
+
+  .date-form {
+    width: 100%;
+    margin: 15px 0;
+  }
+
+  .date-previous {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
   .car-container {
+    width: 100%;
     color: $text-color;
     background-color: $grey-300;
-    padding: 25px;
+    padding: 15px;
     display: grid;
+    place-items: center;
     gap: 10px;
     text-align: center;
 
@@ -21,25 +38,24 @@
     }
 
     .image-container > img {
-      width: 80%;
+      width: 30%;
     }
   }
 
-  .offer-button {
+  .offer {
+    width: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    border: none;
-    font-size: 24px;
-    padding: 25px 30px;
+    padding: 5px 15px;
     color: $text-color;
     background-color: $primary-color;
     transition: all 300ms ease-in-out;
 
     #value {
       display: none;
-      font-size: 24px;
+      font-size: 32px;
       font-weight: bold;
       margin-right: 12px;
       display: inline;

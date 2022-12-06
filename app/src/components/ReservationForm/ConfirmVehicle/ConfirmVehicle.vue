@@ -1,46 +1,87 @@
 <!-- eslint-disable vue/require-default-prop -->
 <script setup>
 import { onMounted, reactive } from "vue";
+import { useState } from "../../../services/useState";
+import { api } from "../../../services/api";
 
 import moment from "moment";
-import PageHeader from "../../components/PageHeader/PageHeader.vue";
-import image1 from "../../assets/car-example-green.png";
-import image2 from "../../assets/car-example-grey.png";
-import image3 from "../../assets/car-example-white.png";
+import PageHeader from "../../PageHeader/PageHeader.vue";
+import image1 from "../../../assets/car-example-green.png";
+import image2 from "../../../assets/car-example-grey.png";
+import image3 from "../../../assets/car-example-white.png";
+import Notification from "../../../services/notifications";
 
 const images = [image1, image2, image3];
+
+const [loading, setLoading] = useState(false);
+const [disabled, setDisabled] = useState(false);
+const [date, setDate] = useState();
 
 const props = defineProps({
   data: {
     type: Object,
     default: null,
   },
-  pickup: {
-    type: String,
-    default: "",
+  onDelete: {
+    type: Function,
+    default: null,
   },
-  devolution: {
-    type: String,
-    default: "",
+  next: {
+    type: Function,
+    default: null,
   },
-  disabled: {
-    type: Boolean,
-    default: false,
+  previous: {
+    type: Function,
+    default: null,
   },
-  onFinish: Function,
+  reservationId: {
+    type: Number,
+    default: null,
+  },
 });
 
 const formState = reactive({
-  pickup: props.pickup,
-  devolution: props.devolution,
+  pickup: "",
+  devolution: "",
 });
 
-onMounted(() => {
-  if (props.data) {
-    formState.pickup = props.data.pickup;
-    formState.devolution = props.data.devolution;
+onMounted(async () => {
+  if (props.reservationId) {
+    try {
+      const { data } = await api.get(`/reservation?id=${props.reservationId}`);
+
+      setDate({
+        pickup: data.reservation.pickup,
+        devolution: data.reservation.devolution,
+      });
+    } catch ({ response }) {
+      Notification("info", response.data.message);
+    }
   }
 });
+
+const onFinish = async () => {
+  setLoading(true);
+  setDisabled(true);
+
+  try {
+    const { data } = await api.put("/reservation/confirm", {
+      ...formState,
+      vehicleId: props.data.id,
+      reservationId: props.reservationId,
+    });
+
+    Notification("success", data.message);
+    props.next();
+  } catch (error) {
+    const { data } = error.response;
+
+    setLoading(false);
+    setDisabled(false);
+
+    Notification("error", data.message);
+  }
+};
 
 const disabledPickupDate = (current) => {
   return current && current <= moment();
@@ -55,14 +96,28 @@ const disabledDevolutionDate = (current) => {
 
 <template>
   <div class="confirmation-info">
-    <PageHeader title="Confirmar Veículo" />
-    <div class="car-container">
+    <PageHeader title="Confirmar Veículo" :go-back-home="previous" />
+    <div v-if="data" class="car-container">
+      <h2>{{ data.brand }} {{ data.model }}</h2>
+
       <div class="image-container">
         <img v-bind:src="images[Math.floor(Math.random() * 3)]" alt="car" />
       </div>
-      <a-button type="primary" class="offer-button">
-        <span id="value">R$ 400,00</span>
-      </a-button>
+
+      <div class="offer">
+        <span id="value">R$ {{ data.value }},00</span>
+      </div>
+    </div>
+
+    <div class="data-container">
+      <div v-if="date && date.pickup && date.devolution" class="date-previous">
+        <div class="info">
+          <span>Anterior: {{ $filters.formatDate(date.pickup) }}</span>
+        </div>
+        <div class="info">
+          <span>Anterior: {{ $filters.formatDate(date.devolution) }}</span>
+        </div>
+      </div>
     </div>
 
     <a-form
@@ -71,30 +126,48 @@ const disabledDevolutionDate = (current) => {
       class="date-form"
       @finish="onFinish"
     >
-      <a-form-item
-        name="pickup"
-        :rules="[{ required: true, message: 'Insira a data de retirada' }]"
-      >
-        <a-date-picker
-          v-model:value="formState.pickup"
-          placeholder="Data de retirada"
-          :disabled-date="disabledPickupDate"
-          :disabled="disabled"
-          format="DD/MM/YYYY"
-        />
-      </a-form-item>
+      <div class="form-group-2">
+        <a-form-item
+          name="pickup"
+          :rules="[{ required: true, message: 'Insira a data de retirada' }]"
+        >
+          <a-date-picker
+            v-model:value="formState.pickup"
+            placeholder="Data de retirada"
+            :disabled-date="disabledPickupDate"
+            :disabled="disabled"
+            format="DD/MM/YYYY"
+          />
+        </a-form-item>
 
-      <a-form-item
-        name="devolution"
-        :rules="[{ required: true, message: 'Insira a data de devolução' }]"
-      >
-        <a-date-picker
-          v-model:value="formState.devolution"
-          placeholder="Data de devolução"
-          :disabled-date="disabledDevolutionDate"
-          :disabled="disabled"
-          format="DD/MM/YYYY"
-        />
+        <a-form-item
+          name="devolution"
+          :rules="[{ required: true, message: 'Insira a data de devolução' }]"
+        >
+          <a-date-picker
+            v-model:value="formState.devolution"
+            placeholder="Data de devolução"
+            :disabled-date="disabledDevolutionDate"
+            :disabled="disabled"
+            format="DD/MM/YYYY"
+          />
+        </a-form-item>
+      </div>
+
+      <a-form-item class="btn">
+        <div class="form-button-container">
+          <a-button type="text" :loading="loading" @click="onDelete">
+            Cancelar
+          </a-button>
+          <a-button
+            html-type="submit"
+            type="primary"
+            :loading="loading"
+            class="primary-button"
+          >
+            PRÓXIMO
+          </a-button>
+        </div>
       </a-form-item>
     </a-form>
   </div>

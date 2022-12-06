@@ -3,16 +3,23 @@ import HeaderVue from "../../../components/Header/Header.vue";
 import FooterVue from "../../../components/Footer/Footer.vue";
 import Notification from "../../../services/notifications";
 import Collapse from "./Collapse/Collapse.vue";
-
-import { onMounted } from "vue";
-import { api, auth } from "../../../services/api";
-import { useState } from "../../../services/useState";
-import { ArrowRightOutlined } from "@ant-design/icons-vue";
 import router from "../../../routes";
 import Loader from "../../../components/Loader/Loader.vue";
 
+import { onMounted, createVNode } from "vue";
+import { api, auth } from "../../../services/api";
+import { useState } from "../../../services/useState";
+import {
+  ArrowRightOutlined,
+  ExclamationCircleOutlined,
+} from "@ant-design/icons-vue";
+import { ReservationStore } from "../../../store/ReservationStore.js";
+import { Modal } from "ant-design-vue";
+
 const [reservationList, setReservationList] = useState();
 const [loading, setLoading] = useState(true);
+
+const store = ReservationStore();
 
 const getReservationList = async () => {
   try {
@@ -27,12 +34,51 @@ const getReservationList = async () => {
   }
 };
 
+const startReservation = async () => {
+  try {
+    if (store.vehicle_id) {
+      const { data } = await api.post("/reservation/form", {
+        user_id: auth.getId(),
+        vehicle_id: store.vehicle_id,
+      });
+
+      Notification("info", data.message);
+      router.push("/reservation/form");
+    } else {
+      Notification("info", "Você precisa escolher o carro primeiro");
+      router.push("/vehicles");
+    }
+  } catch (error) {
+    const { data } = error.response;
+    Notification("error", data.message);
+  }
+};
+
+const onConfirmStart = () => {
+  Modal.confirm({
+    title: "Quer iniciar uma reserva com o carro escolhido?",
+    icon: createVNode(ExclamationCircleOutlined),
+    centered: true,
+    onOk() {
+      return startReservation();
+    },
+    onCancel() {
+      getReservationList();
+      store.setVehicle(null);
+    },
+  });
+};
+
 onMounted(async () => {
   try {
     await api.get(`/reservation/last?id=${auth.getId()}`);
     router.push("/reservation/form");
   } catch (error) {
-    getReservationList();
+    if (store.vehicle_id) {
+      onConfirmStart();
+    } else {
+      getReservationList();
+    }
   }
 });
 </script>
@@ -52,11 +98,12 @@ onMounted(async () => {
             :devolution="reservation.devolution"
             :status="reservation.status"
             :step="reservation.step"
+            :total-value="reservation.total_value"
           />
         </div>
       </div>
 
-      <a-button type="primary" class="primary-button">
+      <a-button type="primary" class="primary-button" @click="startReservation">
         INICIAR NOVA RESERVA <ArrowRightOutlined />
       </a-button>
     </div>

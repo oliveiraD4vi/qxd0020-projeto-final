@@ -59,7 +59,6 @@ onMounted(async () => {
               />
             </div>
             <h3>{{ vehicle.brand }} {{ vehicle.model }}</h3>
-            <span>2020</span>
             <a-button type="primary" class="primary-button small">
               OFERTA <ArrowRightOutlined />
             </a-button>
