@@ -44,6 +44,10 @@ const onFinish = async (values) => {
     router.push("/login");
   } catch (error) {
     const { data } = error.response;
+
+    setLoading(false);
+    setDisabled(false);
+
     Notification("error", data.message);
   }
 };

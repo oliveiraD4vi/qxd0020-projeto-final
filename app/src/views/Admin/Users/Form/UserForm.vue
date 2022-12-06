@@ -179,7 +179,7 @@ const onFinish = async () => {
           />
         </a-form-item>
 
-        <div v-else className="info">
+        <div v-else class="info">
           <span>
             Nascimento:
             <p>{{ moment(data.bornAt).format("DD/MM/YYYY") }}</p>

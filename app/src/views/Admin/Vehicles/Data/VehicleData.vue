@@ -41,7 +41,7 @@ const getData = async () => {
   <main class="main-container top-centered">
     <PageHeader v-if="!data && !insert" title="Inserir veículo" />
     <PageHeader v-else title="Dados" />
-    <div v-if="data" className="editor-switch">
+    <div v-if="data" class="editor-switch">
       <span>EDIÇÃO: </span>
       <a-switch v-model:checked="insert" />
     </div>
@@ -53,7 +53,7 @@ const getData = async () => {
         :insert="insert"
       />
       <div v-else-if="data" class="card">
-        <div className="info">
+        <div class="info">
           <span>
             ID:
             <p>{{ data.id }}</p>
@@ -64,7 +64,7 @@ const getData = async () => {
           </span>
         </div>
 
-        <div className="info">
+        <div class="info">
           <span>
             Cor:
             <p>{{ data.color }}</p>
@@ -75,7 +75,7 @@ const getData = async () => {
           </span>
         </div>
 
-        <div className="info">
+        <div class="info">
           <span>
             Diária:
             <p>{{ data.value }}</p>

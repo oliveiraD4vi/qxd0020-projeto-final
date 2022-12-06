@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const AUTH = "GCUSER";
+
 export const api = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
   headers: {
@@ -9,7 +11,7 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-  const auth = localStorage.getItem("GCUSER");
+  const auth = localStorage.getItem(AUTH);
   if (auth) {
     const { token } = JSON.parse(auth);
     const tmpConfig = config;
@@ -19,8 +21,6 @@ api.interceptors.request.use(async (config) => {
   }
   return config;
 });
-
-const AUTH = "GCUSER";
 
 export const auth = {
   login(authData) {

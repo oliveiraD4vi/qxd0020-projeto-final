@@ -69,7 +69,7 @@ const getVehicle = async (id) => {
   <main class="main-container top-centered">
     <PageHeader v-if="!data && !insert" title="Inserir reserva" />
     <PageHeader v-else title="Dados" />
-    <div v-if="data" className="editor-switch">
+    <div v-if="data" class="editor-switch">
       <span>EDIÇÃO: </span>
       <a-switch v-model:checked="insert" />
     </div>
@@ -82,7 +82,7 @@ const getVehicle = async (id) => {
       />
       <div v-else-if="data" class="content">
         <div class="card">
-          <div className="info">
+          <div class="info">
             <span>
               ID:
               <p>{{ data.id }}</p>
@@ -93,7 +93,7 @@ const getVehicle = async (id) => {
             </span>
           </div>
 
-          <div className="info">
+          <div class="info">
             <span>
               Retirada:
               <p>{{ moment(data.pickup).format("DD/MM/YYYY") }}</p>
@@ -104,7 +104,7 @@ const getVehicle = async (id) => {
             </span>
           </div>
 
-          <div className="info">
+          <div class="info">
             <span>
               Status:
               <p>{{ data.status }}</p>
@@ -123,7 +123,7 @@ const getVehicle = async (id) => {
         >
           <a-collapse-panel v-if="userData && showcaseName" header="Usuário">
             <div class="card">
-              <div className="info">
+              <div class="info">
                 <span>
                   ID:
                   <p>{{ userData.id }}</p>
@@ -142,7 +142,7 @@ const getVehicle = async (id) => {
                 </span>
               </div>
 
-              <div className="info">
+              <div class="info">
                 <span>
                   CPF:
                   <p>{{ userData.cpf }}</p>
@@ -157,7 +157,7 @@ const getVehicle = async (id) => {
                 </span>
               </div>
 
-              <div className="info">
+              <div class="info">
                 <span v-if="userData.street">
                   Rua:
                   <p>{{ userData.street }}</p>
@@ -172,7 +172,7 @@ const getVehicle = async (id) => {
                 </span>
               </div>
 
-              <div className="info">
+              <div class="info">
                 <span v-if="userData.city">
                   Cidade:
                   <p>{{ userData.city }}</p>
@@ -191,7 +191,7 @@ const getVehicle = async (id) => {
 
           <a-collapse-panel v-if="vehicleData" header="Veículo">
             <div class="card">
-              <div className="info">
+              <div class="info">
                 <span>
                   ID:
                   <p>{{ vehicleData.id }}</p>
@@ -202,7 +202,7 @@ const getVehicle = async (id) => {
                 </span>
               </div>
 
-              <div className="info">
+              <div class="info">
                 <span>
                   Cor:
                   <p>{{ vehicleData.color }}</p>
@@ -213,7 +213,7 @@ const getVehicle = async (id) => {
                 </span>
               </div>
 
-              <div className="info">
+              <div class="info">
                 <span>
                   Diária:
                   <p>{{ vehicleData.value }}</p>

@@ -27,8 +27,8 @@ const handleGoBackButton = () => {
 </script>
 
 <template>
-  <div className="page-header-container">
-    <div className="page-header-title">
+  <div class="page-header-container">
+    <div class="page-header-title">
       <a-button
         class="icon-back"
         type="primary"
