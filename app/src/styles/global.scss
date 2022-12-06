@@ -95,8 +95,8 @@ h6 {
   border: none;
   padding: 5px 25px;
   font-weight: bold;
-  color: $primary-color;
-  background-color: $white-900;
+  color: $primary-color !important;
+  background-color: $white-900 !important;
   transition: all 200ms ease-in-out;
 
   &:focus,

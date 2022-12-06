@@ -3,6 +3,7 @@
 import { onMounted, reactive } from "vue";
 import { useState } from "../../../services/useState";
 import { api } from "../../../services/api";
+import { ReservationStore } from "../../../store/ReservationStore.js";
 
 import moment from "moment";
 import PageHeader from "../../PageHeader/PageHeader.vue";
@@ -12,6 +13,8 @@ import image3 from "../../../assets/car-example-white.png";
 import Notification from "../../../services/notifications";
 
 const images = [image1, image2, image3];
+
+const store = ReservationStore();
 
 const [loading, setLoading] = useState(false);
 const [disabled, setDisabled] = useState(false);
@@ -41,8 +44,8 @@ const props = defineProps({
 });
 
 const formState = reactive({
-  pickup: "",
-  devolution: "",
+  pickup: store.pickupData,
+  devolution: store.devolutionData,
 });
 
 onMounted(async () => {
